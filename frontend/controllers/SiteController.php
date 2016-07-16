@@ -72,9 +72,9 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionIndex()
+    public function actionIndex($name='bootstrap')
     {
-        return $this->render('index');
+        return $this->render('index',array('name'=>$name));
     }
 
     /**

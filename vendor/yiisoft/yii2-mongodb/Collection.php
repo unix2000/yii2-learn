@@ -10,6 +10,7 @@ namespace yii\mongodb;
 use yii\base\InvalidParamException;
 use yii\base\Object;
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * Collection represents the Mongo collection information.
@@ -19,10 +20,10 @@ use Yii;
  * Collection provides the basic interface for the Mongo queries, mostly: insert, update, delete operations.
  * For example:
  *
- * ~~~
+ * ```php
  * $collection = Yii::$app->mongodb->getCollection('customer');
  * $collection->insert(['name' => 'John Smith', 'status' => 1]);
- * ~~~
+ * ```
  *
  * To perform "find" queries, please use [[Query]] instead.
  *
@@ -30,7 +31,8 @@ use Yii;
  * However Collection class provides the ability of "translating" common condition format used "yii\db\*"
  * into Mongo condition.
  * For example:
- * ~~~
+ *
+ * ```php
  * $condition = [
  *     [
  *         'OR',
@@ -51,7 +53,7 @@ use Yii;
  *         ]
  *     ]
  * ]
- * ~~~
+ * ```
  *
  * Note: condition values for the key '_id' will be automatically cast to [[\MongoId]] instance,
  * even if they are plain strings. However, if you have other columns, containing [[\MongoId]], you
@@ -201,12 +203,14 @@ class Collection extends Object
      * You can specify field using native numeric key with the field name as a value,
      * in this case ascending sort will be used.
      * For example:
-     * ~~~
+     *
+     * ```php
      * [
      *     'name',
      *     'status' => -1,
      * ]
-     * ~~~
+     * ```
+     *
      * @param array $options list of options in format: optionName => optionValue.
      * @throws Exception on failure.
      * @return boolean whether the operation successful.
@@ -244,13 +248,15 @@ class Collection extends Object
      * You can specify field using native numeric key with the field name as a value,
      * in this case ascending sort will be used.
      * For example:
-     * ~~~
+     *
+     * ```php
      * [
      *     'name',
      *     'status' => -1,
      *     'description' => 'text',
      * ]
-     * ~~~
+     * ```
+     *
      * @throws Exception on failure.
      * @return boolean whether the operation successful.
      */
@@ -516,7 +522,12 @@ class Collection extends Object
         Yii::info($token, __METHOD__);
         try {
             Yii::beginProfile($token, __METHOD__);
-            $result = $this->mongoCollection->distinct($column, $condition);
+            // See https://bugs.php.net/bug.php?id=68858
+            if (empty($condition)) {
+                $result = $this->mongoCollection->distinct($column);
+            } else {
+                $result = $this->mongoCollection->distinct($column, $condition);
+            }
             Yii::endProfile($token, __METHOD__);
 
             return $result;
@@ -612,7 +623,7 @@ class Collection extends Object
      * write it inside the another Mongo collection specified by "out" parameter.
      * For example:
      *
-     * ~~~
+     * ```php
      * $customerCollection = Yii::$app->mongo->getCollection('customer');
      * $resultCollectionName = $customerCollection->mapReduce(
      *     'function () {emit(this.status, this.amount)}',
@@ -622,7 +633,7 @@ class Collection extends Object
      * );
      * $query = new Query();
      * $results = $query->from($resultCollectionName)->all();
-     * ~~~
+     * ```
      *
      * @param \MongoCode|string $map function, which emits map data from collection.
      * Argument will be automatically cast to [[\MongoCode]].
@@ -847,12 +858,12 @@ class Collection extends Object
             $operator = strtoupper($condition[0]);
             if (isset($builders[$operator])) {
                 $method = $builders[$operator];
-                array_shift($condition);
-
-                return $this->$method($operator, $condition);
             } else {
-                throw new InvalidParamException('Found unknown operator in query: ' . $operator);
+                $operator = $condition[0];
+                $method = 'buildSimpleCondition';
             }
+            array_shift($condition);
+            return $this->$method($operator, $condition);
         } else {
             // hash format: 'column1' => 'value1', 'column2' => 'value2', ...
             return $this->buildHashCondition($condition);
@@ -873,7 +884,7 @@ class Collection extends Object
                 $result[$name] = $value;
             } else {
                 if (is_array($value)) {
-                    if (array_key_exists(0, $value)) {
+                    if (ArrayHelper::isIndexed($value)) {
                         // Quick IN condition:
                         $result = array_merge($result, $this->buildInCondition('IN', [$name, $value]));
                     } else {
@@ -1004,18 +1015,18 @@ class Collection extends Object
         list($column, $values) = $operands;
 
         $values = (array) $values;
+        $operator = $this->normalizeConditionKeyword($operator);
 
         if (!is_array($column)) {
             $columns = [$column];
             $values = [$column => $values];
-        } elseif (count($column) < 2) {
-            $columns = $column;
-            $values = [$column[0] => $values];
+        } elseif (count($column) > 1) {
+            return $this->buildCompositeInCondition($operator, $column, $values);
         } else {
             $columns = $column;
+            $values = [$column[0] => $values];
         }
 
-        $operator = $this->normalizeConditionKeyword($operator);
         $result = [];
         foreach ($columns as $column) {
             if ($column == '_id') {
@@ -1023,7 +1034,45 @@ class Collection extends Object
             } else {
                 $inValues = $values[$column];
             }
-            $result[$column][$operator] = array_values($inValues);
+
+            $inValues = array_values($inValues);
+            if (count($inValues) === 1 && $operator === '$in') {
+                $result[$column] = $inValues[0];
+            } else {
+                $result[$column][$operator] = $inValues;
+            }
+        }
+
+        return $result;
+    }
+
+    /**
+     * @param string $operator MongoDB the operator to use (`$in` OR `$nin`)
+     * @param array $columns list of compare columns
+     * @param array $values compare values in format: columnName => [values]
+     * @return array the generated Mongo condition.
+     */
+    private function buildCompositeInCondition($operator, $columns, $values)
+    {
+        $result = [];
+
+        $inValues = [];
+        foreach ($values as $columnValues) {
+            foreach ($columnValues as $column => $value) {
+                if ($column == '_id') {
+                    $value = $this->ensureMongoId($value);
+                }
+                $inValues[$column][] = $value;
+            }
+        }
+
+        foreach ($columns as $column) {
+            $columnInValues = array_values($inValues[$column]);
+            if (count($columnInValues) === 1 && $operator === '$in') {
+                $result[$column] = $columnInValues[0];
+            } else {
+                $result[$column][$operator] = $columnInValues;
+            }
         }
 
         return $result;
@@ -1069,5 +1118,43 @@ class Collection extends Object
         }
 
         return [$column => $value];
+    }
+
+    /**
+     * Creates an Mongo condition like `{$operator:{field:value}}`.
+     * @param string $operator the operator to use. Besides regular MongoDB operators, aliases like `>`, `<=`,
+     * and so on, can be used here.
+     * @param array $operands the first operand is the column name.
+     * The second operand is a single value that column value should be compared with.
+     * @return string the generated Mongo condition.
+     * @throws InvalidParamException if wrong number of operands have been given.
+     */
+    public function buildSimpleCondition($operator, $operands)
+    {
+        if (count($operands) !== 2) {
+            throw new InvalidParamException("Operator '$operator' requires two operands.");
+        }
+
+        list($column, $value) = $operands;
+
+        if (strncmp('$', $operator, 1) !== 0) {
+            static $operatorMap = [
+                '>' => '$gt',
+                '<' => '$lt',
+                '>=' => '$gte',
+                '<=' => '$lte',
+                '!=' => '$ne',
+                '<>' => '$ne',
+                '=' => '$eq',
+                '==' => '$eq',
+            ];
+            if (isset($operatorMap[$operator])) {
+                $operator = $operatorMap[$operator];
+            } else {
+                throw new InvalidParamException("Unsupported operator '{$operator}'");
+            }
+        }
+
+        return [$column => [$operator => $value]];
     }
 }

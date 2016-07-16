@@ -27,6 +27,27 @@ return [
         ],
     ],
     'components' => [
+    	'authClientCollection' => [
+    		'class' => 'yii\authclient\Collection',
+    		'clients' => [
+    			'weibo' => [
+    				'class' => 'yii\authclient\Weibo',
+    				'clientId' => 'wb_key',
+    				'clientSecret' => 'wb_secret',
+    			],
+    			'qq' => [
+    				//'class' => 'yii\authclient\Qq',
+                    'class'=>'frontend\components\QqOAuth',
+    				'clientId' => 'qq_appid',
+    				'clientSecret' => 'qq_appkey',
+    			],
+    			'weixin' => [
+    				'class' => 'yii\authclient\Weixin',
+    				'clientId' => 'weixin_appid',
+    				'clientSecret' => 'weixin_appkey',
+    			],
+    		],
+    	],
 //         'response' => [
 //             'formatters' => [
 //                 'php' => 'frontend\components\PhpArrayFormatter',
@@ -74,9 +95,7 @@ return [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => [
-                
-            ],
+            'rules' => require(__DIR__ . '/route.php'),
         ],
     ],
     'params' => $params,

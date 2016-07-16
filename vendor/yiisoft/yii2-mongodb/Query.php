@@ -21,7 +21,7 @@ use Yii;
  *
  * For example,
  *
- * ~~~
+ * ```php
  * $query = new Query;
  * // compose the query
  * $query->select(['name', 'status'])
@@ -29,7 +29,7 @@ use Yii;
  *     ->limit(10);
  * // execute the query
  * $rows = $query->all();
- * ~~~
+ * ```
  *
  * @property Collection $collection Collection instance. This property is read-only.
  *
@@ -53,6 +53,12 @@ class Query extends Component implements QueryInterface
      * @see from()
      */
     public $from;
+    /**
+     * @var array cursor options in format: optionKey => optionValue
+     * @see \MongoCursor::addOption()
+     * @see options()
+     */
+    public $options = [];
 
 
     /**
@@ -72,7 +78,7 @@ class Query extends Component implements QueryInterface
     /**
      * Sets the list of fields of the results to return.
      * @param array $fields fields of the results to return.
-     * @return static the query object itself.
+     * @return $this the query object itself.
      */
     public function select(array $fields)
     {
@@ -86,13 +92,80 @@ class Query extends Component implements QueryInterface
      * @param string|array the collection to be selected from. If string considered as the name of the collection
      * inside the default database. If array - first element considered as the name of the database,
      * second - as name of collection inside that database
-     * @return static the query object itself.
+     * @return $this the query object itself.
      */
     public function from($collection)
     {
         $this->from = $collection;
 
         return $this;
+    }
+
+    /**
+     * Sets the cursor options.
+     * @param array $options cursor options in format: optionName => optionValue
+     * @return $this the query object itself
+     * @see addOptions()
+     */
+    public function options($options)
+    {
+        $this->options = $options;
+
+        return $this;
+    }
+
+    /**
+     * Adds additional cursor options.
+     * @param array $options cursor options in format: optionName => optionValue
+     * @return $this the query object itself
+     * @see options()
+     */
+    public function addOptions($options)
+    {
+        if (is_array($this->options)) {
+            $this->options = array_merge($this->options, $options);
+        } else {
+            $this->options = $options;
+        }
+
+        return $this;
+    }
+
+    /**
+     * Helper method for easy querying on values containing some common operators.
+     *
+     * The comparison operator is intelligently determined based on the first few characters in the given value and
+     * internally translated to a MongoDB operator.
+     * In particular, it recognizes the following operators if they appear as the leading characters in the given value:
+     * <: the column must be less than the given value ($lt).
+     * >: the column must be greater than the given value ($gt).
+     * <=: the column must be less than or equal to the given value ($lte).
+     * >=: the column must be greater than or equal to the given value ($gte).
+     * <>: the column must not be the same as the given value ($ne). Note that when $partialMatch is true, this would mean the value must not be a substring of the column.
+     * =: the column must be equal to the given value ($eq).
+     * none of the above: use the $defaultOperator
+     *
+     * Note that when the value is empty, no comparison expression will be added to the search condition.
+     *
+     * @param string $name column name
+     * @param string $value column value
+     * @param string $defaultOperator Defaults to =, performing an exact match.
+     * For example: use 'LIKE' or 'REGEX' for partial cq regex matching
+     * @see yii\mongodb\Collection::buildCondition()
+     * @return $this the query object itself.
+     * @since 2.0.5
+     */
+    public function andFilterCompare($name, $value, $defaultOperator = '=')
+    {
+        $matches = [];
+        if (preg_match('/^(<>|>=|>|<=|<|=)/', $value, $matches)) {
+            $op = $matches[1];
+            $value = substr($value, strlen($op));
+        } else {
+            $op = $defaultOperator;
+        }
+
+        return $this->andFilterWhere([$op, $name, $value]);
     }
 
     /**
@@ -108,6 +181,10 @@ class Query extends Component implements QueryInterface
         }
         $cursor->limit($this->limit);
         $cursor->skip($this->offset);
+
+        foreach ($this->options as $key => $value) {
+            $cursor->addOption($key, $value);
+        }
 
         return $cursor;
     }
@@ -410,7 +487,16 @@ class Query extends Component implements QueryInterface
     {
         $sort = [];
         foreach ($this->orderBy as $fieldName => $sortOrder) {
-            $sort[$fieldName] = $sortOrder === SORT_DESC ? \MongoCollection::DESCENDING : \MongoCollection::ASCENDING;
+            switch ($sortOrder) {
+                case SORT_ASC:
+                    $sort[$fieldName] = \MongoCollection::ASCENDING;
+                    break;
+                case SORT_DESC:
+                    $sort[$fieldName] = \MongoCollection::DESCENDING;
+                    break;
+                default:
+                    $sort[$fieldName] = $sortOrder;
+            }
         }
         return $sort;
     }

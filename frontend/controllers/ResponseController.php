@@ -3,10 +3,23 @@ namespace frontend\controllers;
 
 use yii\web\Cookie;
 use yii\web\Response;
+use yii\web\Controller;
 // use frontend\components\PhpArrayFormatter;
 // use yii\web\Response;
 
-class ResponseController extends BaseController {
+class ResponseController extends Controller {
+    public function actionTest(){
+        $data = array(
+            'ret' => 1,
+            'data' => [
+                'username' => 'liner',
+                'nickname' => 'liner.xie',
+            ],
+            'messages' => 'success',
+        );
+        //return json_output($data);
+        return xml_output($data);
+    }
     public function actionIndex(){
 //        $cookies = $this->response_cookies;
         $cookies = \Yii::$app->getResponse()->getCookies();
@@ -19,6 +32,7 @@ class ResponseController extends BaseController {
         //remove( $cookie, $removeFromBrowser = true )
         //setcookie("username", "", time()-3600);
         $cookies->add(new Cookie($data));
+        dump($this->request->cookies->get('username')->value); //getValue
         //unset($cookies['username']);
     }
     public function actionFormat(){

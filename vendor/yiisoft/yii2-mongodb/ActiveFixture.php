@@ -61,17 +61,28 @@ class ActiveFixture extends BaseActiveFixture
         $this->resetCollection();
         $this->data = [];
         $data = $this->getData();
+        if (empty($data)) {
+            return;
+        }
         $this->getCollection()->batchInsert($data);
         foreach ($data as $alias => $row) {
             $this->data[$alias] = $row;
         }
     }
 
+    /**
+     * Returns collection used by this fixture.
+     * @return Collection related collection.
+     */
     protected function getCollection()
     {
         return $this->db->getCollection($this->getCollectionName());
     }
 
+    /**
+     * Returns collection name used by this fixture.
+     * @return array|string related collection name
+     */
     protected function getCollectionName()
     {
         if ($this->collectionName) {
@@ -79,7 +90,6 @@ class ActiveFixture extends BaseActiveFixture
         } else {
             /* @var $modelClass ActiveRecord */
             $modelClass = $this->modelClass;
-
             return $modelClass::collectionName();
         }
     }

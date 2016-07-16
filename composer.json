@@ -31,7 +31,17 @@
         "yiisoft/yii2-smarty": "~2.0.0",
         "yiisoft/yii2-sphinx": "~2.0.0",
         "yiisoft/yii2-elasticsearch": "~2.0.0",
-        "yiisoft/yii2-mongodb": "^2.0"
+        "yiisoft/yii2-mongodb": "^2.0",
+        "2amigos/yii2-file-upload-widget": "~1.0",
+        "daixianceng/yii2-echarts": "*",
+        "wbraganca/yii2-fancytree-widget": "*",
+        "wbraganca/yii2-dynamicform": "dev-master",
+        "wbraganca/yii2-selectivity": "*",
+        "2amigos/yii2-highcharts-widget": "~1.0",
+        "2amigos/yii2-qrcode-helper": "~1.0",
+        "yiisoft/yii2-httpclient": "2.0.x-dev",
+        "bshaffer/oauth2-server-php": "*",
+        "qiniu/php-sdk": "^7.0"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

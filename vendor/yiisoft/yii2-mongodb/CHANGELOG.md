@@ -1,8 +1,30 @@
 Yii Framework 2 mongodb extension Change Log
 ============================================
 
-2.0.4 under development
------------------------
+2.0.5 May 9, 2016
+-----------------
+
+- Bug #40: Fixed `yii\mongodb\ActiveFixture` throws exception on empty fixture data (darkunz)
+- Bug #73: Fixed `yii\mongodb\Collection::buildInCondition()` unable to process composite 'IN' condition (klimov-paul)
+- Bug #75: Fixed `yii\mongodb\Collection::distinct()` always returns `false` on empty condition for MongoDB 2.8 (boxoft)
+- Bug #101: Fixed `yii\mongodb\Collection::buildCondition()` does not compose 'IN' condition for the values with broken index sequence (klimov-paul)
+- Bug: Avoid serializing PHP 7 errors (zuozp8, cebe)
+- Enh #23: Added support for complex sort specification at `yii\mongodb\Query` (raoptimus)
+- Enh #24: `yii\mongodb\Query` now contains a `andFilterCompare()` method that allows filtering using operators in the query value (lennartvdd)
+- Enh #27: Added support for saving extra fields in session collection for `yii\mongodb\Session` (klimov-paul)
+- Enh #35: Added support for cursor options setup at `yii\mongodb\Query` (klimov-paul)
+- Enh #36: Added support for compare operators (like '>', '<' and so on) at `yii\mongodb\Query` (klimov-paul)
+- Enh #37: Now `yii\mongodb\Collection::buildInCondition` is not added '$in' for array contains one element (webdevsega)
+- Enh #41: Added `yii\mongodb\Connection::driverOptions` allowing setup of the options for the MongoDB driver (klimov-paul)
+- Enh #57: Added i18n support via `yii\mongodb\i18n\MongoDbMessageSource` (klimov-paul)
+- Enh #69: Fixed log target to display exceptions like DbTarget in Yii core, also avoids problems with Exceptions that contain closures (cebe)
+- Enh #74: Added explain method to `MongoDbPanel` debug panel (webdevsega)
+- Enh #87: Added RBAC support via `yii\mongodb\rbac\MongoDbManager` (klimov-paul)
+- Enh #102: `MongoDbTarget` now uses `batchInsert()` while exporting log messages (klimov-paul)
+
+
+2.0.4 May 10, 2015
+------------------
 
 - Bug #7010: Fixed `yii\mongodb\Query::one()` fails on PHP MongoDB extension version 1.6.x (im-kulikov, klimov-paul)
 - Enh #5802: Added `yii\mongodb\validators\MongoIdValidator` and `yii\mongodb\validators\MongoDateValidator` validators (klimov-paul)

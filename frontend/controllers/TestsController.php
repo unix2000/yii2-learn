@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 use yii\web\Controller;
+
 // class TestsController extends BaseController {
 class TestsController extends Controller {
     public function actionHello(){

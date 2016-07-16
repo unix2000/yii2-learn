@@ -1,54 +1,36 @@
-Yii 2 Advanced Project Template
-===============================
+This is yii2 framework learn cookbook tests
 
-Yii 2 Advanced Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
-developing complex Web applications with multiple tiers.
-
-The template includes three tiers: front end, back end, and console, each of which
-is a separate Yii application.
-
-The template is designed to work in a team development environment. It supports
-deploying the application in different environments.
-
-Documentation is at [docs/guide/README.md](docs/guide/README.md).
-
-[![Latest Stable Version](https://poser.pugx.org/yiisoft/yii2-app-advanced/v/stable.png)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
-[![Total Downloads](https://poser.pugx.org/yiisoft/yii2-app-advanced/downloads.png)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
-[![Build Status](https://travis-ci.org/yiisoft/yii2-app-advanced.svg?branch=master)](https://travis-ci.org/yiisoft/yii2-app-advanced)
-
-DIRECTORY STRUCTURE
--------------------
-
-```
-common
-    config/              contains shared configurations
-    mail/                contains view files for e-mails
-    models/              contains model classes used in both backend and frontend
-console
-    config/              contains console configurations
-    controllers/         contains console controllers (commands)
-    migrations/          contains database migrations
-    models/              contains console-specific model classes
-    runtime/             contains files generated during runtime
-backend
-    assets/              contains application assets such as JavaScript and CSS
-    config/              contains backend configurations
-    controllers/         contains Web controller classes
-    models/              contains backend-specific model classes
-    runtime/             contains files generated during runtime
-    views/               contains view files for the Web application
-    web/                 contains the entry script and Web resources
-frontend
-    assets/              contains application assets such as JavaScript and CSS
-    config/              contains frontend configurations
-    controllers/         contains Web controller classes
-    models/              contains frontend-specific model classes
-    runtime/             contains files generated during runtime
-    views/               contains view files for the Web application
-    web/                 contains the entry script and Web resources
-    widgets/             contains frontend widgets
-vendor/                  contains dependent 3rd-party packages
-environments/            contains environment-based overrides
-tests                    contains various tests for the advanced application
-    codeception/         contains tests developed with Codeception PHP Testing Framework
-```
+ hosts:
+ 	api.dev
+ 	frontend.dev
+ 	backend.dev
+ 
+ ubuntu 15.10:
+ 	touch api.dev
+ 	/etc/nginx/sites-available/api.dev 
+ 	cd /etc/nginx/sites-enabled
+ 	sudo ln -s /etc/nginx/sites-available/api.dev api.dev
+ 	sudo systemctl restart nginx
+ 	
+ nginx api.dev:
+ 	server {
+        listen       80;
+        server_name  api.dev ;
+        root   "/home/liner/Develop/windows_mount/xampp/htdocs/advanced/api/web";
+	index  index.html index.htm index.php;
+	
+        location / {
+            try_files $uri $uri/ /index.php?_url=$uri&$args;
+	    #autoindex  on;
+        }
+        location ~ \.php(.*)$ {
+            fastcgi_pass   127.0.0.1:9000;
+            fastcgi_index  index.php;
+	    #fastcgi_split_path_info       ^(.+\.php)(/.+)$;
+            fastcgi_split_path_info  ^((?U).+\.php)(/?.+)$;
+            fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+            fastcgi_param  PATH_INFO  $fastcgi_path_info;
+            fastcgi_param  PATH_TRANSLATED  $document_root$fastcgi_path_info;
+            include        fastcgi_params;
+        }
+	}

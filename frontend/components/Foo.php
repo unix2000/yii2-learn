@@ -3,6 +3,7 @@ namespace frontend\components;
 use yii\base\Object;
 
 class Foo extends Object {
+    //属性
 	private $_label;
 	public $_value;
 	public function __construct(){

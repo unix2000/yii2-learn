@@ -3,8 +3,21 @@ namespace frontend\controllers;
 use kartik\mpdf\Pdf;
 use frontend\models\RegForm;
 use yii\web\Response;
+use yii\web\Controller;
 
-class UiController extends BaseController{
+class UiController extends Controller{
+    public function actionGallery(){
+        return $this->render('gallery');
+    }
+    public function actionHighcharts(){
+        return $this->render('charts');
+    }
+    public function actionFancytree(){
+        return $this->render('fancytree');
+    }
+    public function actionEcharts(){
+        return $this->render('echarts');
+    }
     public function actionIndex(){
         //return $this->render('index');
         //dump(\Yii::createObject(Pdf::className()));
@@ -30,13 +43,27 @@ class UiController extends BaseController{
     }
     public function actionValid(){
         $model = new RegForm();
-        
-        if ($model->load(\Yii::$app->request->post()) && $model->isvalid()){
-            //save
+        //dump(\Yii::$app->request->post());
+        //$data = \Yii::$app->request->post('RegForm');
+        $data = \Yii::$app->request->post('RegForm',[]);
+        //echo $data['username'];
+        dump($data);
+        $model->attributes = \Yii::$app->request->post('RegForm');
+        //$model->setAttribute(['other_value' => time()],true);       
+        dump($model->attributes);
+        //echo $model->validate() ? 'valid': 'no valid'; 
+        if($model->validate()){
+
         } else {
-            dump($model->getErrors());
-            //ajax输出错误
+        	$errors = $model->errors;
+        	dump($errors);
         }
+//         if ($model->load(\Yii::$app->request->post()) && $model->isvalid()){
+//             //save
+//         } else {
+//             dump($model->getErrors());
+//             //ajax输出错误
+//         }
     }
     public function actionPdf(){
         return $this->render('pdf');

@@ -1,0 +1,6 @@
+<?php
+//gallery
+ 
+//videos
+
+?>

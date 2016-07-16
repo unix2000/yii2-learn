@@ -11,6 +11,7 @@ use Yii;
 use yii\base\ErrorHandler;
 use yii\base\InvalidConfigException;
 use yii\di\Instance;
+use yii\web\MultiFieldSession;
 
 /**
  * Session extends [[\yii\web\Session]] by using MongoDB as session data storage.
@@ -22,20 +23,26 @@ use yii\di\Instance;
  * The following example shows how you can configure the application to use Session:
  * Add the following to your application config under `components`:
  *
- * ~~~
+ * ```php
  * 'session' => [
  *     'class' => 'yii\mongodb\Session',
  *     // 'db' => 'mymongodb',
  *     // 'sessionCollection' => 'my_session',
  * ]
- * ~~~
+ * ```
+ *
+ * Session extends [[MultiFieldSession]], thus it allows saving extra fields into the [[sessionCollection]].
+ * Refer to [[MultiFieldSession]] for more details.
+ *
+ * Tip: you can use MongoDB [TTL index](http://docs.mongodb.org/manual/tutorial/expire-data/) for the session garbage
+ * collection for performance saving, in this case you should set [[Session::gCProbability]] to `0`.
  *
  * @property boolean $useCustomStorage Whether to use custom storage. This property is read-only.
  *
  * @author Paul Klimov <klimov.paul@gmail.com>
  * @since 2.0
  */
-class Session extends \yii\web\Session
+class Session extends MultiFieldSession
 {
     /**
      * @var Connection|array|string the MongoDB connection object or the application component ID of the MongoDB connection.
@@ -61,16 +68,6 @@ class Session extends \yii\web\Session
     {
         parent::init();
         $this->db = Instance::ensure($this->db, Connection::className());
-    }
-
-    /**
-     * Returns a value indicating whether to use custom session storage.
-     * This method overrides the parent implementation and always returns true.
-     * @return boolean whether to use custom storage.
-     */
-    public function getUseCustomStorage()
-    {
-        return true;
     }
 
     /**
@@ -102,10 +99,7 @@ class Session extends \yii\web\Session
             }
         } else {
             // shouldn't reach here normally
-            $collection->insert([
-                'id' => $newID,
-                'expire' => time() + $this->getTimeout()
-            ]);
+            $collection->insert($this->composeFields($newID, ''));
         }
     }
 
@@ -118,14 +112,20 @@ class Session extends \yii\web\Session
     public function readSession($id)
     {
         $collection = $this->db->getCollection($this->sessionCollection);
+        $condition = [
+            'id' => $id,
+            'expire' => ['$gt' => time()],
+        ];
+
+        if (isset($this->readCallback)) {
+            $doc = $collection->findOne($condition);
+            return $doc === null ? '' : $this->extractData($doc);
+        }
+
         $doc = $collection->findOne(
-            [
-                'id' => $id,
-                'expire' => ['$gt' => time()],
-            ],
+            $condition,
             ['data' => 1, '_id' => 0]
         );
-
         return isset($doc['data']) ? $doc['data'] : '';
     }
 
@@ -143,11 +143,7 @@ class Session extends \yii\web\Session
         try {
             $this->db->getCollection($this->sessionCollection)->update(
                 ['id' => $id],
-                [
-                    'id' => $id,
-                    'data' => $data,
-                    'expire' => time() + $this->getTimeout(),
-                ],
+                $this->composeFields($id, $data),
                 ['upsert' => true]
             );
         } catch (\Exception $e) {
