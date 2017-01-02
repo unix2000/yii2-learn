@@ -93,6 +93,7 @@ app
         };
 
         $scope.save = function () {
+			alert();
             rest.postModel($scope.post).success(function (data) {
 
                 toaster.pop('success', "Saved");

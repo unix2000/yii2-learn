@@ -21,11 +21,30 @@ define(function (require) {
     /**
      * @public
      */
-    clazz.enableClassExtend = function (RootClass, preConstruct) {
+    clazz.enableClassExtend = function (RootClass, mandatoryMethods) {
+
+        RootClass.$constructor = RootClass;
         RootClass.extend = function (proto) {
+
+            if (__DEV__) {
+                zrUtil.each(mandatoryMethods, function (method) {
+                    if (!proto[method]) {
+                        console.warn(
+                            'Method `' + method + '` should be implemented'
+                            + (proto.type ? ' in ' + proto.type : '') + '.'
+                        );
+                    }
+                });
+            }
+
+            var superClass = this;
             var ExtendedClass = function () {
-                preConstruct && preConstruct.apply(this, arguments);
-                RootClass.apply(this, arguments);
+                if (!proto.$constructor) {
+                    superClass.apply(this, arguments);
+                }
+                else {
+                    proto.$constructor.apply(this, arguments);
+                }
             };
 
             zrUtil.extend(ExtendedClass.prototype, proto);
@@ -34,7 +53,7 @@ define(function (require) {
             ExtendedClass.superCall = superCall;
             ExtendedClass.superApply = superApply;
             zrUtil.inherits(ExtendedClass, this);
-            ExtendedClass.superClass = this;
+            ExtendedClass.superClass = superClass;
 
             return ExtendedClass;
         };

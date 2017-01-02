@@ -5,59 +5,7 @@ define(function(require) {
     var Model = require('../model/Model');
     var zrUtil = require('zrender/core/util');
 
-    var AXIS_DIMS = ['x', 'y', 'z', 'radius', 'angle'];
-
     var modelUtil = {};
-
-    /**
-     * Create "each" method to iterate names.
-     *
-     * @pubilc
-     * @param  {Array.<string>} names
-     * @param  {Array.<string>=} attrs
-     * @return {Function}
-     */
-    modelUtil.createNameEach = function (names, attrs) {
-        names = names.slice();
-        var capitalNames = zrUtil.map(names, modelUtil.capitalFirst);
-        attrs = (attrs || []).slice();
-        var capitalAttrs = zrUtil.map(attrs, modelUtil.capitalFirst);
-
-        return function (callback, context) {
-            zrUtil.each(names, function (name, index) {
-                var nameObj = {name: name, capital: capitalNames[index]};
-
-                for (var j = 0; j < attrs.length; j++) {
-                    nameObj[attrs[j]] = name + capitalAttrs[j];
-                }
-
-                callback.call(context, nameObj);
-            });
-        };
-    };
-
-    /**
-     * @public
-     */
-    modelUtil.capitalFirst = function (str) {
-        return str ? str.charAt(0).toUpperCase() + str.substr(1) : str;
-    };
-
-    /**
-     * Iterate each dimension name.
-     *
-     * @public
-     * @param {Function} callback The parameter is like:
-     *                            {
-     *                                name: 'angle',
-     *                                capital: 'Angle',
-     *                                axis: 'angleAxis',
-     *                                axisIndex: 'angleAixs',
-     *                                index: 'angleIndex'
-     *                            }
-     * @param {Object} context
-     */
-    modelUtil.eachAxisDim = modelUtil.createNameEach(AXIS_DIMS, ['axisIndex', 'axis', 'index']);
 
     /**
      * If value is not array, then translate it to array.
@@ -70,76 +18,6 @@ define(function(require) {
             : value == null
             ? []
             : [value];
-    };
-
-    /**
-     * If tow dataZoomModels has the same axis controlled, we say that they are 'linked'.
-     * dataZoomModels and 'links' make up one or more graphics.
-     * This function finds the graphic where the source dataZoomModel is in.
-     *
-     * @public
-     * @param {Function} forEachNode Node iterator.
-     * @param {Function} forEachEdgeType edgeType iterator
-     * @param {Function} edgeIdGetter Giving node and edgeType, return an array of edge id.
-     * @return {Function} Input: sourceNode, Output: Like {nodes: [], dims: {}}
-     */
-    modelUtil.createLinkedNodesFinder = function (forEachNode, forEachEdgeType, edgeIdGetter) {
-
-        return function (sourceNode) {
-            var result = {
-                nodes: [],
-                records: {} // key: edgeType.name, value: Object (key: edge id, value: boolean).
-            };
-
-            forEachEdgeType(function (edgeType) {
-                result.records[edgeType.name] = {};
-            });
-
-            if (!sourceNode) {
-                return result;
-            }
-
-            absorb(sourceNode, result);
-
-            var existsLink;
-            do {
-                existsLink = false;
-                forEachNode(processSingleNode);
-            }
-            while (existsLink);
-
-            function processSingleNode(node) {
-                if (!isNodeAbsorded(node, result) && isLinked(node, result)) {
-                    absorb(node, result);
-                    existsLink = true;
-                }
-            }
-
-            return result;
-        };
-
-        function isNodeAbsorded(node, result) {
-            return zrUtil.indexOf(result.nodes, node) >= 0;
-        }
-
-        function isLinked(node, result) {
-            var hasLink = false;
-            forEachEdgeType(function (edgeType) {
-                zrUtil.each(edgeIdGetter(node, edgeType) || [], function (edgeId) {
-                    result.records[edgeType.name][edgeId] && (hasLink = true);
-                });
-            });
-            return hasLink;
-        }
-
-        function absorb(node, result) {
-            result.nodes.push(node);
-            forEachEdgeType(function (edgeType) {
-                zrUtil.each(edgeIdGetter(node, edgeType) || [], function (edgeId) {
-                    result.records[edgeType.name][edgeId] = true;
-                });
-            });
-        }
     };
 
     /**
@@ -365,22 +243,31 @@ define(function(require) {
                 return;
             }
 
+            // id has highest priority.
             for (var i = 0; i < result.length; i++) {
-                var exist = result[i].exist;
                 if (!result[i].option // Consider name: two map to one.
-                    && (
-                        // id has highest priority.
-                        (cptOption.id != null && exist.id === cptOption.id + '')
-                        || (cptOption.name != null
-                            && !modelUtil.isIdInner(cptOption)
-                            && !modelUtil.isIdInner(exist)
-                            && exist.name === cptOption.name + ''
-                        )
-                    )
+                    && cptOption.id != null
+                    && result[i].exist.id === cptOption.id + ''
                 ) {
                     result[i].option = cptOption;
                     newCptOptions[index] = null;
-                    break;
+                    return;
+                }
+            }
+
+            for (var i = 0; i < result.length; i++) {
+                var exist = result[i].exist;
+                if (!result[i].option // Consider name: two map to one.
+                    // Can not match when both ids exist but different.
+                    && (exist.id == null || cptOption.id == null)
+                    && cptOption.name != null
+                    && !modelUtil.isIdInner(cptOption)
+                    && !modelUtil.isIdInner(exist)
+                    && exist.name === cptOption.name + ''
+                ) {
+                    result[i].option = cptOption;
+                    newCptOptions[index] = null;
+                    return;
                 }
             }
         });
@@ -425,33 +312,6 @@ define(function(require) {
         return zrUtil.isObject(cptOption)
             && cptOption.id
             && (cptOption.id + '').indexOf('\0_ec_\0') === 0;
-    };
-
-    /**
-     * Truncate text, if overflow.
-     * If not ASCII, count as tow ASCII length.
-     * Notice case: truncate('是', 1) => '是', not ''.
-     *
-     * @public
-     * @param {string} str
-     * @param {number} length Over the length, truncate.
-     * @param {string} [ellipsis='...']
-     * @return {string} Result string.
-     */
-    modelUtil.truncate = function (str, length, ellipsis) {
-        if (!str) {
-            return str;
-        }
-
-        var count = 0;
-        for(var i = 0, l = str.length; i < l && count < length; i++) {
-            count += str.charCodeAt(i) > 255 ? 2 : 1;
-        }
-        if (i < l) {
-            str = str.slice(0, i) + (ellipsis || '');
-        }
-
-        return str;
     };
 
     /**
@@ -506,6 +366,113 @@ define(function(require) {
             return result;
         }
     };
+
+    /**
+     * @param {module:echarts/data/List} data
+     * @param {Object} payload Contains dataIndex (means rawIndex) / dataIndexInside / name
+     *                         each of which can be Array or primary type.
+     * @return {number|Array.<number>} dataIndex If not found, return undefined/null.
+     */
+    modelUtil.queryDataIndex = function (data, payload) {
+        if (payload.dataIndexInside != null) {
+            return payload.dataIndexInside;
+        }
+        else if (payload.dataIndex != null) {
+            return zrUtil.isArray(payload.dataIndex)
+                ? zrUtil.map(payload.dataIndex, function (value) {
+                    return data.indexOfRawIndex(value);
+                })
+                : data.indexOfRawIndex(payload.dataIndex);
+        }
+        else if (payload.name != null) {
+            return zrUtil.isArray(payload.name)
+                ? zrUtil.map(payload.name, function (value) {
+                    return data.indexOfName(value);
+                })
+                : data.indexOfName(payload.name);
+        }
+    };
+
+    /**
+     * @param {module:echarts/model/Global} ecModel
+     * @param {string|Object} finder
+     *        If string, e.g., 'geo', means {geoIndex: 0}.
+     *        If Object, could contain some of these properties below:
+     *        {
+     *            seriesIndex, seriesId, seriesName,
+     *            geoIndex, geoId, goeName,
+     *            bmapIndex, bmapId, bmapName,
+     *            xAxisIndex, xAxisId, xAxisName,
+     *            yAxisIndex, yAxisId, yAxisName,
+     *            gridIndex, gridId, gridName,
+     *            ... (can be extended)
+     *        }
+     *        Each properties can be number|string|Array.<number>|Array.<string>
+     *        For example, a finder could be
+     *        {
+     *            seriesIndex: 3,
+     *            geoId: ['aa', 'cc'],
+     *            gridName: ['xx', 'rr']
+     *        }
+     * @param {Object} [opt]
+     * @param {string} [opt.defaultMainType]
+     * @return {Object} result like:
+     *        {
+     *            seriesModels: [seriesModel1, seriesModel2],
+     *            seriesModel: seriesModel1, // The first model
+     *            geoModels: [geoModel1, geoModel2],
+     *            geoModel: geoModel1, // The first model
+     *            ...
+     *        }
+     */
+    modelUtil.parseFinder = function (ecModel, finder, opt) {
+        if (zrUtil.isString(finder)) {
+            var obj = {};
+            obj[finder + 'Index'] = 0;
+            finder = obj;
+        }
+
+        var defaultMainType = opt && opt.defaultMainType;
+        if (defaultMainType
+            && !has(finder, defaultMainType + 'Index')
+            && !has(finder, defaultMainType + 'Id')
+            && !has(finder, defaultMainType + 'Name')
+        ) {
+            finder[defaultMainType + 'Index'] = 0;
+        }
+
+        var result = {};
+
+        zrUtil.each(finder, function (value, key) {
+            var value = finder[key];
+
+            // Exclude 'dataIndex' and other illgal keys.
+            if (key === 'dataIndex' || key === 'dataIndexInside') {
+                result[key] = value;
+                return;
+            }
+
+            var parsedKey = key.match(/^(\w+)(Index|Id|Name)$/) || [];
+            var mainType = parsedKey[1];
+            var queryType = parsedKey[2];
+
+            if (!mainType || !queryType) {
+                return;
+            }
+
+            var queryParam = {mainType: mainType};
+            queryParam[queryType.toLowerCase()] = value;
+            var models = ecModel.queryComponents(queryParam);
+            result[mainType + 'Models'] = models;
+            result[mainType + 'Model'] = models[0];
+        });
+
+        return result;
+    };
+
+    function has(obj, prop) {
+        return obj && obj.hasOwnProperty(prop);
+    }
 
     return modelUtil;
 });

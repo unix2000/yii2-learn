@@ -1,12 +1,56 @@
 <?php
 namespace frontend\controllers;
 use yii\web\Controller;
+use yii\web\Request;
+use yii\filters\AccessControl;
+use yii\web\HttpException;
+use yii\helpers\Url;
+use frontend\models\Tree;
+use Yii;
 
-// class TestsController extends BaseController {
 class TestsController extends Controller {
+// class TestsController extends BaseController {
+    public function actionTest()
+    {
+        // du(Yii::$app->extensions); //默认返回@vendor/yiisoft/extensions.php
+        // du(Yii::$app->layout);
+        // du(Yii::$app->layoutPath);
+        // du(Yii::$app->viewPath);
+        // du(Yii::$app->runtimePath);
+        // du(Yii::$app->vendorPath);
+        
+    }
+	public function behaviors()
+	{
+		return [
+			'access' => [
+				'class' => AccessControl::className(),
+				// Specifies the actions that the rules should be applied to
+				'only' => ['secure'],
+				// The rules surrounding who should and should not have access to the page
+				'rules' => [
+					[
+						'allow' => true,
+						'matchCallback' => function($rule,$action) {
+							return !\Yii::$app->user->isGuest && \Yii::$app->user->identity->role->id === 2;
+						}
+					],
+				],
+				// The action that should happen if the user shouldn't have access to the page
+				'denyCallback' => function ($rule, $action) {
+					if (\Yii::$app->user->isGuest)
+						return $this->redirect(Url::to('/site/login'));
+					else
+						throw new HttpException('403', '你没有权限访问此页面');
+				},
+			],
+		];
+	}
     public function actionHello(){
-        $this->layout = false;
-        echo 'ab webbench tests';
+        // $this->layout = false;
+        // echo 'ab webbench tests';
+        du(\Yii::$app->user->identity);
+        return $this->render('hello');
     }
     public function actionContainer(){
         
@@ -18,7 +62,7 @@ class TestsController extends Controller {
         
     }
     public function actionService(){
-        
+        du(\Yii::$app->security);
     }
     public function actionCluster(){
         
@@ -28,6 +72,11 @@ class TestsController extends Controller {
 //         $action = \Yii::$app->controller->action->id;
 //         echo $controller.'-----'.$action;
         
+        //repository
+        // dump($this->repo->findOneById(1));
+        // dump($this->repo->limit(5)->findAll());
+        // dump($this->repo->limit(6)->findManyBy('email','liner.xie@qq.com'));
+        dump($this->repo->searchByCriteria());
     }
     public function actionTree(){
         return $this->render('tree');

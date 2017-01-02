@@ -11,8 +11,8 @@ use yii\base\Event;
 class EventController extends Controller {
 	public function actionTests(){
 	    //model trigger  //init() on()
-// 		$model = new EventModel();
-// 		$model->trigger(EventModel::EVENT_NEW_USER);
+		$model = new EventModel();
+		$model->trigger(EventModel::EVENT_NEW_USER);
 
 	    // yii\base\Event tests
 	    
@@ -33,7 +33,7 @@ class EventController extends Controller {
 		
 		//回调
 		$this->on('ed', function($data){
-			//echo 'events d tests';
+			echo 'events d tests';
 			dump($data->name);
 			//$data 参数具体内容请查看相关dump
 			dump($data->sender);

@@ -96,7 +96,7 @@ class ActiveQuery extends Query implements ActiveQueryInterface
     /**
      * @inheritdoc
      */
-    protected function buildCursor($db = null)
+    public function buildCursor($db = null)
     {
         if ($this->primaryModel !== null) {
             // lazy loading
@@ -153,6 +153,14 @@ class ActiveQuery extends Query implements ActiveQueryInterface
         } else {
             return null;
         }
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function exists($db = null)
+    {
+        return $this->one($db) !== null;
     }
 
     /**

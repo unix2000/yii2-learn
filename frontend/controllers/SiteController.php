@@ -67,7 +67,10 @@ class SiteController extends Controller
         ];
     }
 
-    /**
+    public function actionOffline($param1){
+		echo '<h1>' .$param1. '</h1>';
+	}
+	/**
      * Displays homepage.
      *
      * @return mixed

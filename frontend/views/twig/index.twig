@@ -1,0 +1,10 @@
+{{ email }}
+{{ 200.35|number_format }}
+{{ 9800.333|number_format(2, '.', ',') }}
+<ul>
+{% for i in data %}
+    <li>* {{ i.name | e }}</li>
+{% else %}
+    没有记录.
+{% endfor %}
+</ul>

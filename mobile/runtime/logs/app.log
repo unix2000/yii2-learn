@@ -1,0 +1,3359 @@
+2016-08-10 21:32:31 [127.0.0.1][-][-][error][yii\base\UnknownClassException] exception 'yii\base\UnknownClassException' with message 'Unable to find 'app\controllers\UserController' in file: D:\xampp\htdocs\advanced\mobile/controllers/UserController.php. Namespace missing?' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\BaseYii.php:291
+Stack trace:
+#0 [internal function]: yii\BaseYii::autoload('app\\controllers...')
+#1 [internal function]: spl_autoload_call('app\\controllers...')
+#2 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(562): class_exists('app\\controllers...')
+#3 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(520): yii\base\Module->createControllerByID('user')
+#4 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(448): yii\base\Module->createController('user/index')
+#5 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(87): yii\base\Module->runAction('user/index', Array)
+#6 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#8 {main}
+2016-08-10 21:32:30 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/user/index'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\nodejs\\;C:\\Program Files (x86)\\Brackets\\command;D:\\develop\\phpstudy\\php56n;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\Doctrine extensions for PHP\\;C:\\Program Files\\Git\\cmd;C:\\Python34;C:\\Python34\\Scripts;D:\\HashiCorp\\Vagrant\\bin;d:\\ruby\\Ruby23-x64\\bin;C:\\Users\\liner\\AppData\\Roaming\\npm;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'mobile.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'mobile.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '56754'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/user/index'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/user/index&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/mobile/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1470835950.4404
+    'REQUEST_TIME' => 1470835950
+]
+2016-08-10 21:32:32 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "favicon.ico".' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php:460
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(87): yii\base\Module->runAction('favicon.ico', Array)
+#1 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php:99
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#2 {main}
+2016-08-10 21:32:31 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/favicon.ico'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\nodejs\\;C:\\Program Files (x86)\\Brackets\\command;D:\\develop\\phpstudy\\php56n;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\Doctrine extensions for PHP\\;C:\\Program Files\\Git\\cmd;C:\\Python34;C:\\Python34\\Scripts;D:\\HashiCorp\\Vagrant\\bin;d:\\ruby\\Ruby23-x64\\bin;C:\\Users\\liner\\AppData\\Roaming\\npm;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_REFERER' => 'http://mobile.dev/user/index'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'mobile.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'mobile.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '56754'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/favicon.ico'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/favicon.ico&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/mobile/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1470835951.8856
+    'REQUEST_TIME' => 1470835951
+]
+2016-08-10 21:35:22 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "".' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php:460
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(87): yii\base\Module->runAction('', Array)
+#1 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php:99
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#2 {main}
+2016-08-10 21:35:22 [127.0.0.1][-][-][info][application] $_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\nodejs\\;C:\\Program Files (x86)\\Brackets\\command;D:\\develop\\phpstudy\\php56n;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\Doctrine extensions for PHP\\;C:\\Program Files\\Git\\cmd;C:\\Python34;C:\\Python34\\Scripts;D:\\HashiCorp\\Vagrant\\bin;d:\\ruby\\Ruby23-x64\\bin;C:\\Users\\liner\\AppData\\Roaming\\npm;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'mobile.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'mobile.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '56870'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/mobile/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1470836122.1443
+    'REQUEST_TIME' => 1470836122
+]
+2016-08-10 21:35:28 [127.0.0.1][-][-][error][yii\base\UnknownClassException] exception 'yii\base\UnknownClassException' with message 'Unable to find 'app\controllers\UserController' in file: D:\xampp\htdocs\advanced\mobile/controllers/UserController.php. Namespace missing?' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\BaseYii.php:291
+Stack trace:
+#0 [internal function]: yii\BaseYii::autoload('app\\controllers...')
+#1 [internal function]: spl_autoload_call('app\\controllers...')
+#2 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(562): class_exists('app\\controllers...')
+#3 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(520): yii\base\Module->createControllerByID('user')
+#4 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(448): yii\base\Module->createController('user/index')
+#5 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(87): yii\base\Module->runAction('user/index', Array)
+#6 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#8 {main}
+2016-08-10 21:35:28 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/user/index'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\nodejs\\;C:\\Program Files (x86)\\Brackets\\command;D:\\develop\\phpstudy\\php56n;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\Doctrine extensions for PHP\\;C:\\Program Files\\Git\\cmd;C:\\Python34;C:\\Python34\\Scripts;D:\\HashiCorp\\Vagrant\\bin;d:\\ruby\\Ruby23-x64\\bin;C:\\Users\\liner\\AppData\\Roaming\\npm;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'mobile.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'mobile.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '56870'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/user/index'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/user/index&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/mobile/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1470836128.3512
+    'REQUEST_TIME' => 1470836128
+]
+2016-08-10 21:35:31 [127.0.0.1][-][-][error][yii\base\UnknownClassException] exception 'yii\base\UnknownClassException' with message 'Unable to find 'app\controllers\UserController' in file: D:\xampp\htdocs\advanced\mobile/controllers/UserController.php. Namespace missing?' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\BaseYii.php:291
+Stack trace:
+#0 [internal function]: yii\BaseYii::autoload('app\\controllers...')
+#1 [internal function]: spl_autoload_call('app\\controllers...')
+#2 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(562): class_exists('app\\controllers...')
+#3 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(520): yii\base\Module->createControllerByID('user')
+#4 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(448): yii\base\Module->createController('user/index')
+#5 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(87): yii\base\Module->runAction('user/index', Array)
+#6 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#8 {main}
+2016-08-10 21:35:31 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/user/index'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\nodejs\\;C:\\Program Files (x86)\\Brackets\\command;D:\\develop\\phpstudy\\php56n;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\Doctrine extensions for PHP\\;C:\\Program Files\\Git\\cmd;C:\\Python34;C:\\Python34\\Scripts;D:\\HashiCorp\\Vagrant\\bin;d:\\ruby\\Ruby23-x64\\bin;C:\\Users\\liner\\AppData\\Roaming\\npm;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'mobile.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'mobile.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '56870'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/user/index'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/user/index&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/mobile/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1470836131.0567
+    'REQUEST_TIME' => 1470836131
+]
+2016-08-10 21:35:32 [127.0.0.1][-][-][error][yii\base\UnknownClassException] exception 'yii\base\UnknownClassException' with message 'Unable to find 'app\controllers\UserController' in file: D:\xampp\htdocs\advanced\mobile/controllers/UserController.php. Namespace missing?' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\BaseYii.php:291
+Stack trace:
+#0 [internal function]: yii\BaseYii::autoload('app\\controllers...')
+#1 [internal function]: spl_autoload_call('app\\controllers...')
+#2 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(562): class_exists('app\\controllers...')
+#3 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(520): yii\base\Module->createControllerByID('user')
+#4 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(448): yii\base\Module->createController('user/index')
+#5 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(87): yii\base\Module->runAction('user/index', Array)
+#6 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#8 {main}
+2016-08-10 21:35:31 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/user/index'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\nodejs\\;C:\\Program Files (x86)\\Brackets\\command;D:\\develop\\phpstudy\\php56n;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\Doctrine extensions for PHP\\;C:\\Program Files\\Git\\cmd;C:\\Python34;C:\\Python34\\Scripts;D:\\HashiCorp\\Vagrant\\bin;d:\\ruby\\Ruby23-x64\\bin;C:\\Users\\liner\\AppData\\Roaming\\npm;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'mobile.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'mobile.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '56870'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/user/index'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/user/index&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/mobile/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1470836131.967
+    'REQUEST_TIME' => 1470836131
+]
+2016-08-10 21:35:33 [127.0.0.1][-][-][error][yii\base\UnknownClassException] exception 'yii\base\UnknownClassException' with message 'Unable to find 'app\controllers\UserController' in file: D:\xampp\htdocs\advanced\mobile/controllers/UserController.php. Namespace missing?' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\BaseYii.php:291
+Stack trace:
+#0 [internal function]: yii\BaseYii::autoload('app\\controllers...')
+#1 [internal function]: spl_autoload_call('app\\controllers...')
+#2 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(562): class_exists('app\\controllers...')
+#3 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(520): yii\base\Module->createControllerByID('user')
+#4 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(448): yii\base\Module->createController('user/index')
+#5 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(87): yii\base\Module->runAction('user/index', Array)
+#6 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#8 {main}
+2016-08-10 21:35:32 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/user/index'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\nodejs\\;C:\\Program Files (x86)\\Brackets\\command;D:\\develop\\phpstudy\\php56n;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\Doctrine extensions for PHP\\;C:\\Program Files\\Git\\cmd;C:\\Python34;C:\\Python34\\Scripts;D:\\HashiCorp\\Vagrant\\bin;d:\\ruby\\Ruby23-x64\\bin;C:\\Users\\liner\\AppData\\Roaming\\npm;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'mobile.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'mobile.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '56870'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/user/index'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/user/index&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/mobile/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1470836132.9037
+    'REQUEST_TIME' => 1470836132
+]
+2016-08-10 21:36:44 [127.0.0.1][-][-][error][yii\base\UnknownClassException] exception 'yii\base\UnknownClassException' with message 'Unable to find 'app\controllers\UserController' in file: D:\xampp\htdocs\advanced\mobile/controllers/UserController.php. Namespace missing?' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\BaseYii.php:291
+Stack trace:
+#0 [internal function]: yii\BaseYii::autoload('app\\controllers...')
+#1 [internal function]: spl_autoload_call('app\\controllers...')
+#2 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(562): class_exists('app\\controllers...')
+#3 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(520): yii\base\Module->createControllerByID('user')
+#4 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(448): yii\base\Module->createController('user/index')
+#5 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(87): yii\base\Module->runAction('user/index', Array)
+#6 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#8 {main}
+2016-08-10 21:36:44 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/user/index'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\nodejs\\;C:\\Program Files (x86)\\Brackets\\command;D:\\develop\\phpstudy\\php56n;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\Doctrine extensions for PHP\\;C:\\Program Files\\Git\\cmd;C:\\Python34;C:\\Python34\\Scripts;D:\\HashiCorp\\Vagrant\\bin;d:\\ruby\\Ruby23-x64\\bin;C:\\Users\\liner\\AppData\\Roaming\\npm;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'mobile.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'mobile.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '56547'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/user/index'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/user/index&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/mobile/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1470836204.5703
+    'REQUEST_TIME' => 1470836204
+]
+2016-08-10 21:36:45 [127.0.0.1][-][-][error][yii\base\UnknownClassException] exception 'yii\base\UnknownClassException' with message 'Unable to find 'app\controllers\UserController' in file: D:\xampp\htdocs\advanced\mobile/controllers/UserController.php. Namespace missing?' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\BaseYii.php:291
+Stack trace:
+#0 [internal function]: yii\BaseYii::autoload('app\\controllers...')
+#1 [internal function]: spl_autoload_call('app\\controllers...')
+#2 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(562): class_exists('app\\controllers...')
+#3 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(520): yii\base\Module->createControllerByID('user')
+#4 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(448): yii\base\Module->createController('user/index')
+#5 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(87): yii\base\Module->runAction('user/index', Array)
+#6 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#8 {main}
+2016-08-10 21:36:45 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/user/index'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\nodejs\\;C:\\Program Files (x86)\\Brackets\\command;D:\\develop\\phpstudy\\php56n;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\Doctrine extensions for PHP\\;C:\\Program Files\\Git\\cmd;C:\\Python34;C:\\Python34\\Scripts;D:\\HashiCorp\\Vagrant\\bin;d:\\ruby\\Ruby23-x64\\bin;C:\\Users\\liner\\AppData\\Roaming\\npm;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'mobile.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'mobile.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '56547'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/user/index'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/user/index&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/mobile/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1470836205.4386
+    'REQUEST_TIME' => 1470836205
+]
+2016-08-10 21:36:46 [127.0.0.1][-][-][error][yii\base\UnknownClassException] exception 'yii\base\UnknownClassException' with message 'Unable to find 'app\controllers\UserController' in file: D:\xampp\htdocs\advanced\mobile/controllers/UserController.php. Namespace missing?' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\BaseYii.php:291
+Stack trace:
+#0 [internal function]: yii\BaseYii::autoload('app\\controllers...')
+#1 [internal function]: spl_autoload_call('app\\controllers...')
+#2 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(562): class_exists('app\\controllers...')
+#3 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(520): yii\base\Module->createControllerByID('user')
+#4 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(448): yii\base\Module->createController('user/index')
+#5 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(87): yii\base\Module->runAction('user/index', Array)
+#6 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#8 {main}
+2016-08-10 21:36:46 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/user/index'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\nodejs\\;C:\\Program Files (x86)\\Brackets\\command;D:\\develop\\phpstudy\\php56n;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\Doctrine extensions for PHP\\;C:\\Program Files\\Git\\cmd;C:\\Python34;C:\\Python34\\Scripts;D:\\HashiCorp\\Vagrant\\bin;d:\\ruby\\Ruby23-x64\\bin;C:\\Users\\liner\\AppData\\Roaming\\npm;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'mobile.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'mobile.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '56547'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/user/index'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/user/index&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/mobile/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1470836206.1993
+    'REQUEST_TIME' => 1470836206
+]
+2016-08-10 21:36:46 [127.0.0.1][-][-][error][yii\base\UnknownClassException] exception 'yii\base\UnknownClassException' with message 'Unable to find 'app\controllers\UserController' in file: D:\xampp\htdocs\advanced\mobile/controllers/UserController.php. Namespace missing?' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\BaseYii.php:291
+Stack trace:
+#0 [internal function]: yii\BaseYii::autoload('app\\controllers...')
+#1 [internal function]: spl_autoload_call('app\\controllers...')
+#2 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(562): class_exists('app\\controllers...')
+#3 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(520): yii\base\Module->createControllerByID('user')
+#4 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(448): yii\base\Module->createController('user/index')
+#5 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(87): yii\base\Module->runAction('user/index', Array)
+#6 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#8 {main}
+2016-08-10 21:36:46 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/user/index'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\nodejs\\;C:\\Program Files (x86)\\Brackets\\command;D:\\develop\\phpstudy\\php56n;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\Doctrine extensions for PHP\\;C:\\Program Files\\Git\\cmd;C:\\Python34;C:\\Python34\\Scripts;D:\\HashiCorp\\Vagrant\\bin;d:\\ruby\\Ruby23-x64\\bin;C:\\Users\\liner\\AppData\\Roaming\\npm;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'mobile.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'mobile.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '56547'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/user/index'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/user/index&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/mobile/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1470836206.8639
+    'REQUEST_TIME' => 1470836206
+]
+2016-08-10 21:37:04 [127.0.0.1][-][-][error][yii\base\UnknownClassException] exception 'yii\base\UnknownClassException' with message 'Unable to find 'app\controllers\UserController' in file: D:\xampp\htdocs\advanced\mobile/controllers/UserController.php. Namespace missing?' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\BaseYii.php:291
+Stack trace:
+#0 [internal function]: yii\BaseYii::autoload('app\\controllers...')
+#1 [internal function]: spl_autoload_call('app\\controllers...')
+#2 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(562): class_exists('app\\controllers...')
+#3 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(520): yii\base\Module->createControllerByID('user')
+#4 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(448): yii\base\Module->createController('user/index')
+#5 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(87): yii\base\Module->runAction('user/index', Array)
+#6 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#8 {main}
+2016-08-10 21:37:04 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/user/index'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\nodejs\\;C:\\Program Files (x86)\\Brackets\\command;D:\\develop\\phpstudy\\php56n;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\Doctrine extensions for PHP\\;C:\\Program Files\\Git\\cmd;C:\\Python34;C:\\Python34\\Scripts;D:\\HashiCorp\\Vagrant\\bin;d:\\ruby\\Ruby23-x64\\bin;C:\\Users\\liner\\AppData\\Roaming\\npm;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'mobile.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'mobile.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '56547'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/user/index'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/user/index&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/mobile/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1470836224.6755
+    'REQUEST_TIME' => 1470836224
+]
+2016-08-10 21:37:05 [127.0.0.1][-][-][error][yii\base\UnknownClassException] exception 'yii\base\UnknownClassException' with message 'Unable to find 'app\controllers\UserController' in file: D:\xampp\htdocs\advanced\mobile/controllers/UserController.php. Namespace missing?' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\BaseYii.php:291
+Stack trace:
+#0 [internal function]: yii\BaseYii::autoload('app\\controllers...')
+#1 [internal function]: spl_autoload_call('app\\controllers...')
+#2 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(562): class_exists('app\\controllers...')
+#3 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(520): yii\base\Module->createControllerByID('user')
+#4 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(448): yii\base\Module->createController('user/index')
+#5 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(87): yii\base\Module->runAction('user/index', Array)
+#6 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#8 {main}
+2016-08-10 21:37:05 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/user/index'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\nodejs\\;C:\\Program Files (x86)\\Brackets\\command;D:\\develop\\phpstudy\\php56n;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\Doctrine extensions for PHP\\;C:\\Program Files\\Git\\cmd;C:\\Python34;C:\\Python34\\Scripts;D:\\HashiCorp\\Vagrant\\bin;d:\\ruby\\Ruby23-x64\\bin;C:\\Users\\liner\\AppData\\Roaming\\npm;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'mobile.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'mobile.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '56547'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/user/index'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/user/index&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/mobile/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1470836225.5921
+    'REQUEST_TIME' => 1470836225
+]
+2016-08-10 21:39:30 [127.0.0.1][-][-][error][yii\base\UnknownClassException] exception 'yii\base\UnknownClassException' with message 'Unable to find 'app\controllers\UserController' in file: D:\xampp\htdocs\advanced\mobile/controllers/UserController.php. Namespace missing?' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\BaseYii.php:291
+Stack trace:
+#0 [internal function]: yii\BaseYii::autoload('app\\controllers...')
+#1 [internal function]: spl_autoload_call('app\\controllers...')
+#2 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(562): class_exists('app\\controllers...')
+#3 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(520): yii\base\Module->createControllerByID('user')
+#4 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(448): yii\base\Module->createController('user/index')
+#5 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(87): yii\base\Module->runAction('user/index', Array)
+#6 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#8 {main}
+2016-08-10 21:39:30 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/user/index'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\nodejs\\;C:\\Program Files (x86)\\Brackets\\command;D:\\develop\\phpstudy\\php56n;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\Doctrine extensions for PHP\\;C:\\Program Files\\Git\\cmd;C:\\Python34;C:\\Python34\\Scripts;D:\\HashiCorp\\Vagrant\\bin;d:\\ruby\\Ruby23-x64\\bin;C:\\Users\\liner\\AppData\\Roaming\\npm;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'mobile.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'mobile.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '56583'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/user/index'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/user/index&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/mobile/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1470836370.3208
+    'REQUEST_TIME' => 1470836370
+]
+2016-08-10 21:39:31 [127.0.0.1][-][-][error][yii\base\UnknownClassException] exception 'yii\base\UnknownClassException' with message 'Unable to find 'app\controllers\UserController' in file: D:\xampp\htdocs\advanced\mobile/controllers/UserController.php. Namespace missing?' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\BaseYii.php:291
+Stack trace:
+#0 [internal function]: yii\BaseYii::autoload('app\\controllers...')
+#1 [internal function]: spl_autoload_call('app\\controllers...')
+#2 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(562): class_exists('app\\controllers...')
+#3 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(520): yii\base\Module->createControllerByID('user')
+#4 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(448): yii\base\Module->createController('user/index')
+#5 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(87): yii\base\Module->runAction('user/index', Array)
+#6 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#8 {main}
+2016-08-10 21:39:31 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/user/index'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\nodejs\\;C:\\Program Files (x86)\\Brackets\\command;D:\\develop\\phpstudy\\php56n;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\Doctrine extensions for PHP\\;C:\\Program Files\\Git\\cmd;C:\\Python34;C:\\Python34\\Scripts;D:\\HashiCorp\\Vagrant\\bin;d:\\ruby\\Ruby23-x64\\bin;C:\\Users\\liner\\AppData\\Roaming\\npm;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'mobile.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'mobile.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '56583'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/user/index'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/user/index&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/mobile/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1470836371.3034
+    'REQUEST_TIME' => 1470836371
+]
+2016-08-10 21:39:32 [127.0.0.1][-][-][error][yii\base\UnknownClassException] exception 'yii\base\UnknownClassException' with message 'Unable to find 'app\controllers\UserController' in file: D:\xampp\htdocs\advanced\mobile/controllers/UserController.php. Namespace missing?' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\BaseYii.php:291
+Stack trace:
+#0 [internal function]: yii\BaseYii::autoload('app\\controllers...')
+#1 [internal function]: spl_autoload_call('app\\controllers...')
+#2 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(562): class_exists('app\\controllers...')
+#3 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(520): yii\base\Module->createControllerByID('user')
+#4 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(448): yii\base\Module->createController('user/index')
+#5 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(87): yii\base\Module->runAction('user/index', Array)
+#6 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#8 {main}
+2016-08-10 21:39:32 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/user/index'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\nodejs\\;C:\\Program Files (x86)\\Brackets\\command;D:\\develop\\phpstudy\\php56n;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\Doctrine extensions for PHP\\;C:\\Program Files\\Git\\cmd;C:\\Python34;C:\\Python34\\Scripts;D:\\HashiCorp\\Vagrant\\bin;d:\\ruby\\Ruby23-x64\\bin;C:\\Users\\liner\\AppData\\Roaming\\npm;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'mobile.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'mobile.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '56583'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/user/index'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/user/index&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/mobile/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1470836371.9858
+    'REQUEST_TIME' => 1470836371
+]
+2016-08-10 21:39:32 [127.0.0.1][-][-][error][yii\base\UnknownClassException] exception 'yii\base\UnknownClassException' with message 'Unable to find 'app\controllers\UserController' in file: D:\xampp\htdocs\advanced\mobile/controllers/UserController.php. Namespace missing?' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\BaseYii.php:291
+Stack trace:
+#0 [internal function]: yii\BaseYii::autoload('app\\controllers...')
+#1 [internal function]: spl_autoload_call('app\\controllers...')
+#2 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(562): class_exists('app\\controllers...')
+#3 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(520): yii\base\Module->createControllerByID('user')
+#4 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(448): yii\base\Module->createController('user/index')
+#5 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(87): yii\base\Module->runAction('user/index', Array)
+#6 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#8 {main}
+2016-08-10 21:39:32 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/user/index'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\nodejs\\;C:\\Program Files (x86)\\Brackets\\command;D:\\develop\\phpstudy\\php56n;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\Doctrine extensions for PHP\\;C:\\Program Files\\Git\\cmd;C:\\Python34;C:\\Python34\\Scripts;D:\\HashiCorp\\Vagrant\\bin;d:\\ruby\\Ruby23-x64\\bin;C:\\Users\\liner\\AppData\\Roaming\\npm;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'mobile.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'mobile.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '56583'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/user/index'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/user/index&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/mobile/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1470836372.5478
+    'REQUEST_TIME' => 1470836372
+]
+2016-08-10 21:39:42 [127.0.0.1][-][-][error][yii\base\UnknownClassException] exception 'yii\base\UnknownClassException' with message 'Unable to find 'app\controllers\UserController' in file: D:\xampp\htdocs\advanced\mobile/controllers/UserController.php. Namespace missing?' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\BaseYii.php:291
+Stack trace:
+#0 [internal function]: yii\BaseYii::autoload('app\\controllers...')
+#1 [internal function]: spl_autoload_call('app\\controllers...')
+#2 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(562): class_exists('app\\controllers...')
+#3 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(520): yii\base\Module->createControllerByID('user')
+#4 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(448): yii\base\Module->createController('user/index')
+#5 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(87): yii\base\Module->runAction('user/index', Array)
+#6 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#8 {main}
+2016-08-10 21:39:42 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/user/index'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\nodejs\\;C:\\Program Files (x86)\\Brackets\\command;D:\\develop\\phpstudy\\php56n;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\Doctrine extensions for PHP\\;C:\\Program Files\\Git\\cmd;C:\\Python34;C:\\Python34\\Scripts;D:\\HashiCorp\\Vagrant\\bin;d:\\ruby\\Ruby23-x64\\bin;C:\\Users\\liner\\AppData\\Roaming\\npm;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'mobile.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'mobile.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '56583'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/user/index'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/user/index&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/mobile/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1470836382.864
+    'REQUEST_TIME' => 1470836382
+]
+2016-08-10 21:39:43 [127.0.0.1][-][-][error][yii\base\UnknownClassException] exception 'yii\base\UnknownClassException' with message 'Unable to find 'app\controllers\UserController' in file: D:\xampp\htdocs\advanced\mobile/controllers/UserController.php. Namespace missing?' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\BaseYii.php:291
+Stack trace:
+#0 [internal function]: yii\BaseYii::autoload('app\\controllers...')
+#1 [internal function]: spl_autoload_call('app\\controllers...')
+#2 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(562): class_exists('app\\controllers...')
+#3 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(520): yii\base\Module->createControllerByID('user')
+#4 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(448): yii\base\Module->createController('user/index')
+#5 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(87): yii\base\Module->runAction('user/index', Array)
+#6 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#8 {main}
+2016-08-10 21:39:43 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/user/index'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\nodejs\\;C:\\Program Files (x86)\\Brackets\\command;D:\\develop\\phpstudy\\php56n;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\Doctrine extensions for PHP\\;C:\\Program Files\\Git\\cmd;C:\\Python34;C:\\Python34\\Scripts;D:\\HashiCorp\\Vagrant\\bin;d:\\ruby\\Ruby23-x64\\bin;C:\\Users\\liner\\AppData\\Roaming\\npm;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'mobile.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'mobile.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '56583'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/user/index'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/user/index&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/mobile/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1470836383.6804
+    'REQUEST_TIME' => 1470836383
+]
+2016-08-10 21:41:33 [127.0.0.1][-][-][error][yii\base\UnknownClassException] exception 'yii\base\UnknownClassException' with message 'Unable to find 'app\controllers\UserController' in file: D:\xampp\htdocs\advanced\mobile/controllers/UserController.php. Namespace missing?' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\BaseYii.php:291
+Stack trace:
+#0 [internal function]: yii\BaseYii::autoload('app\\controllers...')
+#1 [internal function]: spl_autoload_call('app\\controllers...')
+#2 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(562): class_exists('app\\controllers...')
+#3 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(520): yii\base\Module->createControllerByID('user')
+#4 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(448): yii\base\Module->createController('user/index')
+#5 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(87): yii\base\Module->runAction('user/index', Array)
+#6 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#8 {main}
+2016-08-10 21:41:33 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/user/index'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\nodejs\\;C:\\Program Files (x86)\\Brackets\\command;D:\\develop\\phpstudy\\php56n;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\Doctrine extensions for PHP\\;C:\\Program Files\\Git\\cmd;C:\\Python34;C:\\Python34\\Scripts;D:\\HashiCorp\\Vagrant\\bin;d:\\ruby\\Ruby23-x64\\bin;C:\\Users\\liner\\AppData\\Roaming\\npm;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'mobile.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'mobile.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '56601'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/user/index'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/user/index&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/mobile/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1470836493.7039
+    'REQUEST_TIME' => 1470836493
+]
+2016-08-10 21:41:34 [127.0.0.1][-][-][error][yii\base\UnknownClassException] exception 'yii\base\UnknownClassException' with message 'Unable to find 'app\controllers\UserController' in file: D:\xampp\htdocs\advanced\mobile/controllers/UserController.php. Namespace missing?' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\BaseYii.php:291
+Stack trace:
+#0 [internal function]: yii\BaseYii::autoload('app\\controllers...')
+#1 [internal function]: spl_autoload_call('app\\controllers...')
+#2 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(562): class_exists('app\\controllers...')
+#3 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(520): yii\base\Module->createControllerByID('user')
+#4 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(448): yii\base\Module->createController('user/index')
+#5 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(87): yii\base\Module->runAction('user/index', Array)
+#6 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#8 {main}
+2016-08-10 21:41:34 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/user/index'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\nodejs\\;C:\\Program Files (x86)\\Brackets\\command;D:\\develop\\phpstudy\\php56n;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\Doctrine extensions for PHP\\;C:\\Program Files\\Git\\cmd;C:\\Python34;C:\\Python34\\Scripts;D:\\HashiCorp\\Vagrant\\bin;d:\\ruby\\Ruby23-x64\\bin;C:\\Users\\liner\\AppData\\Roaming\\npm;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'mobile.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'mobile.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '56601'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/user/index'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/user/index&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/mobile/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1470836494.6193
+    'REQUEST_TIME' => 1470836494
+]
+2016-08-10 21:41:35 [127.0.0.1][-][-][error][yii\base\UnknownClassException] exception 'yii\base\UnknownClassException' with message 'Unable to find 'app\controllers\UserController' in file: D:\xampp\htdocs\advanced\mobile/controllers/UserController.php. Namespace missing?' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\BaseYii.php:291
+Stack trace:
+#0 [internal function]: yii\BaseYii::autoload('app\\controllers...')
+#1 [internal function]: spl_autoload_call('app\\controllers...')
+#2 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(562): class_exists('app\\controllers...')
+#3 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(520): yii\base\Module->createControllerByID('user')
+#4 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(448): yii\base\Module->createController('user/index')
+#5 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(87): yii\base\Module->runAction('user/index', Array)
+#6 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#8 {main}
+2016-08-10 21:41:35 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/user/index'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\nodejs\\;C:\\Program Files (x86)\\Brackets\\command;D:\\develop\\phpstudy\\php56n;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\Doctrine extensions for PHP\\;C:\\Program Files\\Git\\cmd;C:\\Python34;C:\\Python34\\Scripts;D:\\HashiCorp\\Vagrant\\bin;d:\\ruby\\Ruby23-x64\\bin;C:\\Users\\liner\\AppData\\Roaming\\npm;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'mobile.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'mobile.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '56601'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/user/index'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/user/index&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/mobile/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1470836495.6352
+    'REQUEST_TIME' => 1470836495
+]
+2016-08-10 21:41:36 [127.0.0.1][-][-][error][yii\base\UnknownClassException] exception 'yii\base\UnknownClassException' with message 'Unable to find 'app\controllers\UserController' in file: D:\xampp\htdocs\advanced\mobile/controllers/UserController.php. Namespace missing?' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\BaseYii.php:291
+Stack trace:
+#0 [internal function]: yii\BaseYii::autoload('app\\controllers...')
+#1 [internal function]: spl_autoload_call('app\\controllers...')
+#2 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(562): class_exists('app\\controllers...')
+#3 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(520): yii\base\Module->createControllerByID('user')
+#4 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(448): yii\base\Module->createController('user/index')
+#5 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(87): yii\base\Module->runAction('user/index', Array)
+#6 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#8 {main}
+2016-08-10 21:41:36 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/user/index'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\nodejs\\;C:\\Program Files (x86)\\Brackets\\command;D:\\develop\\phpstudy\\php56n;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\Doctrine extensions for PHP\\;C:\\Program Files\\Git\\cmd;C:\\Python34;C:\\Python34\\Scripts;D:\\HashiCorp\\Vagrant\\bin;d:\\ruby\\Ruby23-x64\\bin;C:\\Users\\liner\\AppData\\Roaming\\npm;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'mobile.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'mobile.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '56601'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/user/index'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/user/index&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/mobile/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1470836496.602
+    'REQUEST_TIME' => 1470836496
+]
+2016-08-10 21:41:37 [127.0.0.1][-][-][error][yii\base\UnknownClassException] exception 'yii\base\UnknownClassException' with message 'Unable to find 'app\controllers\UserController' in file: D:\xampp\htdocs\advanced\mobile/controllers/UserController.php. Namespace missing?' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\BaseYii.php:291
+Stack trace:
+#0 [internal function]: yii\BaseYii::autoload('app\\controllers...')
+#1 [internal function]: spl_autoload_call('app\\controllers...')
+#2 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(562): class_exists('app\\controllers...')
+#3 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(520): yii\base\Module->createControllerByID('user')
+#4 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(448): yii\base\Module->createController('user/index')
+#5 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(87): yii\base\Module->runAction('user/index', Array)
+#6 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#8 {main}
+2016-08-10 21:41:37 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/user/index'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\nodejs\\;C:\\Program Files (x86)\\Brackets\\command;D:\\develop\\phpstudy\\php56n;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\Doctrine extensions for PHP\\;C:\\Program Files\\Git\\cmd;C:\\Python34;C:\\Python34\\Scripts;D:\\HashiCorp\\Vagrant\\bin;d:\\ruby\\Ruby23-x64\\bin;C:\\Users\\liner\\AppData\\Roaming\\npm;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'mobile.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'mobile.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '56601'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/user/index'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/user/index&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/mobile/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1470836497.4518
+    'REQUEST_TIME' => 1470836497
+]
+2016-08-10 21:43:23 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "favicon.ico".' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php:460
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(87): yii\base\Module->runAction('favicon.ico', Array)
+#1 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php:99
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#2 {main}
+2016-08-10 21:43:23 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/favicon.ico'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\nodejs\\;C:\\Program Files (x86)\\Brackets\\command;D:\\develop\\phpstudy\\php56n;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\Doctrine extensions for PHP\\;C:\\Program Files\\Git\\cmd;C:\\Python34;C:\\Python34\\Scripts;D:\\HashiCorp\\Vagrant\\bin;d:\\ruby\\Ruby23-x64\\bin;C:\\Users\\liner\\AppData\\Roaming\\npm;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'mobile.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'mobile.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '56673'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/favicon.ico'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/favicon.ico&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/mobile/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1470836603.1227
+    'REQUEST_TIME' => 1470836603
+]
+2016-08-10 22:04:25 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "favicon.ico".' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php:460
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(87): yii\base\Module->runAction('favicon.ico', Array)
+#1 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php:99
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#2 {main}
+2016-08-10 22:04:25 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/favicon.ico'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\nodejs\\;C:\\Program Files (x86)\\Brackets\\command;D:\\develop\\phpstudy\\php56n;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\Doctrine extensions for PHP\\;C:\\Program Files\\Git\\cmd;C:\\Python34;C:\\Python34\\Scripts;D:\\HashiCorp\\Vagrant\\bin;d:\\ruby\\Ruby23-x64\\bin;C:\\Users\\liner\\AppData\\Roaming\\npm;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'mobile.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'mobile.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '58468'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/favicon.ico'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/favicon.ico&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/mobile/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1470837865.5522
+    'REQUEST_TIME' => 1470837865
+]
+2016-08-11 11:22:45 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "favicon.ico".' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php:460
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(87): yii\base\Module->runAction('favicon.ico', Array)
+#1 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php:99
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#2 {main}
+2016-08-11 11:22:45 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/favicon.ico'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\nodejs\\;C:\\Program Files (x86)\\Brackets\\command;D:\\develop\\phpstudy\\php56n;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\Doctrine extensions for PHP\\;C:\\Program Files\\Git\\cmd;C:\\Python34;C:\\Python34\\Scripts;D:\\HashiCorp\\Vagrant\\bin;d:\\ruby\\Ruby23-x64\\bin;C:\\Users\\liner\\AppData\\Roaming\\npm;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'mobile.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'mobile.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '60395'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/favicon.ico'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/favicon.ico&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/mobile/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1470885765.3908
+    'REQUEST_TIME' => 1470885765
+]
+2016-08-16 12:11:17 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "".' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php:460
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(87): yii\base\Module->runAction('', Array)
+#1 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php:99
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#2 {main}
+2016-08-16 12:11:17 [127.0.0.1][-][-][info][application] $_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\nodejs\\;C:\\Program Files (x86)\\Brackets\\command;D:\\develop\\phpstudy\\php56n;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\Doctrine extensions for PHP\\;C:\\Program Files\\Git\\cmd;C:\\Python34;C:\\Python34\\Scripts;D:\\HashiCorp\\Vagrant\\bin;d:\\ruby\\Ruby23-x64\\bin;C:\\Users\\liner\\AppData\\Roaming\\npm;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'mobile.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'mobile.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '52953'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/mobile/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1471320677.5205
+    'REQUEST_TIME' => 1471320677
+]
+2016-08-16 12:11:18 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "favicon.ico".' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php:460
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(87): yii\base\Module->runAction('favicon.ico', Array)
+#1 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php:99
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#2 {main}
+2016-08-16 12:11:18 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/favicon.ico'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\nodejs\\;C:\\Program Files (x86)\\Brackets\\command;D:\\develop\\phpstudy\\php56n;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\Doctrine extensions for PHP\\;C:\\Program Files\\Git\\cmd;C:\\Python34;C:\\Python34\\Scripts;D:\\HashiCorp\\Vagrant\\bin;d:\\ruby\\Ruby23-x64\\bin;C:\\Users\\liner\\AppData\\Roaming\\npm;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'mobile.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'mobile.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '52954'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/favicon.ico'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/favicon.ico&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/mobile/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1471320677.9806
+    'REQUEST_TIME' => 1471320677
+]
+2016-08-16 12:11:18 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "favicon.ico".' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php:460
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(87): yii\base\Module->runAction('favicon.ico', Array)
+#1 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php:99
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#2 {main}
+2016-08-16 12:11:18 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/favicon.ico'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\nodejs\\;C:\\Program Files (x86)\\Brackets\\command;D:\\develop\\phpstudy\\php56n;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\Doctrine extensions for PHP\\;C:\\Program Files\\Git\\cmd;C:\\Python34;C:\\Python34\\Scripts;D:\\HashiCorp\\Vagrant\\bin;d:\\ruby\\Ruby23-x64\\bin;C:\\Users\\liner\\AppData\\Roaming\\npm;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_REFERER' => 'http://mobile.dev/'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'mobile.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'mobile.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '52954'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/favicon.ico'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/favicon.ico&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/mobile/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1471320678.427
+    'REQUEST_TIME' => 1471320678
+]
+2016-08-16 15:31:04 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "favicon.ico".' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php:460
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(87): yii\base\Module->runAction('favicon.ico', Array)
+#1 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php:99
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#2 {main}
+2016-08-16 15:30:54 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/favicon.ico'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\nodejs\\;C:\\Program Files (x86)\\Brackets\\command;D:\\develop\\phpstudy\\php56n;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\Doctrine extensions for PHP\\;C:\\Program Files\\Git\\cmd;C:\\Python34;C:\\Python34\\Scripts;D:\\HashiCorp\\Vagrant\\bin;d:\\ruby\\Ruby23-x64\\bin;C:\\Users\\liner\\AppData\\Roaming\\npm;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'mobile.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'mobile.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '56826'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/favicon.ico'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/favicon.ico&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/mobile/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1471332650.8437
+    'REQUEST_TIME' => 1471332650
+]
+2016-08-16 15:50:42 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "favicon.ico".' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php:460
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(87): yii\base\Module->runAction('favicon.ico', Array)
+#1 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php:99
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#2 {main}
+2016-08-16 15:50:39 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/favicon.ico'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\nodejs\\;C:\\Program Files (x86)\\Brackets\\command;D:\\develop\\phpstudy\\php56n;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\Doctrine extensions for PHP\\;C:\\Program Files\\Git\\cmd;C:\\Python34;C:\\Python34\\Scripts;D:\\HashiCorp\\Vagrant\\bin;d:\\ruby\\Ruby23-x64\\bin;C:\\Users\\liner\\AppData\\Roaming\\npm;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'mobile.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'mobile.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '49726'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/favicon.ico'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/favicon.ico&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/mobile/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1471333831.1233
+    'REQUEST_TIME' => 1471333831
+]
+2016-08-16 16:31:37 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "favicon.ico".' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php:460
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(87): yii\base\Module->runAction('favicon.ico', Array)
+#1 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php:99
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#2 {main}
+2016-08-16 16:31:36 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/favicon.ico'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\nodejs\\;C:\\Program Files (x86)\\Brackets\\command;D:\\develop\\phpstudy\\php56n;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\Doctrine extensions for PHP\\;C:\\Program Files\\Git\\cmd;C:\\Python34;C:\\Python34\\Scripts;D:\\HashiCorp\\Vagrant\\bin;d:\\ruby\\Ruby23-x64\\bin;C:\\Users\\liner\\AppData\\Roaming\\npm;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'mobile.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'mobile.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '49509'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/favicon.ico'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/favicon.ico&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/mobile/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1471336295.8076
+    'REQUEST_TIME' => 1471336295
+]
+2016-08-16 20:34:55 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "favicon.ico".' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php:460
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(87): yii\base\Module->runAction('favicon.ico', Array)
+#1 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php:99
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#2 {main}
+2016-08-16 20:34:45 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/favicon.ico'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\nodejs\\;C:\\Program Files (x86)\\Brackets\\command;D:\\develop\\phpstudy\\php56n;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\Doctrine extensions for PHP\\;C:\\Program Files\\Git\\cmd;C:\\Python34;C:\\Python34\\Scripts;D:\\HashiCorp\\Vagrant\\bin;d:\\ruby\\Ruby23-x64\\bin;C:\\Users\\liner\\AppData\\Roaming\\npm;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'mobile.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'mobile.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '65162'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/favicon.ico'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/favicon.ico&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/mobile/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1471350863.7721
+    'REQUEST_TIME' => 1471350863
+]
+2016-08-16 21:35:34 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "favicon.ico".' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php:460
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(87): yii\base\Module->runAction('favicon.ico', Array)
+#1 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php:99
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#2 {main}
+2016-08-16 21:35:28 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/favicon.ico'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\nodejs\\;C:\\Program Files (x86)\\Brackets\\command;D:\\develop\\phpstudy\\php56n;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\Doctrine extensions for PHP\\;C:\\Program Files\\Git\\cmd;C:\\Python34;C:\\Python34\\Scripts;D:\\HashiCorp\\Vagrant\\bin;d:\\ruby\\Ruby23-x64\\bin;C:\\Users\\liner\\AppData\\Roaming\\npm;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'mobile.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'mobile.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '52155'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/favicon.ico'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/favicon.ico&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/mobile/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1471354527.2045
+    'REQUEST_TIME' => 1471354527
+]
+2016-08-16 22:19:40 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "favicon.ico".' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php:460
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(87): yii\base\Module->runAction('favicon.ico', Array)
+#1 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php:99
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#2 {main}
+2016-08-16 22:19:39 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/favicon.ico'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\nodejs\\;C:\\Program Files (x86)\\Brackets\\command;D:\\develop\\phpstudy\\php56n;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\Doctrine extensions for PHP\\;C:\\Program Files\\Git\\cmd;C:\\Python34;C:\\Python34\\Scripts;D:\\HashiCorp\\Vagrant\\bin;d:\\ruby\\Ruby23-x64\\bin;C:\\Users\\liner\\AppData\\Roaming\\npm;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'mobile.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'mobile.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '56901'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/favicon.ico'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/favicon.ico&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/mobile/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1471357178.7172
+    'REQUEST_TIME' => 1471357178
+]
+2016-12-27 16:30:07 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "".' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php:462
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('', Array)
+#1 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php:112
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#2 {main}
+2016-12-27 16:30:07 [127.0.0.1][-][-][info][application] $_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANDROID_HOME' => 'D:\\develop\\java\\sdk'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'ChocolateyInstall' => 'C:\\ProgramData\\chocolatey'
+    'ChocolateyLastPathUpdate' => '周一 11月 14 18:43:30 2016'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOPATH' => 'd:\\Gopath'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Python27\\;C:\\Python27\\Scripts;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\develop\\phpstudy\\php56n;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\Doctrine extensions for PHP\\;D:\\HashiCorp\\Vagrant\\bin;d:\\Gopath/bin;D:\\nodejs;C:\\Program Files (x86)\\Yarn\\bin;D:\\develop\\java\\sdk\\platform-tools;D:\\develop\\java\\sdk\\tools;C:\\Program Files\\Git\\cmd;C:\\Program Files (x86)\\Brackets\\command;d:\\ruby\\Ruby23-x64\\bin;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\;C:\\Users\\liner\\AppData\\Roaming\\npm;E:\\devkit\\bin;E:\\devkit\\mingw\\bin;C:\\Program Files (x86)\\Microsoft VS Code\\bin'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.75 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'mobile.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'mobile.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '60226'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/mobile/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1482827406.2517
+    'REQUEST_TIME' => 1482827406
+]
+2016-12-27 16:30:09 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "favicon.ico".' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php:462
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('favicon.ico', Array)
+#1 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php:112
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\xampp\htdocs\advanced\mobile\web\index.php(23): yii\base\Application->run()
+#2 {main}
+2016-12-27 16:30:09 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/favicon.ico'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANDROID_HOME' => 'D:\\develop\\java\\sdk'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'ChocolateyInstall' => 'C:\\ProgramData\\chocolatey'
+    'ChocolateyLastPathUpdate' => '周一 11月 14 18:43:30 2016'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOPATH' => 'd:\\Gopath'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Python27\\;C:\\Python27\\Scripts;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\develop\\phpstudy\\php56n;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\;C:\\Program Files (x86)\\MySQL\\MySQL Fabric 1.5 & MySQL Utilities 1.5\\Doctrine extensions for PHP\\;D:\\HashiCorp\\Vagrant\\bin;d:\\Gopath/bin;D:\\nodejs;C:\\Program Files (x86)\\Yarn\\bin;D:\\develop\\java\\sdk\\platform-tools;D:\\develop\\java\\sdk\\tools;C:\\Program Files\\Git\\cmd;C:\\Program Files (x86)\\Brackets\\command;d:\\ruby\\Ruby23-x64\\bin;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\;C:\\Users\\liner\\AppData\\Roaming\\npm;E:\\devkit\\bin;E:\\devkit\\mingw\\bin;C:\\Program Files (x86)\\Microsoft VS Code\\bin'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_REFERER' => 'http://mobile.dev/'
+    'HTTP_ACCEPT' => 'image/webp,image/*,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.75 Safari/537.36'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'mobile.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'mobile.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '60226'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/favicon.ico'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/favicon.ico&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/mobile/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/mobile/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1482827408.004
+    'REQUEST_TIME' => 1482827408
+]

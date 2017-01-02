@@ -71,16 +71,16 @@ class DiController extends Controller {
     	//dump($lister->finder);
     	
     	//equivalent above
-//     	$db = new \yii\db\Connection([
-//     		'dsn' => 'mysql:host=localhost;dbname=yii2adv',
-//     		'username' => 'root',
-//     		'password' => 'root',
-//     		'charset' => 'utf8'    			
-//     	]);
-//     	$finder = new UserFinder($db);
-//     	$lister = new UserLister($finder);
-// //     	dump($lister);
-//     	dump($lister->finder);
+    	// $db = new \yii\db\Connection([
+    	// 	'dsn' => 'mysql:host=localhost;dbname=yii2adv',
+    	// 	'username' => 'root',
+    	// 	'password' => 'root',
+    	// 	'charset' => 'utf8'    			
+    	// ]);
+    	// $finder = new UserFinder($db);
+    	// $lister = new UserLister($finder);
+    	// dump($lister);
+    	// dump($lister->finder);
 
     	//ServiceLocator application \Yii::$app
     	$locator = new ServiceLocator();

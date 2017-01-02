@@ -5,15 +5,32 @@ use yii\helpers\Html;
 
 $form = ActiveForm::begin([
     'action' => ['ui/valid'],
-    'method'=>'post',
-    'id' => 'reg-form',        
+    'method'=> 'post',
+    'id' => 'form1', 
+	'enableClientValidation' => false,
+	'enableAjaxValidation' => false,
+	'options' => [
+		//'class' => 'form-horizontal'
+	]
 ]); 
 ?>
 
 <div class="row">
     <div class="col-md-4 col-md-offset-4">
-        <?= $form->field($model, 'username')->textInput(['maxlength' => 12]) ?>
-        <?= $form->field($model, 'password')->passwordInput(['maxlength' => 12]) ?>
+        <?= $form->field($model, 'username')
+			->textInput([
+				'maxlength' => 12,
+				'nullmsg' => '请输入用户名', 
+				'datatype' => '*5-5'
+			]) 
+		?>
+        <?= $form->field($model, 'password')
+			->passwordInput([
+				//'maxlength' => 12
+				'nullmsg' => '请输入密码',
+				'datatype' => '*5-5'
+			]) 
+		?>
         <?= $form->field($model, 'sex')->radioList(['1'=>'男','0'=>'女']) ?>
         <?= $form->field($model, 'edu')->dropDownList(['1'=>'大学','2'=>'高中','3'=>'初中'],['prompt'=>'请选择','style'=>'width:120px']) ?>
         <?= $form->field($model, 'images')->fileInput() ?>
@@ -30,3 +47,12 @@ $form = ActiveForm::begin([
         <?php ActiveForm::end(); ?>
     </div>
 </div>
+
+<?php
+$js = <<< JS
+	$("#form1").Validform({
+		tiptype:3
+	});
+JS;
+$this->registerJs($js);
+?>

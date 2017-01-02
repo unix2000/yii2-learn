@@ -106,9 +106,13 @@ define(function (require) {
      * @param {number} x
      * @return {number}
      */
-    number.round = function (x) {
-        // PENDING
-        return +(+x).toFixed(10);
+    number.round = function (x, precision) {
+        if (precision == null) {
+            precision = 10;
+        }
+        // Avoid range error
+        precision = Math.min(Math.max(0, precision), 20);
+        return +(+x).toFixed(precision);
     };
 
     number.asc = function (arr) {
@@ -123,6 +127,7 @@ define(function (require) {
      * @param {number} val
      */
     number.getPrecision = function (val) {
+        val = +val;
         if (isNaN(val)) {
             return 0;
         }
@@ -137,6 +142,15 @@ define(function (require) {
             count++;
         }
         return count;
+    };
+
+    number.getPrecisionSafe = function (val) {
+        var str = val.toString();
+        var dotIndex = str.indexOf('.');
+        if (dotIndex < 0) {
+            return 0;
+        }
+        return str.length - 1 - dotIndex;
     };
 
     /**
@@ -178,16 +192,23 @@ define(function (require) {
 
     /**
      * @param {string|Date|number} value
-     * @return {number} timestamp
+     * @return {Date} date
      */
     number.parseDate = function (value) {
-        return value instanceof Date
-            ? value
-            : new Date(
-                typeof value === 'string'
-                    ? (new Date(value.replace(/-/g, '/')) - new Date('1970/01/01'))
-                    : Math.round(value)
-            );
+        if (value instanceof Date) {
+            return value;
+        }
+        else if (typeof value === 'string') {
+            // Treat as ISO format. See issue #3623
+            var ret = new Date(value);
+            if (isNaN(+ret)) {
+                // FIXME new Date('1970-01-01') is UTC, new Date('1970/01/01') is local
+                ret = new Date(new Date(value.replace(/-/g, '/')) - new Date('1970/01/01'));
+            }
+            return ret;
+        }
+
+        return new Date(Math.round(value));
     };
 
     /**

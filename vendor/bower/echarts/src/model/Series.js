@@ -185,10 +185,35 @@ define(function(require) {
          * @param {number} [dataType]
          */
         formatTooltip: function (dataIndex, multipleSeries, dataType) {
+            function formatArrayValue(value) {
+                var result = [];
+
+                zrUtil.each(value, function (val, idx) {
+                    var dimInfo = data.getDimensionInfo(idx);
+                    var dimType = dimInfo && dimInfo.type;
+                    var valStr;
+
+                    if (dimType === 'ordinal') {
+                        valStr = val + '';
+                    }
+                    else if (dimType === 'time') {
+                        valStr = multipleSeries ? '' : formatUtil.formatTime('yyyy/mm/dd hh:mm:ss', val);
+                    }
+                    else {
+                        valStr = addCommas(val);
+                    }
+
+                    valStr && result.push(valStr);
+                });
+
+                return result.join(', ');
+            }
+
             var data = this._data;
+
             var value = this.getRawValue(dataIndex);
             var formattedValue = zrUtil.isArray(value)
-                ? zrUtil.map(value, addCommas).join(', ') : addCommas(value);
+                ? formatArrayValue(value) : addCommas(value);
             var name = data.getName(dataIndex);
             var color = data.getItemVisual(dataIndex, 'color');
             var colorEl = '<span style="display:inline-block;margin-right:5px;'
@@ -240,7 +265,23 @@ define(function(require) {
             return color;
         },
 
-        getAxisTooltipDataIndex: null
+        /**
+         * Get data indices for show tooltip content. See tooltip.
+         * @abstract
+         * @param {Array.<string>|string} dim
+         * @param {Array.<number>} value
+         * @param {module:echarts/coord/single/SingleAxis} baseAxis
+         * @return {Array.<number>} data indices.
+         */
+        getAxisTooltipDataIndex: null,
+
+        /**
+         * See tooltip.
+         * @abstract
+         * @param {number} dataIndex
+         * @return {Array.<number>} Point of tooltip. null/undefined can be returned.
+         */
+        getTooltipPosition: null
     });
 
     zrUtil.mixin(SeriesModel, modelUtil.dataFormatMixin);

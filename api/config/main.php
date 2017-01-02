@@ -10,6 +10,7 @@ return [
     'id' => 'rest-api',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+	'controllerNamespace' => 'api\controllers',
     'modules' => [
         'v1' => [
             'class' => 'api\versions\v1\RestModule'
@@ -47,6 +48,7 @@ return [
             //'enableStrictParsing' => true,
             'showScriptName' => false,
             'rules' => [
+				['class' => 'yii\rest\UrlRule', 'controller' => 'item'],
                 ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/post', 'v1/comment', 'v2/post']],
                 'OPTIONS v1/user/login' => 'v1/user/login',
                 'POST v1/user/login' => 'v1/user/login',

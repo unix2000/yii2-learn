@@ -3,7 +3,8 @@ namespace frontend\controllers;
 use yii\web\Controller;
 // use Yii as core;
 use Yii;
-
+use frontend\repositories\interfaces\IBaseRepository;
+use yii\web\Response;
 class BaseController extends Controller {
     protected  $request;
     protected  $response;
@@ -13,8 +14,19 @@ class BaseController extends Controller {
     protected  $session;
     protected  $view;
     public $cache;
+    protected $repo;
     
     public function init(){
+        parent::init();
+        Yii::$container->set(\frontend\repositories\interfaces\IBaseRepository::class, [
+            'class' => \frontend\repositories\BaseRepository::class
+        ]);
+        Yii::$container->set('BaseRepository', function($container, $params, $config){
+            return new \frontend\repositories\BaseRepository(new \frontend\models\Items());
+        });
+        $this->repo = Yii::$container->get('BaseRepository');
+        // Yii::$app->response->format = Response::FORMAT_JSON;
+
         //phalcon
 //         $this->request = \Yii::$app->getRequest();
 //         $this->response = \Yii::$app->getResponse();
@@ -52,8 +64,43 @@ class BaseController extends Controller {
 //     public function behaviors(){
         
 //     }
-    public function actionC(){}
-    public function actionR(){}
-    public function actionU(){}
-    public function actionD(){}
+
+    // public function verbs()
+    // {
+    //     return [
+    //         'create'   => ['POST'],
+    //         'delete'   => ['DELETE'],
+    //         'update'   => ['PUT'],
+    //         'index'    => ['GET'],
+    //         'show'     => ['GET'],
+    //         'delete-multiple' => ['DELETE']
+    //     ];
+    // }
+    
+    //只返回Response::FORMAT_JSON或XML
+    // public function actionIndex()
+    // {
+    //     return $this->repo->searchByCriteria();
+    // }
+    // public function actionCreate(){
+    //     $data = Yii::$app->request->post();
+    //     $post = $this->repo->create($data);
+    //     return $post;
+    // }
+    // public function actionShow($id){
+    //     return $this->repo->findOneById($id);
+    // }
+    // public function actionUpdate(){
+    //     $data = Yii::$app->request->post();
+    //     $post = $this->repo->updateOneById($id, $data);
+    //     return $post;
+    // }
+    // public function actionDelete($id){
+    //     $this->repo->deleteOneById($id);
+    // }
+    // public function actionDeleteMultiple()
+    // {
+    //     $ids = Yii::$app->request->post()['ids'];
+    //     $deletedCount = $this->repo->deleteManyByIds($ids);
+    // }
 }

@@ -33,7 +33,7 @@ function cookies(){
     return res()->getCookies();
 }
 
-function get_cookies(){
+function res_cookies(){
     return req()->getCookies();
 }
 
@@ -41,7 +41,7 @@ function db(){
     return app()->getDb();
 }
 
-function dump($var, $echo=true, $label=null, $strict=true) {
+function du($var, $echo=true, $label=null, $strict=true) {
     $label = ($label === null) ? '' : rtrim($label) . ' ';
     if (!$strict) {
         if (ini_get('html_errors')) {

@@ -418,7 +418,7 @@ define(function(require) {
             var barPoints = this._createBarPoints(handleEnds, symbolSizes);
 
             return {
-                barColor: new LinearGradient(0, 0, 1, 1, colorStops),
+                barColor: new LinearGradient(0, 0, 0, 1, colorStops),
                 barPoints: barPoints,
                 handlesColor: [
                     colorStops[0].color,
@@ -686,8 +686,8 @@ define(function(require) {
             }
 
             var resultBatches = modelUtil.compressBatches(oldBatch, newBatch);
-            this._dispatchHighDown('downplay', resultBatches[0]);
-            this._dispatchHighDown('highlight', resultBatches[1]);
+            this._dispatchHighDown('downplay', helper.convertDataIndex(resultBatches[0]));
+            this._dispatchHighDown('highlight', helper.convertDataIndex(resultBatches[1]));
         },
 
         /**
@@ -705,7 +705,9 @@ define(function(require) {
             var dim = data.getDimension(this.visualMapModel.getDataDimension(data));
             var value = data.get(dim, el.dataIndex, true);
 
-            this._showIndicator(value, value);
+            if (!isNaN(value)) {
+                this._showIndicator(value, value);
+            }
         },
 
         /**
@@ -725,7 +727,7 @@ define(function(require) {
 
             var indices = this._hoverLinkDataIndices;
 
-            this._dispatchHighDown('downplay', indices);
+            this._dispatchHighDown('downplay', helper.convertDataIndex(indices));
 
             indices.length = 0;
         },

@@ -5,8 +5,9 @@ use yii\data\Pagination;
 use frontend\models\MongoModel;
 use yii\mongodb\Query;
 use yii\data\ActiveDataProvider;
+use yii\web\Controller;
 
-class CacheController extends BaseController {
+class CacheController extends Controller {
     public function actionIndex(){
         
     }
@@ -29,14 +30,26 @@ class CacheController extends BaseController {
 //                 'pageSize' => 10,
 //             ]
 //         ]);
+		/*
         $provider = new ActiveDataProvider([
             'query' => MongoModel::find(),
             'pagination' => [
                 'pageSize' => 10,
             ]
         ]);
-        $model = $provider->getModels();
-        dump($model);
+        $models = $provider->getModels();
+        //dump($model);
+		*/
+		$query = MongoModel::find();
+        $countQuery = clone $query;
+        $pages = new Pagination(['totalCount' => $countQuery->count()]);
+        $models = $query->offset($pages->offset)
+			->limit($pages->limit)
+			->all();
+		return $this->render('mongo', [
+            'models' => $models,
+            'pages' => $pages,
+        ]);
     }
     public function actionRedis(){
         set_time_limit(0);
@@ -45,6 +58,7 @@ class CacheController extends BaseController {
 //         dump($redis->get('username'));
         //$redis->flushall();
         $model = new RedisModel();
+		//dump($redis);
 //         $model->attributes = [
 //             'id' => 2,
 //             'name' => 'xiexiaolin-',
@@ -74,9 +88,9 @@ class CacheController extends BaseController {
         $countQuery = clone $query;
         $pages = new Pagination(['totalCount' => $countQuery->count()]);
         $models = $query->offset($pages->offset)
-        ->limit($pages->limit)
-        ->all();
-        
+			->limit($pages->limit)
+			->all();
+        //dump($models);
         return $this->render('redis', [
             'models' => $models,
             'pages' => $pages,

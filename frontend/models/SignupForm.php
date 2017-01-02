@@ -29,6 +29,7 @@ class SignupForm extends Model
             ['email', 'required'],
             ['email', 'email'],
             ['email', 'string', 'max' => 255],
+            ['email', 'validateTime'],
             ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This email address has already been taken.'],
 
             ['password', 'required'],
@@ -36,6 +37,16 @@ class SignupForm extends Model
         ];
     }
 
+    public function validateTime($attributes, $params)
+    {
+        $currentTime = strtotime('now');
+        $openTime = strtotime('9:00');
+        $closeTime = strtotime('17:00');
+        if ($currentTime > $openTime && $currentTime < $closeTime)
+            return true;
+        else
+            $this->addError('email', 'The user\'s email address canonly be changed between 9 AM and 5 PM');
+    }
     /**
      * Signs user up.
      *

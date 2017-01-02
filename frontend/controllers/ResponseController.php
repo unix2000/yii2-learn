@@ -6,17 +6,39 @@ use yii\web\Response;
 use yii\web\Controller;
 // use frontend\components\PhpArrayFormatter;
 // use yii\web\Response;
+use frontend\models\Items;
+use Yii;
 
 class ResponseController extends Controller {
+	public function actionFor(){
+		// \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+		// \Yii::$app->response->format = \yii\web\Response::FORMAT_XML;
+		$data = Items::find()->limit(5)->asArray()->all();
+		$callback = Yii::$app->request->get('callback',null);
+		$format = $callback ? Response::FORMAT_JSONP : Response::FORMAT_JSON;
+        Yii::$app->response->format = $format;
+        
+		if($callback){
+			return array(
+				'callback' => $callback,
+				'data' => $data
+			);
+		}
+		return $data;		
+		//dump($data);
+		//return $data;
+	}
     public function actionTest(){
         $data = array(
             'ret' => 1,
             'data' => [
                 'username' => 'liner',
                 'nickname' => 'liner.xie',
-            ],
-            'messages' => 'success',
-        );
+            
+			],
+			'messages' => 'success',
+        
+			);
         //return json_output($data);
         return xml_output($data);
     }

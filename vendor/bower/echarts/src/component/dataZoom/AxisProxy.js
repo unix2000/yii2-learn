@@ -104,11 +104,20 @@ define(function(require) {
          */
         getTargetSeriesModels: function () {
             var seriesModels = [];
+            var ecModel = this.ecModel;
 
-            this.ecModel.eachSeries(function (seriesModel) {
-                // Legacy problem: some one wrote xAxisIndex as [0] following the wrong way in example.
-                if (this._axisIndex === +seriesModel.get(this._dimName + 'AxisIndex')) {
-                    seriesModels.push(seriesModel);
+            ecModel.eachSeries(function (seriesModel) {
+                var coordSysName = seriesModel.get('coordinateSystem');
+                if (coordSysName === 'cartesian2d' || coordSysName === 'polar') {
+                    var dimName = this._dimName;
+                    var axisModel = ecModel.queryComponents({
+                        mainType: dimName + 'Axis',
+                        index: seriesModel.get(dimName + 'AxisIndex'),
+                        id: seriesModel.get(dimName + 'AxisId')
+                    })[0];
+                    if (this._axisIndex === (axisModel && axisModel.componentIndex)) {
+                        seriesModels.push(seriesModel);
+                    }
                 }
             }, this);
 

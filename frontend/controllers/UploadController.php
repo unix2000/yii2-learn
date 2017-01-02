@@ -6,11 +6,12 @@ use yii\web\UploadedFile;
 use yii\web\Response;
 use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
-// use yii\web\Controller;
+use yii\web\Controller;
 
-class UploadController extends BaseController {
+class UploadController extends Controller {
     public function actionIndex(){
-    	$id = $this->request->get('id');
+    	// $id = $this->request->get('id');
+        $id = \Yii::$app->request->get('id');
     	$model = new Items();
         return $this->render('index',array(
         	'model'=> $model,

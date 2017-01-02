@@ -17,7 +17,7 @@ class RegForm extends Model {
             //[['username','password'],'required','message'=>'不能为空'],
             //['username','required','requiredValue'=>'必填值','message'=>'请输入用户名'],
             ['username','required','message'=>'请输入用户名'],
-            ['username','unique'],
+            //['username','unique'], //执行model::find()
             //['username','match','pattern'=>'/^[\x{4e00}-\x{9fa5}]+$/u','message'=>'{attribute}必须为中文汉字'],
             ['password','required','message'=>'请输入密码'],
             [['username', 'password'], 'filter', 'filter' => 'trim', 'skipOnArray' => true],

@@ -74,6 +74,11 @@ define(function (require) {
         var fixMin = (model.getMin ? model.getMin() : model.get('min')) != null;
         var fixMax = (model.getMax ? model.getMax() : model.get('max')) != null;
         var splitNumber = model.get('splitNumber');
+
+        if (scale.type === 'log') {
+            scale.base = model.get('logBase');
+        }
+
         scale.setExtent(extent[0], extent[1]);
         scale.niceExtent(splitNumber, fixMin, fixMax);
 
@@ -93,7 +98,11 @@ define(function (require) {
             //     scaleQuantity *= 10;
             // }
             extent = scale.getExtent();
-            scale.setExtent(intervalScale * extent[0], extent[1] * intervalScale);
+            var origin = (extent[1] + extent[0]) / 2;
+            scale.setExtent(
+                intervalScale * (extent[0] - origin) + origin,
+                intervalScale * (extent[1] - origin) + origin
+            );
             scale.niceExtent(splitNumber);
         }
 

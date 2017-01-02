@@ -8,8 +8,39 @@ yii\data\SqlDataProvider,
 // use yii\db\Query as Q;
 yii\db\Query;
 use yii\web\Controller;
+use frontend\models\Types;
 
 class DbController extends Controller {
+    public function actionShow(){
+        // $db = \Yii::$app->db;
+        // $db->createCommand()->insert($sql)->execute()
+        // $db->createCommand()->update($sql)->execute()
+        // $db->createCommand()->delete($sql)->execute();
+        // $data = $db->createCommand('select id,name,email from items where id = :id')
+        //     ->bindValue(':id',12)
+        //     ->queryAll();
+        // var_dump($data);
+        // var_dump($db->createCommand());
+
+        $q = (new Query);
+        // $command = $q->select(['id','name','email'])
+        //     ->from('items')
+        //     ->where('id = :id',[':id'=>12])
+        //     ->createCommand();
+        $command = $q->from('items')
+            ->where([
+                // 'name' => 'liner.xie',
+                'email' => 'liner.xie@qq.com',
+                'id' => [20, 21, 22, 23, 24, 25, 26, 27, 28, 29],
+            ])
+            // ->andWhere(['like','name','xiexiaolin'])
+            ->createCommand();
+        var_dump($command->sql);
+        var_dump($command->params);
+        $rows = $command->queryAll();
+        var_dump($rows);
+
+    }
 	public function actionTest(){
 		// db function
 		$count = Items::find()->count();
@@ -104,7 +135,13 @@ class DbController extends Controller {
 //         }
     }
     public function actionRelation(){
+        //hasmany
+        $data = Types::findOne(2);
+        dump($data->items);
         
+        //hasone
+        // $data = Items::findOne(1);
+        // dump($data->types);
     }
     public function actionProvider(){
         //array provider ArrayDataProvider

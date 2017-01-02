@@ -4,8 +4,158 @@ use kartik\mpdf\Pdf;
 use frontend\models\RegForm;
 use yii\web\Response;
 use yii\web\Controller;
+use dosamigos\qrcode\QrCode;
+use frontend\models\Items;
+use frontend\models\Dept;
+use yii\base\Security;
 
 class UiController extends Controller{
+	//public $enableCsrfValidation = false; //数据无法正确验证提交,不建议关闭csrf
+	public function actionRepeatable()
+	{
+		return $this->render('repeatable');
+	}
+	public function actionRepeat()
+	{
+		return $this->render('repeat');
+	}
+	public function actionStore(){
+		$req = \Yii::$app->request;
+		//数据已正确获取
+		du($req->post());
+		
+		//restful post put
+		// du($req->bodyParams); 
+		// $req->getBodyParam('name')
+	}
+	public function actionAjaxForm()
+	{
+		return $this->renderPartial('ajax-form');
+	}
+	//jquery datatables
+	public function actionDatatables()
+	{
+		return $this->render('datatables');
+	}
+	public function actionTableData()
+	{
+		$req = \Yii::$app->getRequest();
+		if($req->isAjax) {
+			$draw = $req->get('draw');
+			$start = $req->get('start');
+			$length = $req->get('length');
+			$search = $req->get('search');
+			$value = $search['value'];
+			$map = array();
+			if ( $value ) {
+				$map = ['like', 'name', $value];
+			}
+			$data = Items::find()
+				->select(['id','name','email','address'])
+				->where($map) //使用addWhere
+				->offset($start)
+				->limit($length)
+				->asArray()
+				->all();
+			$recordsFiltered = Items::find()
+				->select(['id','name','email','address'])
+				->where($map)
+				->count();
+			echo json_encode([ 
+				'data' => $data,
+				'recordsTotal' => $recordsFiltered,
+				'draw' => $draw,
+				'recordsFiltered' => $recordsFiltered
+			]);
+		}
+		//du($data);
+	}
+	public function actionLayout()
+	{
+		return $this->render('layout');
+	}
+    public function actionBui()
+    {
+        return $this->render('bui');
+    }
+	public function actionDtgrid(){
+		return $this->render('dtgrid');
+	}
+	//dtGrid数据生成
+	public function actionDatas()
+	{
+		//ajax获取必须返回Pager对象,非ajax获取返回json数组即可
+		// {"advanceQueryConditions":[],"advanceQuerySorts":[],"exhibitDatas":[],"exportAllData":false,"exportColumns":[],"exportDataIsProcessed":false,"exportDatas":[],"exportFileName":"","exportType":"","fastQueryParameters":{},"isExport":false,"isSuccess":true,"nowPage":1,"pageCount":20,"pageSize":10,"parameters":{},"recordCount":200,"startRecord":0}
+		//dtGrid使用
+		$req = \Yii::$app->getRequest();
+		if ($req->isAjax){
+			// $data = array();
+			$dtpage = $req->post('gridPager'); //传过来是json对象
+			$dt_arr = json_decode($dtpage,true);
+			$page = $dt_arr['pageSize'];
+			$startRecord = $dt_arr['startRecord'];
+			// $nowPage = $dt_arr['nowPage'];
+			// $callback = $req->post('callback');
+			$data = Items::find()
+				->offset($startRecord)
+				->limit($page)
+				->asArray()
+				->all();
+			$data['exhibitDatas'] = $data;		
+			$data['isSuccess'] = true; //此参数ajax分页很重要,要不提示callback错误 很奇怪 因为不是jsonp获取
+			//以下三参数必须加入,要不前端出现undefine错误
+			$data['recordCount'] = Items::find()->count();
+			$data['pageCount'] = (int)(Items::find()->count() / $page);
+			$data['pageSize'] = $page;
+			$data['startRecord'] = $dt_arr['startRecord'];
+			$data['nowPage'] = $dt_arr['nowPage'];
+			echo json_encode($data);
+			// echo $callback.'('.json_encode($data).')';  
+		}
+	}
+	public function actionZtree(){
+		//简单数据格式,js设置
+		/**
+		var setting = {
+			data: {
+                simpleData: {
+                    enable: true
+                }
+            },
+		}
+		**/
+		$data = Dept::find()
+			->select(['id','dept_parent as pId','dept_name as name'])
+			->asArray()
+			->all();
+		$json = json_encode($data);
+		return $this->render('ztree',[
+			'data' => $json
+		]);
+	}
+	public function actionOutlook()
+	{
+		//$data = Dept::find()
+			//->select(['id','dept_parent as pId','dept_name as name'])
+			//->orderBy('dept_parent')
+			//->asArray()
+			//->all();
+		//$json = json_encode($data);
+		//return $this->render('outlook',[
+			//'data' => $json
+		//]);
+		return $this->render('outlook');
+	}
+	public function actionSemantic(){
+		return $this->render('semantic');
+	}
+    public function actionQr(){
+        return $this->render('qcode');
+    }
+    public function actionQrcode(){
+        return QrCode::jpg('这是一条中文文字信息');
+        //return QrCode::png('http://www.qq.com?from=cn');
+    }
     public function actionGallery(){
         return $this->render('gallery');
     }
@@ -15,6 +165,14 @@ class UiController extends Controller{
     public function actionFancytree(){
         return $this->render('fancytree');
     }
+	//fancytree树数据
+	public function actionTreeDatas($root = 0){
+		$data = Dept::find()
+			->select(['id as key','dept_name as title'])
+			->where([ 'dept_parent' => $root ])->asArray()->all();
+		//echo json_encode($data);
+		//du($data);
+	}
     public function actionEcharts(){
         return $this->render('echarts');
     }
@@ -52,7 +210,7 @@ class UiController extends Controller{
         //$model->setAttribute(['other_value' => time()],true);       
         dump($model->attributes);
         //echo $model->validate() ? 'valid': 'no valid'; 
-        if($model->validate()){
+        if($model->load(\Yii::$app->request->post()) && $model->validate()){
 
         } else {
         	$errors = $model->errors;

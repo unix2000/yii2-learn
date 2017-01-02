@@ -56,8 +56,6 @@ define(function (require) {
             var axisLayout = coordSys.getAxisLayout(dim);
 
             // Fetch from axisModel by default.
-            var axisNameTruncateLength;
-            var axisNameTruncateEllipsis;
             var axisLabelShow;
             var axisIndex = zrUtil.indexOf(coordSys.dimensions, dim);
 
@@ -65,19 +63,13 @@ define(function (require) {
             if (axisExpandWindow
                 && (axisIndex <= axisExpandWindow[0] || axisIndex >= axisExpandWindow[1])
             ) {
-                axisNameTruncateLength = axisModel.get('nameTruncateLengthOutExpand');
-                axisNameTruncateEllipsis = '';
                 axisLabelShow = false;
             }
 
             var builderOpt = zrUtil.extend(
                 {
                     axisLabelShow: axisLabelShow,
-                    axisNameTruncateLength: axisNameTruncateLength,
-                    axisNameTruncateEllipsis: axisNameTruncateEllipsis,
-                    strokeContainThreshold: areaWidth,
-                    // lineWidth === 0 or no value.
-                    axisLineSilent: !(areaWidth > 0) // jshint ignore:line
+                    strokeContainThreshold: areaWidth
                 },
                 axisLayout
             );
@@ -108,13 +100,19 @@ define(function (require) {
             });
 
             var extent = axis.getExtent();
-            var extra = 30; // Arbitrary value.
-            var rect = {
-                x: extent[0] - extra,
+            var extentLen = extent[1] - extent[0];
+            var extra = Math.min(30, Math.abs(extentLen) * 0.1); // Arbitrary value.
+
+            // width/height might be negative, which will be
+            // normalized in BoundingRect.
+            var rect = graphic.BoundingRect.create({
+                x: extent[0],
                 y: -areaWidth / 2,
-                width: extent[1] - extent[0] + 2 * extra,
+                width: extentLen,
                 height: areaWidth
-            };
+            });
+            rect.x -= extra;
+            rect.width += 2 * extra;
 
             this._brushController
                 .mount({

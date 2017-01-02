@@ -40,6 +40,7 @@ define(function (require) {
     var ComponentView = require('./view/Component');
     var ChartView = require('./view/Chart');
     var graphic = require('./util/graphic');
+    var modelUtil = require('./util/model');
 
     var zrender = require('zrender');
     var zrUtil = require('zrender/core/util');
@@ -67,6 +68,9 @@ define(function (require) {
     var IN_MAIN_PROCESS = '__flag_in_main_process';
     var HAS_GRADIENT_OR_PATTERN_BG = '_hasGradientOrPatternBg';
 
+
+    var OPTION_UPDATED = '_optionUpdated';
+
     function createRegisterEventWithLowercaseName(method) {
         return function (eventName, handler, context) {
             // Event name is all lowercase
@@ -74,6 +78,7 @@ define(function (require) {
             Eventful.prototype[method].call(this, eventName, handler, context);
         };
     }
+
     /**
      * @module echarts~MessageCenter
      */
@@ -84,6 +89,7 @@ define(function (require) {
     MessageCenter.prototype.off = createRegisterEventWithLowercaseName('off');
     MessageCenter.prototype.one = createRegisterEventWithLowercaseName('one');
     zrUtil.mixin(MessageCenter, Eventful);
+
     /**
      * @module echarts~ECharts
      */
@@ -115,7 +121,9 @@ define(function (require) {
          */
         this._zr = zrender.init(dom, {
             renderer: opts.renderer || 'canvas',
-            devicePixelRatio: opts.devicePixelRatio
+            devicePixelRatio: opts.devicePixelRatio,
+            width: opts.width,
+            height: opts.height
         });
 
         /**
@@ -182,10 +190,25 @@ define(function (require) {
         }
         timsort(visualFuncs, prioritySortFunc);
         timsort(dataProcessorFuncs, prioritySortFunc);
+
+        this._zr.animation.on('frame', this._onframe, this);
     }
 
     var echartsProto = ECharts.prototype;
 
+    echartsProto._onframe = function () {
+        // Lazy update
+        if (this[OPTION_UPDATED]) {
+
+            this[IN_MAIN_PROCESS] = true;
+
+            updateMethods.prepareAndUpdate.call(this);
+
+            this[IN_MAIN_PROCESS] = false;
+
+            this[OPTION_UPDATED] = false;
+        }
+    };
     /**
      * @return {HTMLDomElement}
      */
@@ -203,9 +226,9 @@ define(function (require) {
     /**
      * @param {Object} option
      * @param {boolean} notMerge
-     * @param {boolean} [notRefreshImmediately=false] Useful when setOption frequently.
+     * @param {boolean} [lazyUpdate=false] Useful when setOption frequently.
      */
-    echartsProto.setOption = function (option, notMerge, notRefreshImmediately) {
+    echartsProto.setOption = function (option, notMerge, lazyUpdate) {
         if (__DEV__) {
             zrUtil.assert(!this[IN_MAIN_PROCESS], '`setOption` should not be called during main process.');
         }
@@ -213,20 +236,26 @@ define(function (require) {
         this[IN_MAIN_PROCESS] = true;
 
         if (!this._model || notMerge) {
-            this._model = new GlobalModel(
-                null, null, this._theme, new OptionManager(this._api)
-            );
+            var optionManager = new OptionManager(this._api);
+            var theme = this._theme;
+            var ecModel = this._model = new GlobalModel(null, null, theme, optionManager);
+            ecModel.init(null, null, theme, optionManager);
         }
 
         this._model.setOption(option, optionPreprocessorFuncs);
 
-        updateMethods.prepareAndUpdate.call(this);
+        if (lazyUpdate) {
+            this[OPTION_UPDATED] = true;
+        }
+        else {
+            updateMethods.prepareAndUpdate.call(this);
+            this._zr.refreshImmediately();
+            this[OPTION_UPDATED] = false;
+        }
 
         this[IN_MAIN_PROCESS] = false;
 
         this._flushPendingActions();
-
-        !notRefreshImmediately && this._zr.refreshImmediately();
     };
 
     /**
@@ -247,7 +276,7 @@ define(function (require) {
      * @return {Object}
      */
     echartsProto.getOption = function () {
-        return this._model.getOption();
+        return this._model && this._model.getOption();
     };
 
     /**
@@ -344,8 +373,8 @@ define(function (require) {
             var bottom = -MAX_NUMBER;
             var canvasList = [];
             var dpr = (opts && opts.pixelRatio) || 1;
-            for (var id in instances) {
-                var chart = instances[id];
+
+            zrUtil.each(instances, function (chart, id) {
                 if (chart.group === groupId) {
                     var canvas = chart.getRenderedCanvas(
                         zrUtil.clone(opts)
@@ -361,7 +390,7 @@ define(function (require) {
                         top: boundingRect.top
                     });
                 }
-            }
+            });
 
             left *= dpr;
             top *= dpr;
@@ -393,8 +422,166 @@ define(function (require) {
         }
     };
 
-    var updateMethods = {
+    /**
+     * Convert from logical coordinate system to pixel coordinate system.
+     * See CoordinateSystem#convertToPixel.
+     * @param {string|Object} finder
+     *        If string, e.g., 'geo', means {geoIndex: 0}.
+     *        If Object, could contain some of these properties below:
+     *        {
+     *            seriesIndex / seriesId / seriesName,
+     *            geoIndex / geoId, geoName,
+     *            bmapIndex / bmapId / bmapName,
+     *            xAxisIndex / xAxisId / xAxisName,
+     *            yAxisIndex / yAxisId / yAxisName,
+     *            gridIndex / gridId / gridName,
+     *            ... (can be extended)
+     *        }
+     * @param {Array|number} value
+     * @return {Array|number} result
+     */
+    echartsProto.convertToPixel = zrUtil.curry(doConvertPixel, 'convertToPixel');
 
+    /**
+     * Convert from pixel coordinate system to logical coordinate system.
+     * See CoordinateSystem#convertFromPixel.
+     * @param {string|Object} finder
+     *        If string, e.g., 'geo', means {geoIndex: 0}.
+     *        If Object, could contain some of these properties below:
+     *        {
+     *            seriesIndex / seriesId / seriesName,
+     *            geoIndex / geoId / geoName,
+     *            bmapIndex / bmapId / bmapName,
+     *            xAxisIndex / xAxisId / xAxisName,
+     *            yAxisIndex / yAxisId / yAxisName
+     *            gridIndex / gridId / gridName,
+     *            ... (can be extended)
+     *        }
+     * @param {Array|number} value
+     * @return {Array|number} result
+     */
+    echartsProto.convertFromPixel = zrUtil.curry(doConvertPixel, 'convertFromPixel');
+
+    function doConvertPixel(methodName, finder, value) {
+        var ecModel = this._model;
+        var coordSysList = this._coordSysMgr.getCoordinateSystems();
+        var result;
+
+        finder = modelUtil.parseFinder(ecModel, finder);
+
+        for (var i = 0; i < coordSysList.length; i++) {
+            var coordSys = coordSysList[i];
+            if (coordSys[methodName]
+                && (result = coordSys[methodName](ecModel, finder, value)) != null
+            ) {
+                return result;
+            }
+        }
+
+        if (__DEV__) {
+            console.warn(
+                'No coordinate system that supports ' + methodName + ' found by the given finder.'
+            );
+        }
+    }
+
+    /**
+     * Is the specified coordinate systems or components contain the given pixel point.
+     * @param {string|Object} finder
+     *        If string, e.g., 'geo', means {geoIndex: 0}.
+     *        If Object, could contain some of these properties below:
+     *        {
+     *            seriesIndex / seriesId / seriesName,
+     *            geoIndex / geoId / geoName,
+     *            bmapIndex / bmapId / bmapName,
+     *            xAxisIndex / xAxisId / xAxisName,
+     *            yAxisIndex / yAxisId / yAxisName
+     *            gridIndex / gridId / gridName,
+     *            ... (can be extended)
+     *        }
+     * @param {Array|number} value
+     * @return {boolean} result
+     */
+    echartsProto.containPixel = function (finder, value) {
+        var ecModel = this._model;
+        var result;
+
+        finder = modelUtil.parseFinder(ecModel, finder);
+
+        zrUtil.each(finder, function (models, key) {
+            key.indexOf('Models') >= 0 && zrUtil.each(models, function (model) {
+                var coordSys = model.coordinateSystem;
+                if (coordSys && coordSys.containPoint) {
+                    result |= !!coordSys.containPoint(value);
+                }
+                else if (key === 'seriesModels') {
+                    var view = this._chartsMap[model.__viewId];
+                    if (view && view.containPoint) {
+                        result |= view.containPoint(value, model);
+                    }
+                    else {
+                        if (__DEV__) {
+                            console.warn(key + ': ' + (view
+                                ? 'The found component do not support containPoint.'
+                                : 'No view mapping to the found component.'
+                            ));
+                        }
+                    }
+                }
+                else {
+                    if (__DEV__) {
+                        console.warn(key + ': containPoint is not supported');
+                    }
+                }
+            }, this);
+        }, this);
+
+        return !!result;
+    };
+
+    /**
+     * Get visual from series or data.
+     * @param {string|Object} finder
+     *        If string, e.g., 'series', means {seriesIndex: 0}.
+     *        If Object, could contain some of these properties below:
+     *        {
+     *            seriesIndex / seriesId / seriesName,
+     *            dataIndex / dataIndexInside
+     *        }
+     *        If dataIndex is not specified, series visual will be fetched,
+     *        but not data item visual.
+     *        If all of seriesIndex, seriesId, seriesName are not specified,
+     *        visual will be fetched from first series.
+     * @param {string} visualType 'color', 'symbol', 'symbolSize'
+     */
+    echartsProto.getVisual = function (finder, visualType) {
+        var ecModel = this._model;
+
+        finder = modelUtil.parseFinder(ecModel, finder, {defaultMainType: 'series'});
+
+        var seriesModel = finder.seriesModel;
+
+        if (__DEV__) {
+            if (!seriesModel) {
+                console.warn('There is no specified seires model');
+            }
+        }
+
+        var data = seriesModel.getData();
+
+        var dataIndexInside = finder.hasOwnProperty('dataIndexInside')
+            ? finder.dataIndexInside
+            : finder.hasOwnProperty('dataIndex')
+            ? data.indexOfRawIndex(finder.dataIndex)
+            : null;
+
+        return dataIndexInside != null
+            ? data.getItemVisual(dataIndexInside, visualType)
+            : data.getVisual(visualType);
+    };
+
+
+    var updateMethods = {
 
         /**
          * @param {Object} payload
@@ -596,15 +783,18 @@ define(function (require) {
 
     /**
      * Resize the chart
+     * @param {Object} opts
+     * @param {number} [opts.width] Can be 'auto' (the same as null/undefined)
+     * @param {number} [opts.height] Can be 'auto' (the same as null/undefined)
      */
-    echartsProto.resize = function () {
+    echartsProto.resize = function (opts) {
         if (__DEV__) {
             zrUtil.assert(!this[IN_MAIN_PROCESS], '`resize` should not be called during main process.');
         }
 
         this[IN_MAIN_PROCESS] = true;
 
-        this._zr.resize();
+        this._zr.resize(opts);
 
         var optionChanged = this._model && this._model.resetOption('media');
         updateMethods[optionChanged ? 'prepareAndUpdate' : 'update'].call(this);
@@ -617,7 +807,6 @@ define(function (require) {
         this._flushPendingActions();
     };
 
-    var defaultLoadingEffect = require('./loading/default');
     /**
      * Show loading effect
      * @param  {string} [name='default']
@@ -626,10 +815,18 @@ define(function (require) {
     echartsProto.showLoading = function (name, cfg) {
         if (zrUtil.isObject(name)) {
             cfg = name;
-            name = 'default';
+            name = '';
         }
+        name = name || 'default';
+
         this.hideLoading();
-        var el = defaultLoadingEffect(this._api, cfg);
+        if (!loadingEffects[name]) {
+            if (__DEV__) {
+                console.warn('Loading effects ' + name + ' not exists.');
+            }
+            return;
+        }
+        var el = loadingEffects[name](this._api, cfg);
         var zr = this._zr;
         this._loadingFX = el;
 
@@ -714,8 +911,17 @@ define(function (require) {
             isHighlightOrDownplay && updateMethods[updateMethod].call(this, batchItem);
         }
 
-        (updateMethod !== 'none' && !isHighlightOrDownplay)
-            && updateMethods[updateMethod].call(this, payload);
+        if (updateMethod !== 'none' && !isHighlightOrDownplay) {
+            // Still dirty
+            if (this[OPTION_UPDATED]) {
+                // FIXME Pass payload ?
+                updateMethods.prepareAndUpdate.call(this, payload);
+                this[OPTION_UPDATED] = false;
+            }
+            else {
+                updateMethods[updateMethod].call(this, payload);
+            }
+        }
 
         // Follow the rule of action batch
         if (batched) {
@@ -953,7 +1159,8 @@ define(function (require) {
     }
 
     var MOUSE_EVENT_NAMES = [
-        'click', 'dblclick', 'mouseover', 'mouseout', 'mousedown', 'mouseup', 'globalout'
+        'click', 'dblclick', 'mouseover', 'mouseout', 'mousemove',
+        'mousedown', 'mouseup', 'globalout', 'contextmenu'
     ];
     /**
      * @private
@@ -963,17 +1170,27 @@ define(function (require) {
             this._zr.on(eveName, function (e) {
                 var ecModel = this.getModel();
                 var el = e.target;
-                if (el && el.dataIndex != null) {
+                var params;
+
+                // no e.target when 'globalout'.
+                if (eveName === 'globalout') {
+                    params = {};
+                }
+                else if (el && el.dataIndex != null) {
                     var dataModel = el.dataModel || ecModel.getSeriesByIndex(el.seriesIndex);
-                    var params = dataModel && dataModel.getDataParams(el.dataIndex, el.dataType) || {};
+                    params = dataModel && dataModel.getDataParams(el.dataIndex, el.dataType) || {};
+                }
+                // If element has custom eventData of components
+                else if (el && el.eventData) {
+                    params = zrUtil.extend({}, el.eventData);
+                }
+
+                if (params) {
                     params.event = e;
                     params.type = eveName;
                     this.trigger(eveName, params);
                 }
-                // If element has custom eventData of components
-                else if (el && el.eventData) {
-                    this.trigger(eveName, el.eventData);
-                }
+
             }, this);
         }, this);
 
@@ -995,7 +1212,7 @@ define(function (require) {
      * Clear
      */
     echartsProto.clear = function () {
-        this.setOption({}, true);
+        this.setOption({ series: [] }, true);
     };
     /**
      * Dispose instance
@@ -1136,6 +1353,10 @@ define(function (require) {
      * @type {Object.<key, Object>}
      */
     var themeStorage = {};
+    /**
+     * Loading effects
+     */
+    var loadingEffects = {};
 
 
     var instances = {};
@@ -1151,9 +1372,9 @@ define(function (require) {
         /**
          * @type {number}
          */
-        version: '3.2.1',
+        version: '3.3.1',
         dependencies: {
-            zrender: '3.1.1'
+            zrender: '3.2.1'
         }
     };
 
@@ -1174,12 +1395,13 @@ define(function (require) {
                 if (connectedGroups[chart.group] && chart[STATUS_KEY] !== STATUS_PENDING) {
                     var action = chart.makeActionFromEvent(event);
                     var otherCharts = [];
-                    for (var id in instances) {
-                        var otherChart = instances[id];
+
+                    zrUtil.each(instances, function (otherChart) {
                         if (otherChart !== chart && otherChart.group === chart.group) {
                             otherCharts.push(otherChart);
                         }
-                    }
+                    });
+
                     updateConnectedChartsStatus(otherCharts, STATUS_PENDING);
                     each(otherCharts, function (otherChart) {
                         if (otherChart[STATUS_KEY] !== STATUS_UPDATING) {
@@ -1196,6 +1418,12 @@ define(function (require) {
      * @param {HTMLDomElement} dom
      * @param {Object} [theme]
      * @param {Object} opts
+     * @param {number} [opts.devicePixelRatio] Use window.devicePixelRatio by default
+     * @param {string} [opts.renderer] Currently only 'canvas' is supported.
+     * @param {number} [opts.width] Use clientWidth of the input `dom` by default.
+     *                              Can be 'auto' (the same as null/undefined)
+     * @param {number} [opts.height] Use clientHeight of the input `dom` by default.
+     *                               Can be 'auto' (the same as null/undefined)
      */
     echarts.init = function (dom, theme, opts) {
         if (__DEV__) {
@@ -1375,7 +1603,7 @@ define(function (require) {
      * Most visual encoding like color are common for different chart
      * But each chart has it's own layout algorithm
      *
-     * @param {string} [priority=1000]
+     * @param {number} [priority=1000]
      * @param {Function} layoutFunc
      */
     echarts.registerLayout = function (priority, layoutFunc) {
@@ -1396,7 +1624,7 @@ define(function (require) {
     };
 
     /**
-     * @param {string} [priority=3000]
+     * @param {number} [priority=3000]
      * @param {Function} visualFunc
      */
     echarts.registerVisual = function (priority, visualFunc) {
@@ -1416,31 +1644,66 @@ define(function (require) {
     };
 
     /**
-     * @param {Object} opts
+     * @param {string} name
      */
-    echarts.extendChartView = function (opts) {
-        return ChartView.extend(opts);
+    echarts.registerLoading = function (name, loadingFx) {
+        loadingEffects[name] = loadingFx;
+    };
+
+
+    var parseClassType = ComponentModel.parseClassType;
+    /**
+     * @param {Object} opts
+     * @param {string} [superClass]
+     */
+    echarts.extendComponentModel = function (opts, superClass) {
+        var Clazz = ComponentModel;
+        if (superClass) {
+            var classType = parseClassType(superClass);
+            Clazz = ComponentModel.getClass(classType.main, classType.sub, true);
+        }
+        return Clazz.extend(opts);
     };
 
     /**
      * @param {Object} opts
+     * @param {string} [superClass]
      */
-    echarts.extendComponentModel = function (opts) {
-        return ComponentModel.extend(opts);
+    echarts.extendComponentView = function (opts, superClass) {
+        var Clazz = ComponentView;
+        if (superClass) {
+            var classType = parseClassType(superClass);
+            Clazz = ComponentView.getClass(classType.main, classType.sub, true);
+        }
+        return Clazz.extend(opts);
     };
 
     /**
      * @param {Object} opts
+     * @param {string} [superClass]
      */
-    echarts.extendSeriesModel = function (opts) {
-        return SeriesModel.extend(opts);
+    echarts.extendSeriesModel = function (opts, superClass) {
+        var Clazz = SeriesModel;
+        if (superClass) {
+            superClass = 'series.' + superClass.replace('series.', '');
+            var classType = parseClassType(superClass);
+            Clazz = SeriesModel.getClass(classType.main, classType.sub, true);
+        }
+        return Clazz.extend(opts);
     };
 
     /**
      * @param {Object} opts
+     * @param {string} [superClass]
      */
-    echarts.extendComponentView = function (opts) {
-        return ComponentView.extend(opts);
+    echarts.extendChartView = function (opts, superClass) {
+        var Clazz = ChartView;
+        if (superClass) {
+            superClass.replace('series.', '');
+            var classType = parseClassType(superClass);
+            Clazz = ChartView.getClass(classType.main, true);
+        }
+        return Clazz.extend(opts);
     };
 
     /**
@@ -1465,6 +1728,7 @@ define(function (require) {
 
     echarts.registerVisual(PRIORITY_VISUAL_GLOBAL, require('./visual/seriesColor'));
     echarts.registerPreprocessor(require('./preprocessor/backwardCompat'));
+    echarts.registerLoading('default', require('./loading/default'));
 
     // Default action
     echarts.registerAction({

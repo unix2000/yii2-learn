@@ -7,8 +7,8 @@
  * Released under the MIT license
  * https://github.com/mar10/fancytree/wiki/LicenseInfo
  *
- * @version 2.18.0
- * @date 2016-05-02T19:34
+ * @version 2.20.0
+ * @date 2016-11-13"P"17:49
  */
 
 /** Core Fancytree module.
@@ -34,6 +34,7 @@ var i, attr,
 	FT = null, // initialized below
 	TEST_IMG = new RegExp(/\.|\//),  // strings are considered image urls if they conatin '.' or '/'
 	REX_HTML = /[&<>"'\/]/g,
+	REX_TOOLTIP = /[<>"'\/]/g,
 	RECURSIVE_REQUEST_ERROR = "$recursive_request",
 	ENTITY_MAP = {"&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;", "/": "&#x2F;"},
 	IGNORE_KEYCODES = { 16: true, 17: true, 18: true },
@@ -238,7 +239,14 @@ function _getElementDataAsDict($el){
 
 
 function _escapeHtml(s){
-	return ("" + s).replace(REX_HTML, function (s) {
+	return ("" + s).replace(REX_HTML, function(s) {
+		return ENTITY_MAP[s];
+	});
+}
+
+
+function _escapeTooltip(s){
+	return ("" + s).replace(REX_TOOLTIP, function(s) {
 		return ENTITY_MAP[s];
 	});
 }
@@ -291,7 +299,7 @@ function _makeNodeTitleStartMatcher(s){
  * @property {string} statusNodeType null for standard nodes. Otherwise type of special system node: 'error', 'loading', 'nodata', or 'paging'.
  * @property {boolean} lazy True if this node is loaded on demand, i.e. on first expansion.
  * @property {boolean} selected Use isSelected(), setSelected() to access this property.
- * @property {string} tooltip Alternative description used as hover banner
+ * @property {string} tooltip Alternative description used as hover popup
  */
 function FancytreeNode(parent, obj){
 	var i, l, name, cl;
@@ -437,6 +445,7 @@ FancytreeNode.prototype = /** @lends FancytreeNode# */{
 		if( this.tree.options.selectMode === 3 ){
 			this.fixSelection3FromEndNodes();
 		}
+		this.triggerModifyChild("add", nodeList.length === 1 ? nodeList[0] : null);
 		return firstNode;
 	},
 	/**
@@ -626,9 +635,6 @@ FancytreeNode.prototype = /** @lends FancytreeNode# */{
 		var fn = includeSelf ? "nodeRemoveMarkup" : "nodeRemoveChildMarkup";
 		this.tree._callHook(fn, this);
 	},
-
-	// TODO: expand(flag)
-
 	/**Find all nodes that match condition (excluding self).
 	 *
 	 * @param {string | function(node)} match title string to search for, or a
@@ -1144,13 +1150,14 @@ FancytreeNode.prototype = /** @lends FancytreeNode# */{
 		return this.load(discard);
 	},
 	/**
-	 * Load all children of a lazy node if neccessary. The *expanded* state is maintained.
-	 * @param {boolean} [forceReload=false] Pass true to discard any existing nodes before.
+	 * Load all children of a lazy node if neccessary. The <i>expanded</i> state is maintained.
+	 * @param {boolean} [forceReload=false] Pass true to discard any existing nodes before. Otherwise this method does nothing if the node was already loaded.
 	 * @returns {$.Promise}
 	 */
 	load: function(forceReload) {
 		var res, source,
-			that = this;
+			that = this,
+			wasExpanded = this.isExpanded();
 
 		_assert( this.isLazy(), "load() requires a lazy node" );
 		// _assert( forceReload || this.isUndefined(), "Pass forceReload=true to re-load a lazy node" );
@@ -1168,9 +1175,14 @@ FancytreeNode.prototype = /** @lends FancytreeNode# */{
 		}
 		_assert(typeof source !== "boolean", "lazyLoad event must return source in data.result");
 		res = this.tree._callHook("nodeLoadChildren", this, source);
-		if( this.expanded ) {
+		if( wasExpanded ) {
+			this.expanded = true;
 			res.always(function(){
 				that.render();
+			});
+		} else {
+			res.always(function(){
+				that.renderStatus();  // fix expander icon to 'loaded'
 			});
 		}
 		return res;
@@ -1243,6 +1255,9 @@ FancytreeNode.prototype = /** @lends FancytreeNode# */{
 		}else if( targetParent.isDescendantOf(this) ){
 			$.error("Cannot move a node to its own descendant");
 		}
+		if( targetParent !== prevParent ) {
+			prevParent.triggerModifyChild("remove", this);
+		}
 		// Unlink this node from current parent
 		if( this.parent.children.length === 1 ) {
 			if( this.parent === targetParent ){
@@ -1302,6 +1317,12 @@ FancytreeNode.prototype = /** @lends FancytreeNode# */{
 		// Let caller modify the nodes
 		if( map ){
 			targetNode.visit(map, true);
+		}
+		if( targetParent === prevParent ) {
+			targetParent.triggerModifyChild("move", this);
+		} else {
+			// prevParent.triggerModifyChild("remove", this);
+			targetParent.triggerModifyChild("add", this);
 		}
 		// Handle cross-tree moves
 		if( this.tree !== targetNode.tree ) {
@@ -1372,11 +1393,6 @@ FancytreeNode.prototype = /** @lends FancytreeNode# */{
 	 * @param {boolean} [activate=true]
 	 * @returns {$.Promise}
 	 */
-	// navigate: function(where, activate) {
-	// 	console.time("navigate")
-	// 	this._navigate(where, activate)
-	// 	console.timeEnd("navigate")
-	// },
 	navigate: function(where, activate) {
 		var i, parents, res,
 			handled = true,
@@ -1386,7 +1402,8 @@ FancytreeNode.prototype = /** @lends FancytreeNode# */{
 		// Navigate to node
 		function _goto(n){
 			if( n ){
-				try { n.makeVisible(); } catch(e) {} // #272
+				// setFocus/setActive will scroll later (if autoScroll is specified)
+				try { n.makeVisible({scrollIntoView: false}); } catch(e) {} // #272
 				// Node may still be hidden by a filter
 				if( ! $(n.span).is(":visible") ) {
 					n.debug("Navigate: skipping hidden node");
@@ -1401,6 +1418,24 @@ FancytreeNode.prototype = /** @lends FancytreeNode# */{
 			case KC.BACKSPACE:
 				if( this.parent && this.parent.parent ) {
 					res = _goto(this.parent);
+				}
+				break;
+			case KC.HOME:
+				this.tree.visit(function(n){  // goto first visible node
+					if( $(n.span).is(":visible") ) {
+						res = _goto(n);
+						return false;
+					}
+				});
+				break;
+			case KC.END:
+				this.tree.visit(function(n){  // goto last visible node
+					if( $(n.span).is(":visible") ) {
+						res = n;
+					}
+				});
+				if( res ) {
+					res = _goto(res);
 				}
 				break;
 			case KC.LEFT:
@@ -1521,6 +1556,8 @@ FancytreeNode.prototype = /** @lends FancytreeNode# */{
 	},
 	/**
 	 * (experimental) Replace this node with `source`.
+	 * (Currently only available for paging nodes.)
+	 * @param {NodeData[]} source List of child node definitions
 	 * @since 2.15
 	 */
 	replaceWith: function(source) {
@@ -1698,7 +1735,7 @@ FancytreeNode.prototype = /** @lends FancytreeNode# */{
 
 	/**Activate this node.
 	 * @param {boolean} [flag=true] pass false to deactivate
-	 * @param {object} [opts] additional options. Defaults to {noEvents: false}
+	 * @param {object} [opts] additional options. Defaults to {noEvents: false, noFocus: false}
 	 * @returns {$.Promise}
 	 */
 	setActive: function(flag, opts){
@@ -1739,6 +1776,7 @@ FancytreeNode.prototype = /** @lends FancytreeNode# */{
 	setTitle: function(title){
 		this.title = title;
 		this.renderTitle();
+		this.triggerModify("rename");
 	},
 	/**Sort child list by title.
 	 * @param {function} [cmp] custom compare function(a, b) that returns -1, 0, or 1 (defaults to sort by title).
@@ -1767,6 +1805,7 @@ FancytreeNode.prototype = /** @lends FancytreeNode# */{
 		if( deep !== "$norender$" ){
 			this.render();
 		}
+		this.triggerModifyChild("sort");
 	},
 	/** Convert node (or whole branch) into a plain object.
 	 *
@@ -1863,6 +1902,40 @@ FancytreeNode.prototype = /** @lends FancytreeNode# */{
 	},
 	toString: function() {
 		return "<FancytreeNode(#" + this.key + ", '" + this.title + "')>";
+	},
+	/**
+	 * Trigger `modifyChild` event on a parent to signal that a child was modified.
+	 * @param {string} operation Type of change: 'add', 'remove', 'rename', 'move', 'data', ...
+	 * @param {FancytreeNode} [childNode]
+	 * @param {object} [extra]
+	 */
+	triggerModifyChild: function(operation, childNode, extra){
+		var data,
+			modifyChild = this.tree.options.modifyChild;
+
+		if ( modifyChild ){
+			if( childNode && childNode.parent !== this ) {
+				$.error("childNode " + childNode + " is not a child of " + this);
+			}
+			data = {
+				node: this,
+				tree: this.tree,
+				operation: operation,
+				childNode: childNode || null
+			};
+			if( extra ) {
+				$.extend(data, extra);
+			}
+			modifyChild({type: "modifyChild"}, data);
+		}
+	},
+	/**
+	 * Trigger `modifyChild` event on node.parent(!).
+	 * @param {string} operation Type of change: 'add', 'remove', 'rename', 'move', 'data', ...
+	 * @param {object} [extra]
+	 */
+	triggerModify: function(operation, extra){
+		this.parent.triggerModifyChild(operation, this, extra);
 	},
 	/** Call fn(node) for all child nodes.<br>
 	 * Stop iteration, if fn() returns false. Skip current branch, if fn() returns "skip".<br>
@@ -2021,7 +2094,10 @@ function Fancytree(widget) {
 			$.error("The 'loaderror' event was renamed since 2014-07-03. Use 'loadError' (with uppercase E) instead.");
 		}
 		if( this.options.fx !== undefined ) {
-			FT.warn("The 'fx' options was replaced by 'toggleEffect' since 2014-11-30.");
+			FT.warn("The 'fx' option was replaced by 'toggleEffect' since 2014-11-30.");
+		}
+		if( this.options.removeNode !== undefined ) {
+			$.error("The 'removeNode' event was replaced by 'modifyChild' since 2.20 (2016-09-10).");
 		}
 	}
 	this.ext = {}; // Active extension instances
@@ -2034,6 +2110,8 @@ function Fancytree(widget) {
 	this.activeNode = null;
 	this.focusNode = null;
 	this._hasFocus = null;
+	this._enableUpdate = true;
+	// this._dirtyRoots = null;
 	this.lastSelectedNode = null;
 	this.systemFocusElement = null;
 	this.lastQuicksearchTerm = "";
@@ -2073,9 +2151,10 @@ function Fancytree(widget) {
 	this.$container.attr("tabindex", this.options.tabindex);
 	// this.$container.attr("tabindex", this.options.tabbable ? "0" : "-1");
 	if(this.options.aria){
-		this.$container
-			.attr("role", "tree")
-			.attr("aria-multiselectable", true);
+		this.$container.attr("role", "tree");
+		if( this.options.selectMode !== 1 ) {
+			this.$container.attr("aria-multiselectable", true);
+		}
 	}
 }
 
@@ -2248,8 +2327,29 @@ Fancytree.prototype = /** @lends Fancytree# */{
 	},
 	// TODO: disable()
 	// TODO: enable()
-	// TODO: enableUpdate()
-
+	/** Temporarily suppress rendering to improve performance on bulk-updates.
+	 *
+	 * @param {boolean} flag
+	 * @returns {boolean} previous status
+	 * @since 2.19
+	 */
+	enableUpdate: function(flag) {
+		flag = ( flag !== false );
+		/*jshint -W018 */  // Confusing use of '!'
+		if ( !!this._enableUpdate === !!flag ) {
+			return flag;
+		}
+		/*jshint +W018 */
+		this._enableUpdate = flag;
+		if ( flag ) {
+			this.debug("enableUpdate(true): redraw ", this._dirtyRoots);
+			this.render();
+		} else {
+		// 	this._dirtyRoots = null;
+			this.debug("enableUpdate(false)...");
+		}
+		return !flag; // return previous value
+	},
 	/**Find all nodes that matches condition.
 	 *
 	 * @param {string | function(node)} match title string to search for, or a
@@ -2347,12 +2447,21 @@ Fancytree.prototype = /** @lends Fancytree# */{
 	 * In selectMode 3 only the topmost selected nodes are considered, unless
 	 * `opts.stopOnParents: false` is passed.
 	 *
-	 * @param {boolean | string} [selected=true] Pass false to disable, pass a string to overide the field name (default: 'ft_ID[]')
-	 * @param {boolean | string} [active=true] Pass false to disable, pass a string to overide the field name (default: 'ft_ID_active')
-	 * @param {object} [opts] default { stopOnParents: true }
+	 * @example
+	 * // Generate input elements for active and selected nodes
+	 * tree.generateFormElements();
+	 * // Generate input elements selected nodes, using a custom `name` attribute
+	 * tree.generateFormElements("cust_sel", false);
+	 * // Generate input elements using a custom filter
+	 * tree.generateFormElements(true, true, { filter: function(node) {
+	 *     return node.isSelected() && node.data.yes;
+	 * }});
+	 *
+	 * @param {boolean | string} [selected=true] Pass false to disable, pass a string to override the field name (default: 'ft_ID[]')
+	 * @param {boolean | string} [active=true] Pass false to disable, pass a string to override the field name (default: 'ft_ID_active')
+	 * @param {object} [opts] default { filter: null, stopOnParents: true }
 	 */
 	generateFormElements: function(selected, active, opts) {
-		// TODO: test case
 		opts = opts || {};
 
 		var nodeList,
@@ -2369,17 +2478,6 @@ Fancytree.prototype = /** @lends Fancytree# */{
 				id: id
 			}).hide().insertAfter(this.$container);
 		}
-		if(selected !== false){
-			nodeList = this.getSelectedNodes(stopOnParents);
-			$.each(nodeList, function(idx, node){
-				$result.append($("<input>", {
-					type: "checkbox",
-					name: selectedName,
-					value: node.key,
-					checked: true
-				}));
-			});
-		}
 		if(active !== false && this.activeNode){
 			$result.append($("<input>", {
 				type: "radio",
@@ -2387,6 +2485,28 @@ Fancytree.prototype = /** @lends Fancytree# */{
 				value: this.activeNode.key,
 				checked: true
 			}));
+		}
+		function _appender( node ) {
+			$result.append($("<input>", {
+				type: "checkbox",
+				name: selectedName,
+				value: node.key,
+				checked: true
+			}));
+		}
+		if ( opts.filter ) {
+			this.visit(function(node) {
+				var res = opts.filter(node);
+				if( res === "skip" ) { return res; }
+				if ( res !== false ) {
+					_appender(node);
+				}
+			});
+		} else if ( selected !== false ) {
+			nodeList = this.getSelectedNodes(stopOnParents);
+			$.each(nodeList, function(idx, node) {
+				_appender(node);
+			});
 		}
 	},
 	/**
@@ -2562,7 +2682,9 @@ Fancytree.prototype = /** @lends Fancytree# */{
 		}
 		for(key in loadMap){
 			node = root._findDirectChild(key);
-//            alert("loadKeyPath: lazy node(" + key + ") = " + node);
+			if (node == null) {  // #576
+				node = self.getNodeByKey(key);
+			}
 			dfd = new $.Deferred();
 			deferredList.push(dfd);
 			__lazyload(key, node, dfd);
@@ -2804,8 +2926,8 @@ $.extend(Fancytree.prototype,
 			handled = true,
 			activate = !(event.ctrlKey || !opts.autoActivate );
 
-//		(node || FT).debug("ftnode.nodeKeydown(" + event.type + "): ftnode:" + this + ", charCode:" + event.charCode + ", keyCode: " + event.keyCode + ", which: " + event.which);
-//		FT.debug("eventToString", which, '"' + String.fromCharCode(which) + '"', '"' + FT.eventToString(event) + '"');
+		// (node || FT).debug("ftnode.nodeKeydown(" + event.type + "): ftnode:" + this + ", charCode:" + event.charCode + ", keyCode: " + event.keyCode + ", which: " + event.which);
+		// FT.debug("eventToString", which, '"' + String.fromCharCode(which) + '"', '"' + FT.eventToString(event) + '"');
 
 		// Set focus to active (or first node) if no other node has the focus yet
 		if( !node ){
@@ -2817,7 +2939,9 @@ $.extend(Fancytree.prototype,
 			}
 		}
 
-		if( opts.quicksearch && clean && /\w/.test(whichChar) && !$target.is(":input:enabled") ) {
+		if( opts.quicksearch && clean && /\w/.test(whichChar) &&
+				!SPECIAL_KEYCODES[which] &&  // #659
+				!$target.is(":input:enabled") ) {
 			// Allow to search for longer streaks if typed in quickly
 			stamp = new Date().getTime();
 			if( stamp - tree.lastQuicksearchTime > 500 ) {
@@ -2853,12 +2977,14 @@ $.extend(Fancytree.prototype,
 			case "return":
 				tree.nodeSetActive(ctx, true);
 				break;
+			case "home":
+			case "end":
 			case "backspace":
 			case "left":
 			case "right":
 			case "up":
 			case "down":
-				res = node.navigate(event.which, activate);
+				res = node.navigate(event.which, activate, true);
 				break;
 			default:
 				handled = false;
@@ -3051,7 +3177,7 @@ $.extend(Fancytree.prototype,
 	nodeRemoveChild: function(ctx, childNode) {
 		var idx,
 			node = ctx.node,
-			opts = ctx.options,
+			// opts = ctx.options,
 			subCtx = $.extend({}, ctx, {node: childNode}),
 			children = node.children;
 
@@ -3072,14 +3198,13 @@ $.extend(Fancytree.prototype,
 		this.nodeRemoveChildren(subCtx);
 		idx = $.inArray(childNode, children);
 		_assert(idx >= 0, "invalid child");
+		// Notify listeners
+		node.triggerModifyChild("remove", childNode);
 		// Unlink to support GC
 		childNode.visit(function(n){
 			n.parent = null;
 		}, true);
 		this._callHook("treeRegisterNode", this, false, childNode);
-		if ( opts.removeNode ){
-			opts.removeNode.call(ctx.tree, {type: "removeNode"}, subCtx);
-		}
 		// remove from child list
 		children.splice(idx, 1);
 	},
@@ -3110,8 +3235,8 @@ $.extend(Fancytree.prototype,
 		var subCtx,
 			tree = ctx.tree,
 			node = ctx.node,
-			children = node.children,
-			opts = ctx.options;
+			children = node.children;
+			// opts = ctx.options;
 
 		// FT.debug("nodeRemoveChildren()", node.toString());
 		if(!children){
@@ -3128,13 +3253,10 @@ $.extend(Fancytree.prototype,
 		// Unlink children to support GC
 		// TODO: also delete this.children (not possible using visit())
 		subCtx = $.extend({}, ctx);
+		node.triggerModifyChild("remove", null);
 		node.visit(function(n){
 			n.parent = null;
 			tree._callHook("treeRegisterNode", tree, false, n);
-			if ( opts.removeNode ){
-				subCtx.node = n;
-				opts.removeNode.call(ctx.tree, {type: "removeNode"}, subCtx);
-			}
 		});
 		if( node.lazy ){
 			// 'undefined' would be interpreted as 'not yet loaded' for lazy nodes
@@ -3164,7 +3286,7 @@ $.extend(Fancytree.prototype,
 	 * Create `&lt;li>&lt;span>..&lt;/span> .. &lt;/li>` tags for this node.
 	 *
 	 * This method takes care that all HTML markup is created that is required
-	 * to display this node in it's current state.
+	 * to display this node in its current state.
 	 *
 	 * Call this method to create new nodes, or after the strucuture
 	 * was changed (e.g. after moving this node or adding/removing children)
@@ -3214,6 +3336,10 @@ $.extend(Fancytree.prototype,
 			successorLi = null;
 		// FT.debug("nodeRender(" + !!force + ", " + !!deep + ")", node.toString());
 
+		if( tree._enableUpdate === false ) {
+			// tree.debug("no render", tree._enableUpdate);
+			return;
+		}
 		if( ! isRootNode && ! parent.ul ) {
 			// Calling node.collapse on a deep, unrendered node
 			return;
@@ -3241,11 +3367,13 @@ $.extend(Fancytree.prototype,
 				firstTime = true;
 				node.li = document.createElement("li");
 				node.li.ftnode = node;
+
+				// We set role 'treeitem' to the title span instead
 				if(aria){
-					// TODO: why doesn't this work:
-//					node.li.role = "treeitem";
-//                    $(node.li).attr("role", "treeitem")
-//                    .attr("aria-labelledby", "ftal_" + opts.idPrefix + node.key);
+					// TODO: why does the next line don't work:
+					// node.li.role = "treeitem";
+					// $(node.li).attr("role", "treeitem");
+					// .attr("aria-labelledby", "ftal_" + opts.idPrefix + node.key);
 				}
 				if( node.key && opts.generateIds ){
 					node.li.id = opts.idPrefix + node.key;
@@ -3253,7 +3381,8 @@ $.extend(Fancytree.prototype,
 				node.span = document.createElement("span");
 				node.span.className = "fancytree-node";
 				if(aria){
-					$(node.span).attr("aria-labelledby", "ftal_" + opts.idPrefix + node.key);
+					$(node.li).attr("aria-labelledby", "ftal_" + opts.idPrefix + node.key);
+					// $(node.span).attr("aria-labelledby", "ftal_" + opts.idPrefix + node.key);
 				}
 				node.li.appendChild(node.span);
 
@@ -3365,7 +3494,7 @@ $.extend(Fancytree.prototype,
 		if(title !== undefined){
 			node.title = title;
 		}
-		if(!node.span){
+		if ( !node.span || tree._enableUpdate === false ) {
 			// Silently bail out if node was not rendered yet, assuming
 			// node.render() will be called as the node becomes visible
 			return;
@@ -3448,9 +3577,15 @@ $.extend(Fancytree.prototype,
 		if ( opts.renderTitle ){
 			nodeTitle = opts.renderTitle.call(tree, {type: "renderTitle"}, ctx) || "";
 		}
-		if(!nodeTitle){
-			tooltip = node.tooltip ? " title='" + _escapeHtml(node.tooltip) + "'" : "";
+		if ( !nodeTitle ) {
+			if( node.tooltip ) {
+				tooltip = node.tooltip;
+			} else if ( opts.tooltip ) {
+				tooltip = opts.tooltip === true ? node.title : opts.tooltip.call(tree, node);
+			}
+			tooltip = tooltip ? " title='" + _escapeTooltip(tooltip) + "'" : "";
 			id = aria ? " id='ftal_" + opts.idPrefix + node.key + "'" : "";
+			// role = "";
 			role = aria ? " role='treeitem'" : "";
 			tabindex = opts.titlesTabbable ? " tabindex='0'" : "";
 
@@ -3482,13 +3617,13 @@ $.extend(Fancytree.prototype,
 			hasChildren = node.hasChildren(),
 			isLastSib = node.isLastSibling(),
 			aria = opts.aria,
-//            $ariaElem = aria ? $(node[tree.ariaPropName]) : null,
+			// $ariaElem = aria ? $(node[tree.ariaPropName]) : null,
 			$ariaElem = $(node.span).find(".fancytree-title"),
 			cn = opts._classNames,
 			cnList = [],
 			statusElem = node[tree.statusClassPropName];
 
-		if( !statusElem ){
+		if( !statusElem || tree._enableUpdate === false ){
 			// if this function is called for an unrendered node, ignore it (will be updated on nect render anyway)
 			return;
 		}
@@ -3504,27 +3639,23 @@ $.extend(Fancytree.prototype,
 		}
 		if( tree.focusNode === node ){
 			cnList.push(cn.focused);
-			if(aria){
-//              $(">span.fancytree-title", statusElem).attr("tabindex", "0");
-//                $(">span.fancytree-title", statusElem).attr("tabindex", "-1");
-				// TODO: is this the right element for this attribute?
-				$ariaElem
-					.attr("aria-activedescendant", true);
-//					.attr("tabindex", "-1");
-			}
+			// if(aria){
+			// 	$ariaElem.attr("aria-activedescendant", true);
+			// }
 		}else if(aria){
-//			$(">span.fancytree-title", statusElem).attr("tabindex", "-1");
-			$ariaElem
-				.removeAttr("aria-activedescendant");
-//				.removeAttr("tabindex");
+			// $ariaElem.removeAttr("aria-activedescendant");
 		}
 		if( node.expanded ){
 			cnList.push(cn.expanded);
 			if(aria){
 				$ariaElem.attr("aria-expanded", true);
 			}
-		}else if(aria){
-			$ariaElem.removeAttr("aria-expanded");
+		}else if( aria ){
+			if( hasChildren ) {
+				$ariaElem.attr("aria-expanded", false);
+			} else {
+				$ariaElem.removeAttr("aria-expanded");
+			}
 		}
 		if( node.folder ){
 			cnList.push(cn.folder);
@@ -3633,8 +3764,8 @@ $.extend(Fancytree.prototype,
 				_assert(tree.activeNode === null, "deactivate was out of sync?");
 			}
 			if(opts.activeVisible){
-				// tree.nodeMakeVisible(ctx);
-				node.makeVisible({scrollIntoView: false}); // nodeSetFocus will scroll
+				// If no focus is set (noFocus: true) and there is no focused node, this node is made visible.
+				node.makeVisible({scrollIntoView: noFocus && tree.focusNode == null});
 			}
 			tree.activeNode = node;
 			tree.nodeRenderStatus(ctx);
@@ -3819,10 +3950,14 @@ $.extend(Fancytree.prototype,
 		// ctx.node.debug("nodeSetFocus(" + flag + ")");
 		var ctx2,
 			tree = ctx.tree,
-			node = ctx.node;
+			node = ctx.node,
+			opts = tree.options,
+			// et = ctx.originalEvent && ctx.originalEvent.type,
+			isInput = ctx.originalEvent ? $(ctx.originalEvent.target).is(":input") : false;
 
 		flag = (flag !== false);
 
+		// (node || tree).debug("nodeSetFocus(" + flag + "), event: " + et + ", isInput: "+ isInput);
 		// Blur previous node if any
 		if(tree.focusNode){
 			if(tree.focusNode === node && flag){
@@ -3842,8 +3977,10 @@ $.extend(Fancytree.prototype,
 			}
 			node.makeVisible({scrollIntoView: false});
 			tree.focusNode = node;
-			if( tree.options.titlesTabbable ) {
-				$(node.span).find(".fancytree-title").focus();
+			if( opts.titlesTabbable ) {
+				if( !isInput ) { // #621
+					$(node.span).find(".fancytree-title").focus();
+				}
 			} else {
 				// We cannot set KB focus to a node, so use the tree container
 				// #563, #570: IE scrolls on every call to .focus(), if the container
@@ -3853,13 +3990,16 @@ $.extend(Fancytree.prototype,
 					$(tree.$container).focus();
 				}
 			}
-
+			if( opts.aria ){
+				$(tree.$container).attr("aria-activedescendant",
+					"ftal_" + opts.idPrefix + node.key);
+			}
 //			$(node.span).find(".fancytree-title").focus();
 			this._triggerNodeEvent("focus", ctx);
-//          if(ctx.options.autoActivate){
+//          if( opts.autoActivate ){
 //              tree.nodeSetActive(ctx, true);
 //          }
-			if(ctx.options.autoScroll){
+			if( opts.autoScroll ){
 				node.scrollIntoView();
 			}
 			this._callHook("nodeRenderStatus", ctx);
@@ -3877,7 +4017,7 @@ $.extend(Fancytree.prototype,
 		// flag defaults to true
 		flag = (flag !== false);
 
-		node.debug("nodeSetSelected(" + flag + ")", ctx);
+		// node.debug("nodeSetSelected(" + flag + ")", ctx);
 		if( node.unselectable){
 			return;
 		}
@@ -4127,6 +4267,9 @@ $.extend(Fancytree.prototype,
 			}
 			this.$container.toggleClass("fancytree-treefocus", flag);
 			this._triggerTreeEvent(flag ? "focusTree" : "blurTree");
+			if( flag && !this.activeNode ) {
+				this.getFirstChild() && this.getFirstChild().setFocus();
+			}
 		}
 	}
 });
@@ -4305,11 +4448,13 @@ $.widget("ui.fancytree",
 			rerender = true;
 			break;
 		case "escapeTitles":
+		case "tooltip":
 			rerender = true;
 			break;
 		case "source":
 			callDefault = false;
 			this.tree._callHook("treeLoad", this.tree, value);
+			rerender = true;
 			break;
 		}
 		this.tree.debug("set option " + key + "=" + value + " <" + typeof(value) + ">");
@@ -4364,7 +4509,8 @@ $.widget("ui.fancytree",
 			// tree.treeOnFocusInOut.call(tree, event);
 			if(node){
 				// For example clicking into an <input> that is part of a node
-				tree._callHook("nodeSetFocus", node, flag);
+				tree._callHook("nodeSetFocus", tree._makeHookContext(node, event), flag);
+				// tree._callHook("nodeSetFocus", node, flag);
 			}else{
 				tree._callHook("treeSetFocus", tree, flag);
 			}
@@ -4484,7 +4630,7 @@ $.extend($.ui.fancytree,
 	/** @lends Fancytree_Static# */
 	{
 	/** @type {string} */
-	version: "2.18.0",      // Set to semver by 'grunt release'
+	version: "2.20.0",      // Set to semver by 'grunt release'
 	/** @type {string} */
 	buildType: "production", // Set to 'production' by 'grunt build'
 	/** @type {int} */

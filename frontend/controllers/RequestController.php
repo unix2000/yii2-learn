@@ -1,8 +1,9 @@
 <?php
 namespace frontend\controllers;
-
+use yii\web\Request;
 class RequestController extends BaseController{
     public function actionIndex(){
+		//无法作为参数注入,比如Request $req
         //phalcon2 
 //         if($this->request_cookies->has('username')){
 //             //echo $this->cookies->getValue('username');
@@ -14,7 +15,10 @@ class RequestController extends BaseController{
 // 		$this->request->get('sex',1);
 // 		$this->request->baseUrl;
 // 		$this->request->cookies->add($cookie);
-		dump(\Yii::$app->getRequest()->getCookies());
+		//dump(\Yii::$app->getRequest()->getCookies());
+		//dump(\Yii::$app->request);
+		$req = new Request;
+		dump($req->isGet);
     }
     
     public function actionFilters(){

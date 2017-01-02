@@ -41,7 +41,11 @@
         "2amigos/yii2-qrcode-helper": "~1.0",
         "yiisoft/yii2-httpclient": "2.0.x-dev",
         "bshaffer/oauth2-server-php": "*",
-        "qiniu/php-sdk": "^7.0"
+        "qiniu/php-sdk": "^7.0",
+        "zelenin/yii2-semantic-ui": "~2",
+        "mdmsoft/yii2-admin": "~2.0",
+        "mhndev/yii2-repository": "1.*",
+        "yiisoft/yii2-shell": "^2.0"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
