@@ -8,11 +8,16 @@ class HttpController extends Controller {
 		$client = new Client();
 		$response = $client->createRequest()
 		    ->setMethod('get')
-		    ->setUrl('http://phalapi.oschina.mopaas.com/Public/demo/')
+		    ->setUrl('https://api.douban.com/v2/movie/top250?count=10')
+		    // ->setUrl('http://phalapi.oschina.mopaas.com/Public/demo/')
 		    //->setData(['name' => 'John Doe', 'email' => 'johndoe@domain.com'])
 		    ->send();
 		if ($response->isOk) {
 		    dump($response->data);
 		}
+	}
+	public function actionJqueryAjax()
+	{
+		return $this->render('jquery-ajax.php');
 	}
 } 

@@ -81,6 +81,23 @@ return [
 		]
 	],
     'components' => [
+        //restful response setting
+        // 'response' => [
+        //     'format' => yii\web\Response::FORMAT_JSON,
+        //     'charset' => 'UTF-8',
+        //     'on beforeSend' => function ($event) {
+        //         $response = $event->sender;
+        //         if ($response->data !== null)
+        //         {
+        //             $return = ($response->statusCode == 200 ? $response->data : $response->data['message']);
+        //             $response->data = [
+        //                 'success' => ($response->statusCode === 200),
+        //                 'status' => $response->statusCode,
+        //                 'response' => $return
+        //             ];
+        //         }
+        //     }
+        // ],
 		'assetManager' => [
 			'converter' => [
 				'class' => 'yii\web\AssetConverter',

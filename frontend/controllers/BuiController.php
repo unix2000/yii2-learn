@@ -6,6 +6,10 @@ use frontend\models\Items;
 
 class BuiController extends Controller 
 {
+    public function actionListbox()
+    {
+    	return $this->render('listbox');
+    }
     public function actionGrid()
     {
         return $this->render('grid');

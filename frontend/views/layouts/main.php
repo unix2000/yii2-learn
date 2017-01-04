@@ -25,8 +25,8 @@ AppAsset::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
-
-<div class="wrap">
+<!-- root id app for vue -->
+<div class="wrap" id="app">
     <?php
     NavBar::begin([
         'brandLabel' => 'My Company',

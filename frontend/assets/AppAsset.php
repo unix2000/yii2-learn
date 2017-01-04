@@ -15,7 +15,6 @@ use yii\web\AssetBundle;
  */
 class AppAsset extends AssetBundle
 {
-    //asset Ù–‘
 	//basePath
 	//baseUrl
 	//css
@@ -67,6 +66,9 @@ class AppAsset extends AssetBundle
 		'https://cdn.datatables.net/fixedheader/3.1.2/js/dataTables.fixedHeader.min.js',
 		'https://cdn.datatables.net/select/1.2.1/js/dataTables.select.min.js',
 		'static/repeatable/repeatable-fields.js',
+		'https://unpkg.com/vue@2.1.8/dist/vue.js',
+		'https://unpkg.com/vue-router/dist/vue-router.js',
+		'https://unpkg.com/vue-resource@1.0.3/dist/vue-resource.min.js',
 		//'js/app.ts',
     ];
     public $depends = [
