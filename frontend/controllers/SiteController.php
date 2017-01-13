@@ -60,10 +60,23 @@ class SiteController extends Controller
             ],
             'captcha' => [
                 'class' => 'yii\captcha\CaptchaAction',
-                'minLength' => 3,
-                'maxLength' => 3,
+                'testLimit'=> 1,
+                'minLength' => 4,
+                'maxLength' => 4,
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+                'height' => 40,
+                'width' => 100,
+                'backColor' => 0xfff7ff,
+                'foreColor' => 0x336789,
+                'padding' => 0,
+                'transparent' => true,
+                'offset' => 5,
+                'fontFile' => '@yii/captcha/SpicyRice.ttf'
             ],
+//             'math' => [
+//                 'class' => 'frontend\components\MathCaptchaAction',
+//                 'fixedVerifyCode' => YII_ENV_TEST ? '42' : null,
+//             ],
         ];
     }
 

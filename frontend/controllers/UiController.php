@@ -8,9 +8,50 @@ use dosamigos\qrcode\QrCode;
 use frontend\models\Items;
 use frontend\models\Dept;
 use yii\base\Security;
+use yii\web\UploadedFile;
+use yii\captcha\CaptchaValidator;
 
 class UiController extends Controller{
 	//public $enableCsrfValidation = false; //数据无法正确验证提交,不建议关闭csrf
+	public function actions()
+	{
+	    return [
+	       
+	    ];
+	}
+	public function actionLogin()
+	{
+	    return $this->render('login'); 
+	}
+	public function actionLoginCheck()
+	{
+	    $req = \Yii::$app->getRequest();
+	    if ($req->isAjax) {
+	        $data = $req->post('username');
+	        $verify = $req->post('verify');
+	        //手工验证验证码
+	        $captcha = new CaptchaValidator();
+	        // if ($captcha->validate($verify)) //永远为false 诡异
+	        //     $info = '验证码错误';
+	        $info = '返回信息';
+	        echo json_encode([
+	            'status' => 0,
+// 	            'info' => '登陆成功',
+	            'info' => $info,
+	            'url' => '/site/index',
+	            'data' => $data
+	        ]);
+	    }
+	}
+	public function actionTests()
+	{
+// 		du(\Yii::$app->getSession());
+//         du(\Yii::$app->getSession());
+//         $value = "jngl";
+// 	    $captcha = new CaptchaValidator();
+// 	    du($captcha->validate($value));
+	    return $this->render('tests');
+	}
 	public function actionRepeatable()
 	{
 		return $this->render('repeatable');
@@ -28,9 +69,26 @@ class UiController extends Controller{
 		// du($req->bodyParams); 
 		// $req->getBodyParam('name')
 	}
+	
 	public function actionAjaxForm()
 	{
 		return $this->renderPartial('ajax-form');
+	}
+	
+	public function actionAjaxSubmit()
+	{
+	    return $this->render('ajax-submit');
+	}
+	public function actionAjaxStore(){
+	    $req = \Yii::$app->getRequest();
+	    if ($req->isAjax) {
+// 	        echo 'ok-ok';
+            $data = $req->post();
+            $attach = UploadedFile::getInstanceByName('attach');
+            if ($attach) 
+                echo 'attach ok';
+//             echo json_encode($data);
+	    }
 	}
 	//jquery datatables
 	public function actionDatatables()
@@ -256,5 +314,10 @@ class UiController extends Controller{
             ]
         ]);
         return $pdf->render();
+    }
+    //ajax get html form
+    public function actionAjaxLoad()
+    {
+    	return $this->render('ajax-load');
     }
 }

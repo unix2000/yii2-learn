@@ -107,7 +107,7 @@ return [
 				],
 			],
 			//'linkAssets' => true,
-			'appendTimestamp' => true, //¼ÓÈëcssºÍjsÎÄ¼þÊ±¼ä´Á°æ±¾ºÅ
+			'appendTimestamp' => true, 
 			'assetMap' => [
 				//'jquery.js' => 'https://unpkg.com/jquery@2.2.4/dist/jquery.js',
 				//'jquery.min.js' => 'https://unpkg.com/jquery@2.2.4/dist/jquery.min.js'
@@ -120,8 +120,9 @@ return [
 						'http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js'
 					]
 				],
-				//'yii\bootstrap\BootstrapAsset' => false,
-				//'yii\web\YiiAsset' => false,
+// 				'yii\bootstrap\BootstrapAsset' => false, //禁用bootstrap.css
+// 			    'yii\bootstrap\BootstrapPluginAsset' => false, //禁用bootstrap.js
+// 				'yii\web\YiiAsset' => false,
 			]
 		],
     	'view' => [
@@ -209,6 +210,8 @@ return [
             ],
         ],
         'errorHandler' => [
+            'maxSourceLines' => 20,
+            'maxTraceSourceLines' => 13,
             'errorAction' => 'site/error',
         ],
         'urlManager' => [

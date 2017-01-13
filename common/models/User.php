@@ -23,6 +23,41 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
 {
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
+    
+    //restful api
+    public function fields()
+    {
+        return [
+            'id',
+            'username',
+            'full_name' => function ($model) {
+                return $model->getFullName();
+            }
+    
+        ];
+    }
+    public function extraFields()
+    {
+        //relation fields 关联字段
+//         return ['role'];
+    }
+    public static function httpBasicAuth($username, $password){
+        $model = static::findOne([ 'username' => $username ]);
+        if ($model == NULL)
+            return NULL;
+        if (password_verify($password, $model->password_hash))
+            return $model;
+        return NULL;
+    }
+    
+    public static function loginByAccessToken($accessToken){
+        //测试使用，与findIdentityByAccessToken类似
+        return static::findOne(['auth_key' => $accessToken]);
+    }
+    public function getFullName()
+    {
+        return $this->id .'==='. $this->username;
+    }
     /**
      * @inheritdoc
      */

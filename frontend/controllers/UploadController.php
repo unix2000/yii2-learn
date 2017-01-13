@@ -9,6 +9,10 @@ use yii\web\NotFoundHttpException;
 use yii\web\Controller;
 
 class UploadController extends Controller {
+    public function actionBootstrapImg()
+    {
+        return $this->render('bootstrap-img');
+    }
     public function actionIndex(){
     	// $id = $this->request->get('id');
         $id = \Yii::$app->request->get('id');

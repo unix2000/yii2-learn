@@ -9,7 +9,7 @@
 <p class="row">
     <form class="span8 offset3" id="J_Form" action="" method="post">
     <input type="hidden" name="gridValue">
-    <button type="sumbmit" class="button button-primary">提交</button>
+    <button type="sumbmit" class="button button-primary" id="bSubmit">提交</button>
     </form>
 </p>
 
@@ -28,7 +28,8 @@ $js = <<< JS
             {title : 'check',dataIndex :'f', checkable : true}
  
           ],
-          data = [{a:'123',e:'2,3',f:false},{a:'cdd',c:1363924044176,f:true},{a:'1333',b:2222,d:2,f:false}];
+//           data = [{a:'123',e:'2,3',f:false},{a:'cdd',c:1363924044176,f:true},{a:'1333',b:2222,d:2,f:false}];
+        data = [];
         function valid(value){
           if(value === '1'){
             return '不能选择1';
@@ -68,7 +69,12 @@ $js = <<< JS
  
         grid.render();
  
-        
+        $('#bSubmit').on('click',function(e){
+            e.preventDefault();
+//             alert();
+//             console.log(grid.getSelection());
+            console.log(grid.getItems());
+        });
  
         function validFn (value,obj) {
           var records = store.getResult(),

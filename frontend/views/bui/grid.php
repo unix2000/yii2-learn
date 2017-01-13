@@ -42,10 +42,19 @@ $js = <<< JS
             //},
             pageSize:12	// 配置分页数目
           }),
+        //simpleGrid
+//         grid = new Grid.SimpleGrid({
+//             render: '#grid',
+//             columns: columns,
+//             store: store,
+//             loadMask: true,
+//             innerBorder : false,
+//             tableCls:'uk-table uk-table-bordered uk-table-striped'
+//         });
           grid = new Grid.Grid({
             render:'#grid',
             columns : columns,
-            loadMask: false, //加载数据时显示屏蔽层
+            loadMask: true, //加载数据时显示屏蔽层
             store: store,
 			plugins : [Grid.Plugins.RadioSelection]
 			//plugins : [Grid.Plugins.CheckSelection]

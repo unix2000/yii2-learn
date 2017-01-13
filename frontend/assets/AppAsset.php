@@ -47,6 +47,9 @@ class AppAsset extends AssetBundle
 		'static/datatables/media/css/dataTables.uikit.min.css',
 		'https://cdn.datatables.net/fixedheader/3.1.2/css/fixedHeader.dataTables.min.css',
 		'https://cdn.datatables.net/select/1.2.1/css/select.dataTables.min.css',
+		'https://unpkg.com/element-ui/lib/theme-default/index.css',
+        'static/bootstrap-img-upload/dist/css/bootstrap-imageupload.min.css',
+        'static/validator/dist/jquery.validator.css',
 		//'css/app.less'
     ];
     public $js = [
@@ -69,6 +72,15 @@ class AppAsset extends AssetBundle
 		'https://unpkg.com/vue@2.1.8/dist/vue.js',
 		'https://unpkg.com/vue-router/dist/vue-router.js',
 		'https://unpkg.com/vue-resource@1.0.3/dist/vue-resource.min.js',
+// 		'https://cdn.bootcss.com/react/15.4.1/react.min.js',
+// 		'https://cdn.bootcss.com/react/15.4.1/react-dom.min.js',
+		// 'https://cdn.bootcss.com/babel-core/6.1.19/browser.min.js',
+// 		'https://cdn.bootcss.com/babel-core/5.8.38/browser.min.js',
+		'https://unpkg.com/element-ui/lib/index.js',
+        'static/jquery.fajax.min.js',
+        'static/bootstrap-img-upload/dist/js/bootstrap-imageupload.min.js',
+        'static/validator/dist/jquery.validator.min.js',
+        'static/validator/dist/local/zh-CN.js',
 		//'js/app.ts',
     ];
     public $depends = [
@@ -76,6 +88,7 @@ class AppAsset extends AssetBundle
         'yii\bootstrap\BootstrapAsset',
 		'yii\web\JqueryAsset',
         'Zelenin\yii\SemanticUI\assets\SemanticUICSSAsset',
+        'Zelenin\yii\SemanticUI\assets\SemanticUIJSAsset',
 		'yii\jui\JuiAsset',
     ];
 }

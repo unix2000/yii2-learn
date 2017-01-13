@@ -104,24 +104,22 @@ a.desc:after {
     text-decoration: none;
 }
 
-/*3.4.6 表单验证*/
-/*文本框的错误状态*/
 .Validform_error,input.error,select.error{background-color:#fbe2e2; border-color:#c66161; color:#c00}
 .Validform_wrong,.Validform_right,.Validform_warning{display:inline-block;height:20px;font-size:12px;vertical-align:middle; padding-left:25px}
-/*错误*/
+
 .Validform_wrong{background:url(../assets/images/validform/iconpic-error.png) no-repeat 0 center;color:#ef392b}
-/*正确*/
+
 .Validform_right{background:url(../assets/images/validform/iconpic-right.png) no-repeat 0 center}
-/*警告*/
+
 .Validform_warning{background:url(../assets/images/validform/iconpic-warning.png) no-repeat 0 center;color:#777}
 label.error{ position: absolute; right: 18px; top: 5px;color:#ef392b; font-size: 12px}
-/*密码等级*/
+
 .passwordStrength b{font-weight:400}
 .passwordStrength b,.passwordStrength span{display:inline-block; vertical-align:middle;line-height:16px;line-height:18px\9;height:16px}
 .passwordStrength span{width:57px;text-align:center;background-color:#d0d0d0;	border-right:1px solid #fff}
 .passwordStrength .last{border-right:none}
 .passwordStrength .bgStrength{color:#fff;background-color:#fcc900}
-/*Validform对话框*/
+
 #Validform_msg{font-size:14px;width:300px; -webkit-box-shadow:2px 2px 3px #aaa; -moz-box-shadow:2px 2px 3px #aaa; background:#fff; position:absolute; top:0px; right:50px; z-index:99999; display:none;filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color='#999999'); box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1)}
 #Validform_msg .iframe{position:absolute; left:0px; top:-1px; z-index:-1}
 #Validform_msg .Validform_title{font-size:20px; padding:10px;text-align:left;color:#fff; position:relative; background-color:#fcc900}
@@ -196,3 +194,57 @@ label.error{ position: absolute; right: 18px; top: 5px;color:#ef392b; font-size:
   background-color: #fff;
   border-color: #ddd;
 }
+.welcome{
+    color:#ddd;
+    padding:1px;
+}
+.reloadverify{
+    color:#69C3FF;
+}
+img.verifyimg{
+	border: 0px solid #ececec;
+	width: 60%;
+    cursor: pointer;
+}
+.login-form .login-btn {
+    padding: 3px 0;
+    width: 100%;
+    height: 48px;
+    font-size: 22px;
+    font-weight: bold;
+    font-family: '寰蒋闆呴粦',arial,verdana;
+    color: #FFFFFF;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 0;
+    background-color: #40C402;
+}
+.login-form .login-btn:hover {
+    background-color: #42EC00;
+}
+.login-form .login-btn[disabled] {
+    opacity: 0.6;
+    filter: alpha(opacity=60);
+    cursor: default;
+    box-shadow: none;
+}
+.login-form .login-btn .in {
+    display: none;
+}
+.login-form .log-in .in {
+    display: inline-block;
+}
+.login-form .log-in .on {
+    display: none;
+}
+.icon-loading {
+    display: inline-block;
+    margin-right: 5px;
+    width: 16px;
+    height: 16px;
+    vertical-align: -3px;
+    background: url(../assets/images/loading_icon.gif) no-repeat 0 0;
+}
+
+

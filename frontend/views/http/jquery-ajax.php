@@ -12,9 +12,7 @@
 	//如果定义js函数,加载js必须这样写
 	$this->beginBlock('js');
 ?>
-function success_jsonpCallback() {
-	return [];
-}
+
 function getdata(){
 	var lists = "";
 	$.ajax({
