@@ -38813,3 +38813,470 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1483786338.3165
     'REQUEST_TIME' => 1483786338
 ]
+2017-01-20 23:02:25 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "v1/items".' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php:462
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('v1/items', Array)
+#1 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\xampp\htdocs\advanced\api\web\index.php(23): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php:112
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\xampp\htdocs\advanced\api\web\index.php(23): yii\base\Application->run()
+#2 {main}
+2017-01-20 23:02:25 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/v1/items'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANDROID_HOME' => 'D:\\develop\\java\\sdk'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'ChocolateyInstall' => 'C:\\ProgramData\\chocolatey'
+    'ChocolateyLastPathUpdate' => '周一 11月 14 18:43:30 2016'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOPATH' => 'd:\\Gopath'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Python27\\;C:\\Python27\\Scripts;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\develop\\phpstudy\\php56n;D:\\HashiCorp\\Vagrant\\bin;d:\\Gopath/bin;D:\\nodejs;C:\\Program Files (x86)\\Yarn\\bin;D:\\develop\\java\\sdk\\platform-tools;D:\\develop\\java\\sdk\\tools;C:\\Program Files\\Git\\cmd;C:\\Program Files (x86)\\Brackets\\command;d:\\ruby\\Ruby23-x64\\bin;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\;C:\\Users\\liner\\AppData\\Roaming\\npm;E:\\devkit\\bin;E:\\devkit\\mingw\\bin;C:\\Program Files (x86)\\Microsoft VS Code\\bin'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.75 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'api.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'api.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '51187'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/api/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/v1/items'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/v1/items&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/api/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/api/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1484924544.0512
+    'REQUEST_TIME' => 1484924544
+]
+2017-01-20 23:02:27 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "favicon.ico".' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php:462
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('favicon.ico', Array)
+#1 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\xampp\htdocs\advanced\api\web\index.php(23): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php:112
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\xampp\htdocs\advanced\api\web\index.php(23): yii\base\Application->run()
+#2 {main}
+2017-01-20 23:02:27 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/favicon.ico'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANDROID_HOME' => 'D:\\develop\\java\\sdk'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'ChocolateyInstall' => 'C:\\ProgramData\\chocolatey'
+    'ChocolateyLastPathUpdate' => '周一 11月 14 18:43:30 2016'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOPATH' => 'd:\\Gopath'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Python27\\;C:\\Python27\\Scripts;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\develop\\phpstudy\\php56n;D:\\HashiCorp\\Vagrant\\bin;d:\\Gopath/bin;D:\\nodejs;C:\\Program Files (x86)\\Yarn\\bin;D:\\develop\\java\\sdk\\platform-tools;D:\\develop\\java\\sdk\\tools;C:\\Program Files\\Git\\cmd;C:\\Program Files (x86)\\Brackets\\command;d:\\ruby\\Ruby23-x64\\bin;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\;C:\\Users\\liner\\AppData\\Roaming\\npm;E:\\devkit\\bin;E:\\devkit\\mingw\\bin;C:\\Program Files (x86)\\Microsoft VS Code\\bin'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_REFERER' => 'http://api.dev/v1/items'
+    'HTTP_ACCEPT' => 'image/webp,image/*,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.75 Safari/537.36'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'api.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'api.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '51192'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/api/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/favicon.ico'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/favicon.ico&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/api/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/api/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1484924546.0641
+    'REQUEST_TIME' => 1484924546
+]
+2017-01-20 23:02:33 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "v1/item".' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php:462
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('v1/item', Array)
+#1 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\xampp\htdocs\advanced\api\web\index.php(23): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php:112
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\xampp\htdocs\advanced\api\web\index.php(23): yii\base\Application->run()
+#2 {main}
+2017-01-20 23:02:33 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/v1/item'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANDROID_HOME' => 'D:\\develop\\java\\sdk'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'ChocolateyInstall' => 'C:\\ProgramData\\chocolatey'
+    'ChocolateyLastPathUpdate' => '周一 11月 14 18:43:30 2016'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOPATH' => 'd:\\Gopath'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Python27\\;C:\\Python27\\Scripts;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\develop\\phpstudy\\php56n;D:\\HashiCorp\\Vagrant\\bin;d:\\Gopath/bin;D:\\nodejs;C:\\Program Files (x86)\\Yarn\\bin;D:\\develop\\java\\sdk\\platform-tools;D:\\develop\\java\\sdk\\tools;C:\\Program Files\\Git\\cmd;C:\\Program Files (x86)\\Brackets\\command;d:\\ruby\\Ruby23-x64\\bin;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\;C:\\Users\\liner\\AppData\\Roaming\\npm;E:\\devkit\\bin;E:\\devkit\\mingw\\bin;C:\\Program Files (x86)\\Microsoft VS Code\\bin'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.75 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'api.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'api.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '51196'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/api/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/v1/item'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/v1/item&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/api/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/api/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1484924552.737
+    'REQUEST_TIME' => 1484924552
+]
+2017-01-20 23:02:40 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "v1/item".' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php:462
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('v1/item', Array)
+#1 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\xampp\htdocs\advanced\api\web\index.php(23): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php:112
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\xampp\htdocs\advanced\api\web\index.php(23): yii\base\Application->run()
+#2 {main}
+2017-01-20 23:02:39 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/v1/item'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANDROID_HOME' => 'D:\\develop\\java\\sdk'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'ChocolateyInstall' => 'C:\\ProgramData\\chocolatey'
+    'ChocolateyLastPathUpdate' => '周一 11月 14 18:43:30 2016'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOPATH' => 'd:\\Gopath'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Python27\\;C:\\Python27\\Scripts;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\develop\\phpstudy\\php56n;D:\\HashiCorp\\Vagrant\\bin;d:\\Gopath/bin;D:\\nodejs;C:\\Program Files (x86)\\Yarn\\bin;D:\\develop\\java\\sdk\\platform-tools;D:\\develop\\java\\sdk\\tools;C:\\Program Files\\Git\\cmd;C:\\Program Files (x86)\\Brackets\\command;d:\\ruby\\Ruby23-x64\\bin;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\;C:\\Users\\liner\\AppData\\Roaming\\npm;E:\\devkit\\bin;E:\\devkit\\mingw\\bin;C:\\Program Files (x86)\\Microsoft VS Code\\bin'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.75 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'api.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'api.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '51203'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/api/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/v1/item'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/v1/item&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/api/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/api/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1484924558.9436
+    'REQUEST_TIME' => 1484924558
+]
+2017-01-20 23:03:29 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request: v1/user/' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Controller.php:125
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('', Array)
+#1 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('v1/user', Array)
+#2 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#3 D:\xampp\htdocs\advanced\api\web\index.php(23): yii\base\Application->run()
+#4 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\web\Application.php:112
+Stack trace:
+#0 D:\xampp\htdocs\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\xampp\htdocs\advanced\api\web\index.php(23): yii\base\Application->run()
+#2 {main}
+2017-01-20 23:03:29 [127.0.0.1][-][-][info][application] $_GET = [
+    '_url' => '/v1/user'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANDROID_HOME' => 'D:\\develop\\java\\sdk'
+    'APPDATA' => 'C:\\Users\\liner\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'ChocolateyInstall' => 'C:\\ProgramData\\chocolatey'
+    'ChocolateyLastPathUpdate' => '周一 11月 14 18:43:30 2016'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'WIN81'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'DOCKER_TOOLBOX_INSTALL_PATH' => 'd:\\docker\\Docker_Toolbox'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'GOPATH' => 'd:\\Gopath'
+    'GOROOT' => 'D:\\Go\\'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\liner'
+    'LOCALAPPDATA' => 'C:\\Users\\liner\\AppData\\Local'
+    'LOGONSERVER' => '\\\\WIN81'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Python27\\;C:\\Python27\\Scripts;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;D:\\develop\\php\\phalcon\\phalcon-devtools-2.0.10;D:\\develop\\cache\\redis\\;D:\\Go\\bin;D:\\develop\\phpstudy\\php56n;D:\\HashiCorp\\Vagrant\\bin;d:\\Gopath/bin;D:\\nodejs;C:\\Program Files (x86)\\Yarn\\bin;D:\\develop\\java\\sdk\\platform-tools;D:\\develop\\java\\sdk\\tools;C:\\Program Files\\Git\\cmd;C:\\Program Files (x86)\\Brackets\\command;d:\\ruby\\Ruby23-x64\\bin;d:\\docker\\Docker_Toolbox;C:\\Users\\liner\\AppData\\Local\\.meteor\\;C:\\Users\\liner\\AppData\\Roaming\\npm;E:\\devkit\\bin;E:\\devkit\\mingw\\bin;C:\\Program Files (x86)\\Microsoft VS Code\\bin'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 37 Stepping 2, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2502'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\liner\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'WIN81'
+    'USERDOMAIN_ROAMINGPROFILE' => 'WIN81'
+    'USERNAME' => 'liner'
+    'USERPROFILE' => 'C:\\Users\\liner'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    '__COMPAT_LAYER' => 'Installer'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.75 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'api.dev'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'api.dev'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '51228'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.6.2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs/advanced/api/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/v1/user'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_url=/v1/user&'
+    'PATH_TRANSLATED' => 'D:/xampp/htdocs/advanced/api/web'
+    'PATH_INFO' => ''
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/advanced/api/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1484924608.491
+    'REQUEST_TIME' => 1484924608
+]

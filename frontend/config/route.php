@@ -9,4 +9,6 @@ return [
         'route' => 'route/types',
         'encodeParams' => true,
     ],
+    '<alias:abc>' => 'tests/test',
+    'page/<alias>' => 'tests/test',
 ];

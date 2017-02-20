@@ -2,6 +2,8 @@
 // use Yii;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
+use frontend\models\Dept;
+
 
 function json_output($data){
     \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
@@ -70,4 +72,24 @@ function du($var, $echo=true, $label=null, $strict=true) {
 function globals_tests($param){
     //echo $param->data.'<br />';
     dump($param->data);
+}
+
+function childs($id = 0)
+{
+    //bui tree格式数据,暂用dept，模型为id，pid结构
+    $data = Dept::find()
+        //->select(['id as key','dept_name as title'])
+        ->select([ 'id' , 'dept_name' ])
+        ->where([ 'dept_parent' => $id ])->asArray()->all();
+    $arr = array();
+    foreach ( $data as $k => $v ) {
+        $arr[$k]['id'] = $v['id'];
+        $arr[$k]['text'] = $v['dept_name'];
+        $count = Dept::find()->where([ 'dept_parent' => $v['id'] ])->count();
+        if( $count > 0 ) {
+//             $arr[$k]['expanded'] = true;
+            $arr[$k]['children'] = childs($v['id']);
+        }
+    }
+    return $arr;
 }

@@ -7,10 +7,24 @@ use yii\web\HttpException;
 use yii\helpers\Url;
 use frontend\models\Tree;
 use Yii;
+use yii\base\Object;
+use frontend\components\cart\ShoppingCart;
+use yii\helpers\Html;
 
 class TestsController extends Controller {
 // class TestsController extends BaseController {
-    public function actionTest()
+    protected $req;
+    protected $cart;
+//     public function __construct($id,$module, Request $req, $config = []){
+//         $this->req = $req;
+//         parent::__construct($id,$module,$config);
+//     }
+    public function __construct($id, $module, ShoppingCart $cart, $config = [])
+    {
+        $this->cart = $cart;
+        parent::__construct($id, $module, $config);
+    }
+    public function actionTest($alias)
     {
         // du(Yii::$app->extensions); //默认返回@vendor/yiisoft/extensions.php
         // du(Yii::$app->layout);
@@ -18,7 +32,12 @@ class TestsController extends Controller {
         // du(Yii::$app->viewPath);
         // du(Yii::$app->runtimePath);
         // du(Yii::$app->vendorPath);
-        
+//         du($this->req->isGet);
+//         du($this->cart);
+//         du(\Yii::$app->cart->getItems());
+//         $content = Html::tag('<h1>','content index');
+        $content = Html::tag('h2','Page is '. Html::encode($alias));
+        return $this->renderContent($content);
     }
 	public function behaviors()
 	{
@@ -51,6 +70,10 @@ class TestsController extends Controller {
         // echo 'ab webbench tests';
         du(\Yii::$app->user->identity);
         return $this->render('hello');
+    }
+    public function actionUrls()
+    {
+        return $this->render('urls');
     }
     public function actionContainer(){
         

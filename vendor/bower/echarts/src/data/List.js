@@ -410,8 +410,9 @@ define(function (require) {
      * Get extent of data in one dimension
      * @param {string} dim
      * @param {boolean} stack
+     * @param {Function} filter
      */
-    listProto.getDataExtent = function (dim, stack) {
+    listProto.getDataExtent = function (dim, stack, filter) {
         dim = this.getDimension(dim);
         var dimData = this._storage[dim];
         var dimInfo = this.getDimensionInfo(dim);
@@ -432,8 +433,10 @@ define(function (require) {
                 // if (isOrdinal && typeof value === 'string') {
                 //     value = zrUtil.indexOf(dimData, value);
                 // }
-                value < min && (min = value);
-                value > max && (max = value);
+                if (!filter || filter(value, dim, i)) {
+                    value < min && (min = value);
+                    value > max && (max = value);
+                }
             }
             return (this._extent[dim + !!stack] = [min, max]);
         }
@@ -887,11 +890,19 @@ define(function (require) {
     listProto.diff = function (otherList) {
         var idList = this._idList;
         var otherIdList = otherList && otherList._idList;
+        var val;
+        // Use prefix to avoid index to be the same as otherIdList[idx],
+        // which will cause weird udpate animation.
+        var prefix = 'e\0\0';
+
         return new DataDiffer(
-            otherList ? otherList.indices : [], this.indices, function (idx) {
-                return otherIdList[idx] || (idx + '');
-            }, function (idx) {
-                return idList[idx] || (idx + '');
+            otherList ? otherList.indices : [],
+            this.indices,
+            function (idx) {
+                return (val = otherIdList[idx]) != null ? val : prefix + idx;
+            },
+            function (idx) {
+                return (val = idList[idx]) != null ? val : prefix + idx;
             }
         );
     };

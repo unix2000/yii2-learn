@@ -1,8 +1,8 @@
 /*!
  * @package   yii2-editable
  * @author    Kartik Visweswaran <kartikv2@gmail.com>
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2015
- * @version   1.7.4
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2015 - 2017
+ * @version   1.7.5
  *
  * Editable Extension - PJAX processing script for popover-x
  *
@@ -36,18 +36,13 @@ var initEditablePjax = function () {
             if (option !== 'toggle') {
                 //noinspection JSPrimitiveTypeWrapperUsage
                 option.$target = $btn;
-                $dialog
-                    .popoverX(option)
-                    .popoverX('show')
-                    .on('hide', function () {
-                        $btn.focus();
-                    });
+                $dialog.popoverX(option).popoverX('show').on('hide', function () {
+                    $btn.focus();
+                });
             } else {
-                $dialog
-                    .popoverX(option)
-                    .on('hide', function () {
-                        $btn.focus();
-                    });
+                $dialog.popoverX(option).on('hide', function () {
+                    $btn.focus();
+                });
             }
         });
     };

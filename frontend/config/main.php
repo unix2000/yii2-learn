@@ -1,5 +1,12 @@
 <?php
 use kartik\mpdf\Pdf;
+use frontend\components\cart\storage\SessionStorage;
+//注入方式
+Yii::$container->setSingleton('frontend\components\cart\ShoppingCart');
+Yii::$container->set('frontend\components\cart\storage\StorageInterface',function(){
+   return new SessionStorage(Yii::$app->session, 'primary-cart'); 
+});
+
 $params = array_merge(
     require(__DIR__ . '/../../common/config/params.php'),
     require(__DIR__ . '/../../common/config/params-local.php'),
@@ -81,6 +88,10 @@ return [
 		]
 	],
     'components' => [
+        'cart' => [
+            'class' => 'frontend\components\ShoppingCart',
+            'sessionKey' => 'primary-cart',
+        ],
         //restful response setting
         // 'response' => [
         //     'format' => yii\web\Response::FORMAT_JSON,

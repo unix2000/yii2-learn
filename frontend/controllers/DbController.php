@@ -9,8 +9,34 @@ yii\data\SqlDataProvider,
 yii\db\Query;
 use yii\web\Controller;
 use frontend\models\Types;
+use yii\data\Pagination;
+use yii\data\Sort;
 
 class DbController extends Controller {
+    public function actionSort()
+    {
+        $q = Items::find();
+        $countQuery = clone $q;
+        $pages = new Pagination([
+            'totalCount' =>$countQuery->count()
+        ]);
+        $pages->pageSize = 5;
+        $sort = new Sort([
+            'attributes' => [
+                'name',
+                'email'
+            ]
+        ]);
+        $models = $q->offset($pages->offset)
+            ->limit($pages->limit)
+            ->orderBy($sort->orders)
+            ->all();
+        return $this->render('sort', [
+            'models' => $models,
+            'sort' => $sort,
+            'pages' => $pages
+        ]);
+    }
     public function actionShow(){
         // $db = \Yii::$app->db;
         // $db->createCommand()->insert($sql)->execute()

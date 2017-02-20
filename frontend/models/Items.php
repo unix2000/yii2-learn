@@ -18,6 +18,8 @@ class Items extends ActiveRecord {
     // }
     public function rules(){
         return [
+            [['name','email'],'required'],
+            ['email','email'],
             [['images_upload'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg','on'=>'upload'],
         ];
     }

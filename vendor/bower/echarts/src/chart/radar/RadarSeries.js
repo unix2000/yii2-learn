@@ -6,6 +6,7 @@ define(function(require) {
     var List = require('../../data/List');
     var completeDimensions = require('../../data/helper/completeDimensions');
     var zrUtil = require('zrender/core/util');
+    var encodeHTML = require('../../util/format').encodeHTML;
 
     var RadarSeries = SeriesModel.extend({
 
@@ -21,7 +22,7 @@ define(function(require) {
             // Enable legend selection for each data item
             // Use a function instead of direct access because data reference may changed
             this.legendDataProvider = function () {
-                return this._dataBeforeProcessed;
+                return this.getRawData();
             };
         },
 
@@ -39,9 +40,10 @@ define(function(require) {
             var value = this.getRawValue(dataIndex);
             var coordSys = this.coordinateSystem;
             var indicatorAxes = coordSys.getIndicatorAxes();
-            return (this._data.getName(dataIndex) == '' ? this.name : this._data.getName(dataIndex)) + '<br/>'
+            var name = this.getData().getName(dataIndex);
+            return encodeHTML(name === '' ? this.name : name) + '<br/>'
                 + zrUtil.map(indicatorAxes, function (axis, idx) {
-                    return axis.name + ' : ' + value[idx];
+                    return encodeHTML(axis.name + ' : ' + value[idx]);
                 }).join('<br />');
         },
 

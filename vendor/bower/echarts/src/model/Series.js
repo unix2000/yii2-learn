@@ -4,11 +4,15 @@ define(function(require) {
 
     var zrUtil = require('zrender/core/util');
     var formatUtil = require('../util/format');
+    var classUtil = require('../util/clazz');
     var modelUtil = require('../util/model');
     var ComponentModel = require('./Component');
     var colorPaletteMixin = require('./mixin/colorPalette');
     var env = require('zrender/core/env');
+    var layout = require('../util/layout');
 
+    var set = classUtil.set;
+    var get = classUtil.get;
     var encodeHTML = formatUtil.encodeHTML;
     var addCommas = formatUtil.addCommas;
 
@@ -42,6 +46,14 @@ define(function(require) {
          */
         visualColorAccessPath: 'itemStyle.normal.color',
 
+        /**
+         * Support merge layout params.
+         * Only support 'box' now (left/right/top/bottom/width/height).
+         * @type {string|Object} Object can be {ignoreSize: true}
+         * @readOnly
+         */
+        layoutMode: null,
+
         init: function (option, parentModel, ecModel, extraOpt) {
 
             /**
@@ -56,14 +68,14 @@ define(function(require) {
              * @type {module:echarts/data/List|module:echarts/data/Tree|module:echarts/data/Graph}
              * @private
              */
-            this._dataBeforeProcessed = this.getInitialData(option, ecModel);
+            set(this, 'dataBeforeProcessed', this.getInitialData(option, ecModel));
 
-            // If we reverse the order (make this._data firstly, and then make
-            // this._dataBeforeProcessed by cloneShallow), cloneShallow will
-            // cause this._data.graph.data !== this._data when using
+            // If we reverse the order (make data firstly, and then make
+            // dataBeforeProcessed by cloneShallow), cloneShallow will
+            // cause data.graph.data !== data when using
             // module:echarts/data/Graph or module:echarts/data/Tree.
             // See module:echarts/data/helper/linkList
-            this._data = this._dataBeforeProcessed.cloneShallow();
+            this.restoreData();
         },
 
         /**
@@ -72,6 +84,10 @@ define(function(require) {
          * @param  {module:echarts/model/Global} ecModel
          */
         mergeDefaultAndTheme: function (option, ecModel) {
+            var layoutMode = this.layoutMode;
+            var inputPositionParams = layoutMode
+                ? layout.getLayoutParams(option) : {};
+
             zrUtil.merge(
                 option,
                 ecModel.getTheme().get(this.subType)
@@ -83,17 +99,26 @@ define(function(require) {
             modelUtil.defaultEmphasis(option.label, modelUtil.LABEL_OPTIONS);
 
             this.fillDataTextStyle(option.data);
+
+            if (layoutMode) {
+                layout.mergeLayoutParam(option, inputPositionParams, layoutMode);
+            }
         },
 
         mergeOption: function (newSeriesOption, ecModel) {
             newSeriesOption = zrUtil.merge(this.option, newSeriesOption, true);
             this.fillDataTextStyle(newSeriesOption.data);
 
+            var layoutMode = this.layoutMode;
+            if (layoutMode) {
+                layout.mergeLayoutParam(this.option, newSeriesOption, layoutMode);
+            }
+
             var data = this.getInitialData(newSeriesOption, ecModel);
             // TODO Merge data?
             if (data) {
-                this._data = data;
-                this._dataBeforeProcessed = data.cloneShallow();
+                set(this, 'data', data);
+                set(this, 'dataBeforeProcessed', data.cloneShallow());
             }
         },
 
@@ -121,14 +146,15 @@ define(function(require) {
          * @return {module:echarts/data/List}
          */
         getData: function (dataType) {
-            return dataType == null ? this._data : this._data.getLinkedData(dataType);
+            var data = get(this, 'data');
+            return dataType == null ? data : data.getLinkedData(dataType);
         },
 
         /**
          * @param {module:echarts/data/List} data
          */
         setData: function (data) {
-            this._data = data;
+            set(this, 'data', data);
         },
 
         /**
@@ -136,7 +162,7 @@ define(function(require) {
          * @return {module:echarts/data/List}
          */
         getRawData: function () {
-            return this._dataBeforeProcessed;
+            return get(this, 'dataBeforeProcessed');
         },
 
         /**
@@ -197,7 +223,7 @@ define(function(require) {
                         valStr = val + '';
                     }
                     else if (dimType === 'time') {
-                        valStr = multipleSeries ? '' : formatUtil.formatTime('yyyy/mm/dd hh:mm:ss', val);
+                        valStr = multipleSeries ? '' : formatUtil.formatTime('yyyy/MM/dd hh:mm:ss', val);
                     }
                     else {
                         valStr = addCommas(val);
@@ -209,15 +235,22 @@ define(function(require) {
                 return result.join(', ');
             }
 
-            var data = this._data;
+            var data = get(this, 'data');
 
             var value = this.getRawValue(dataIndex);
-            var formattedValue = zrUtil.isArray(value)
-                ? formatArrayValue(value) : addCommas(value);
+            var formattedValue = encodeHTML(
+                zrUtil.isArray(value) ? formatArrayValue(value) : addCommas(value)
+            );
             var name = data.getName(dataIndex);
+
             var color = data.getItemVisual(dataIndex, 'color');
+            if (zrUtil.isObject(color) && color.colorStops) {
+                color = (color.colorStops[0] || {}).color;
+            }
+            color = color || 'transparent';
+
             var colorEl = '<span style="display:inline-block;margin-right:5px;'
-                + 'border-radius:10px;width:9px;height:9px;background-color:' + color + '"></span>';
+                + 'border-radius:10px;width:9px;height:9px;background-color:' + encodeHTML(color) + '"></span>';
 
             var seriesName = this.name;
             // FIXME
@@ -229,7 +262,8 @@ define(function(require) {
                 ? ((seriesName && encodeHTML(seriesName) + '<br />') + colorEl
                     + (name
                         ? encodeHTML(name) + ' : ' + formattedValue
-                        : formattedValue)
+                        : formattedValue
+                    )
                   )
                 : (colorEl + encodeHTML(this.name) + ' : ' + formattedValue);
         },
@@ -237,7 +271,7 @@ define(function(require) {
         /**
          * @return {boolean}
          */
-        ifEnableAnimation: function () {
+        isAnimationEnabled: function () {
             if (env.node) {
                 return false;
             }
@@ -252,7 +286,7 @@ define(function(require) {
         },
 
         restoreData: function () {
-            this._data = this._dataBeforeProcessed.cloneShallow();
+            set(this, 'data', get(this, 'dataBeforeProcessed').cloneShallow());
         },
 
         getColorFromPalette: function (name, scope) {

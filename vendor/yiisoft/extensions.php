@@ -48,24 +48,6 @@ return array (
       '@kartik/popover' => $vendorDir . '/kartik-v/yii2-popover-x',
     ),
   ),
-  'kartik-v/yii2-editable' => 
-  array (
-    'name' => 'kartik-v/yii2-editable',
-    'version' => '1.7.4.0',
-    'alias' => 
-    array (
-      '@kartik/editable' => $vendorDir . '/kartik-v/yii2-editable',
-    ),
-  ),
-  'kartik-v/yii2-mpdf' => 
-  array (
-    'name' => 'kartik-v/yii2-mpdf',
-    'version' => '1.0.0.0',
-    'alias' => 
-    array (
-      '@kartik/mpdf' => $vendorDir . '/kartik-v/yii2-mpdf',
-    ),
-  ),
   'johnitvn/yii2-rbac-plus' => 
   array (
     'name' => 'johnitvn/yii2-rbac-plus',
@@ -347,6 +329,34 @@ return array (
       '@wbraganca/dynamicform' => $vendorDir . '/wbraganca/yii2-dynamicform/src',
     ),
   ),
+  'yiisoft/yii2-shell' => 
+  array (
+    'name' => 'yiisoft/yii2-shell',
+    'version' => '2.0.0.0',
+    'alias' => 
+    array (
+      '@yii/shell' => $vendorDir . '/yiisoft/yii2-shell',
+    ),
+    'bootstrap' => 'yii\\shell\\Bootstrap',
+  ),
+  'kartik-v/yii2-editable' => 
+  array (
+    'name' => 'kartik-v/yii2-editable',
+    'version' => '1.7.5.0',
+    'alias' => 
+    array (
+      '@kartik/editable' => $vendorDir . '/kartik-v/yii2-editable',
+    ),
+  ),
+  'kartik-v/yii2-mpdf' => 
+  array (
+    'name' => 'kartik-v/yii2-mpdf',
+    'version' => '1.0.1.0',
+    'alias' => 
+    array (
+      '@kartik/mpdf' => $vendorDir . '/kartik-v/yii2-mpdf',
+    ),
+  ),
   'yiisoft/yii2-httpclient' => 
   array (
     'name' => 'yiisoft/yii2-httpclient',
@@ -364,15 +374,5 @@ return array (
     array (
       '@kartik/tree' => $vendorDir . '/kartik-v/yii2-tree-manager',
     ),
-  ),
-  'yiisoft/yii2-shell' => 
-  array (
-    'name' => 'yiisoft/yii2-shell',
-    'version' => '2.0.0.0',
-    'alias' => 
-    array (
-      '@yii/shell' => $vendorDir . '/yiisoft/yii2-shell',
-    ),
-    'bootstrap' => 'yii\\shell\\Bootstrap',
   ),
 );

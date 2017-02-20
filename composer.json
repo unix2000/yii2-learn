@@ -45,7 +45,9 @@
         "zelenin/yii2-semantic-ui": "~2",
         "mdmsoft/yii2-admin": "~2.0",
         "mhndev/yii2-repository": "1.*",
-        "yiisoft/yii2-shell": "^2.0"
+        "yiisoft/yii2-shell": "^2.0",
+        "deepziyu/yii-fast-api": "*",
+        "kucha/ueditor": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

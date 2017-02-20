@@ -11,9 +11,8 @@ $data = [
 	]]
 ];
 
-//按以上数据$data格式
-//js格式请参考http://wwwendt.de/tech/fancytree/demo/
-function childs( $id = 0 ){
+//http://wwwendt.de/tech/fancytree/demo/
+function child( $id = 0 ){
 	$data = Dept::find()
 		//->select(['id as key','dept_name as title'])
 		->select([ 'id' , 'dept_name' ])
@@ -25,13 +24,13 @@ function childs( $id = 0 ){
 		$count = Dept::find()->where([ 'dept_parent' => $v['id'] ])->count();
 		if( $count > 0 ) {
 			$arr[$k]['folder'] = true;
-			$arr[$k]['children'] = childs($v['id']);
+			$arr[$k]['children'] = child($v['id']);
 		}
 	}
 	return $arr;
 	//return $data;
 }
-$tree = childs();
+$tree = child();
 ?>
 <br />
 <div class="row">
@@ -41,7 +40,7 @@ $tree = childs();
 			'options' =>[
 				'source' => $tree,
 				'checkbox' => true,
-				'selectMode' => 1, //1为单选radiobox 2 3
+				'selectMode' => 1, //1为锟斤拷选radiobox 2 3
 				//'titlesTabbable' => true, // Add all node titles to TAB chain
 				//'quicksearch' => true,
 				'select' => new JsExpression('

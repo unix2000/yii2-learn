@@ -3,7 +3,7 @@ namespace frontend\controllers;
 use yii\web\Request;
 class RequestController extends BaseController{
     public function actionIndex(){
-		//无法作为参数注入,比如Request $req
+		//Request $req
         //phalcon2 
 //         if($this->request_cookies->has('username')){
 //             //echo $this->cookies->getValue('username');

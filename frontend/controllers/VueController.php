@@ -4,7 +4,11 @@ namespace frontend\controllers;
 use yii\web\Controller;
 class VueController extends Controller
 {
-	public function actionApiData()
+	public function actionComponent()
+	{
+	    return $this->render('component');
+	}
+    public function actionApiData()
 	{
 	    //获取api.dev数据
 	    return $this->render('api-data');

@@ -154,19 +154,19 @@ define(function (require) {
     };
 
     /**
+     * Minimal dicernible data precisioin according to a single pixel.
      * @param {Array.<number>} dataExtent
      * @param {Array.<number>} pixelExtent
-     * @return {number}  precision
+     * @return {number} precision
      */
     number.getPixelPrecision = function (dataExtent, pixelExtent) {
         var log = Math.log;
         var LN10 = Math.LN10;
         var dataQuantity = Math.floor(log(dataExtent[1] - dataExtent[0]) / LN10);
         var sizeQuantity = Math.round(log(Math.abs(pixelExtent[1] - pixelExtent[0])) / LN10);
-        return Math.max(
-            -dataQuantity + sizeQuantity,
-            0
-        );
+        // toFixed() digits argument must be between 0 and 20.
+        var precision = Math.min(Math.max(-dataQuantity + sizeQuantity, 0), 20);
+        return !isFinite(precision) ? 20 : precision;
     };
 
     // Number.MAX_SAFE_INTEGER, ie do not support.
@@ -247,6 +247,81 @@ define(function (require) {
             else { nf = 10; }
         }
         return nf * exp10;
+    };
+
+    /**
+     * Order intervals asc, and split them when overlap.
+     * expect(numberUtil.reformIntervals([
+     *     {interval: [18, 62], close: [1, 1]},
+     *     {interval: [-Infinity, -70], close: [0, 0]},
+     *     {interval: [-70, -26], close: [1, 1]},
+     *     {interval: [-26, 18], close: [1, 1]},
+     *     {interval: [62, 150], close: [1, 1]},
+     *     {interval: [106, 150], close: [1, 1]},
+     *     {interval: [150, Infinity], close: [0, 0]}
+     * ])).toEqual([
+     *     {interval: [-Infinity, -70], close: [0, 0]},
+     *     {interval: [-70, -26], close: [1, 1]},
+     *     {interval: [-26, 18], close: [0, 1]},
+     *     {interval: [18, 62], close: [0, 1]},
+     *     {interval: [62, 150], close: [0, 1]},
+     *     {interval: [150, Infinity], close: [0, 0]}
+     * ]);
+     * @param {Array.<Object>} list, where `close` mean open or close
+     *        of the interval, and Infinity can be used.
+     * @return {Array.<Object>} The origin list, which has been reformed.
+     */
+    number.reformIntervals = function (list) {
+        list.sort(function (a, b) {
+            return littleThan(a, b, 0) ? -1 : 1;
+        });
+
+        var curr = -Infinity;
+        var currClose = 1;
+        for (var i = 0; i < list.length;) {
+            var interval = list[i].interval;
+            var close = list[i].close;
+
+            for (var lg = 0; lg < 2; lg++) {
+                if (interval[lg] <= curr) {
+                    interval[lg] = curr;
+                    close[lg] = !lg ? 1 - currClose : 1;
+                }
+                curr = interval[lg];
+                currClose = close[lg];
+            }
+
+            if (interval[0] === interval[1] && close[0] * close[1] !== 1) {
+                list.splice(i, 1);
+            }
+            else {
+                i++;
+            }
+        }
+
+        return list;
+
+        function littleThan(a, b, lg) {
+            return a.interval[lg] < b.interval[lg]
+                || (
+                    a.interval[lg] === b.interval[lg]
+                    && (
+                        (a.close[lg] - b.close[lg] === (!lg ? 1 : -1))
+                        || (!lg && littleThan(a, b, 1))
+                    )
+                );
+        }
+    };
+
+    /**
+     * parseFloat NaNs numeric-cast false positives (null|true|false|"")
+     * ...but misinterprets leading-number strings, particularly hex literals ("0x...")
+     * subtraction forces infinities to NaN
+     * @param {*} v
+     * @return {boolean}
+     */
+    number.isNumeric = function (v) {
+        return v - parseFloat(v) >= 0;
     };
 
     return number;

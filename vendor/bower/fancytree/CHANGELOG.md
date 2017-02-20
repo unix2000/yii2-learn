@@ -1,4 +1,20 @@
-# 2.20.1-0 / Unreleased
+# 2.22.0-0 / Unreleased
+  * [Added] New extension 'ext-fixed'
+
+# 2.21.0 / 2017-01-15
+  * [Added] New extension 'ext-dnd5' for native HTML5 drag'n'drop support
+  * [Added] `rtl` option for right-to-left script support
+  * [Added] Add $.ui.fancytree.overrideMethod()
+  * [Added] hook `treeSetOption` allows extensions to update on option changes
+  * [Changed] standard CSS no longer defines `overflow: auto` for the container.
+    If the tree container has a fixed height, `overflow: auto` or `overflow: scroll`
+    should be added to make it scrollable.
+    (Otherwise this always would be the scroll parent for ext-dnd5.)
+  * [Improved] better support for initializing from embedded JSON using the 
+    `data-type="json"` attribute
+  * [Fixed] corner case of #658 when ext-edit is loaded, but inactive
+  * [Fixed] #396 Don't load 'loading.gif' for glyph skins
+  * [Fixed] #675 ext-table: node.render(false) puts first node at end
 
 # 2.20.0 / 2016-11-13
   * [Added] #419 `modifyChild` event. This event is also a good place to 
@@ -8,13 +24,13 @@
   * [Added] #610 `tree.tooltip` option allows automatic or custom tooltips
   * [Added] #620 improved tooltip escaping to allow newlines
   * [DEPRECATED] `removeNode` event. Listen for `modifyChild` with operation
-    'remove' instead (which is fired on the parent).
+    'remove' instead (which is fired on the parent)
   * [Improved] ThemeRoller theme
   * [Improved] ext-filter
     - #297 add filter option 'hideExpanders' to remove expanders if all child 
       nodes are hidden by filter
     - Filter options and the `opts` argument of `filterNodes()` / `filterBranches()`
-      have been unified.
+      have been unified
     - [Fixed] #230 themeroller theme compatible with ext-filter
     - [Fixed] #528 autoCollapse option blocks filter's autoExpand option
     - [Fixed] #529 Filter: Mark matching nodes even if parent was matched in branch mode
@@ -59,8 +75,8 @@
     `"branch"` and `"skip"`
   * [Added] ext-filter: new option`nodata` allows to configure a status node for
     empty results
-  * [Added] `digits` argument to `node.getIndexHier(separator, digits)`.
-  * [Added] tree option `.tabindex`, default is "0". Pass "" to resolve #577.
+  * [Added] `digits` argument to `node.getIndexHier(separator, digits)`
+  * [Added] tree option `.tabindex`, default is "0". Pass "" to resolve #577
   * [DEPRECATED] tree option `.tabbable`. Use `.tabindex` instead
   * [Added] New option `mode='firstChild'` for `node.moveTo()`
   * [Added] New option `digits=<int>` for `node.getIndexHier()`
@@ -71,7 +87,7 @@
 # 2.16.1 / 2016-03-18
   * [Added] ext-glyph: new icon for 'nodata' status nodes
   * [Fixed] #575 missing loading icon in non-bootstrap themes.<br>
-    Glyph themes now display status images in icon span (was expander span before).
+    Glyph themes now display status images in icon span (was expander span before)
 
 # 2.16.0 / 2016-03-16
   * [Added] ext-clones: new method node.setRefKey(refKey)

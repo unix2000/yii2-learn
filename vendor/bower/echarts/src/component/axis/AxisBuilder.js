@@ -171,12 +171,12 @@ define(function (require) {
          */
         axisTick: function () {
             var axisModel = this.axisModel;
+            var axis = axisModel.axis;
 
-            if (!axisModel.get('axisTick.show')) {
+            if (!axisModel.get('axisTick.show') || axis.isBlank()) {
                 return;
             }
 
-            var axis = axisModel.axis;
             var tickModel = axisModel.getModel('axisTick');
             var opt = this.opt;
 
@@ -240,13 +240,13 @@ define(function (require) {
         axisLabel: function () {
             var opt = this.opt;
             var axisModel = this.axisModel;
+            var axis = axisModel.axis;
             var show = retrieve(opt.axisLabelShow, axisModel.get('axisLabel.show'));
 
-            if (!show) {
+            if (!show || axis.isBlank()) {
                 return;
             }
 
-            var axis = axisModel.axis;
             var labelModel = axisModel.getModel('axisLabel');
             var textStyleModel = labelModel.getModel('textStyle');
             var labelMargin = labelModel.get('margin');
@@ -265,34 +265,34 @@ define(function (require) {
             var silent = isSilent(axisModel);
             var triggerEvent = axisModel.get('triggerEvent');
 
-            for (var i = 0; i < ticks.length; i++) {
-                if (ifIgnoreOnTick(axis, i, opt.labelInterval)) {
-                     continue;
+            zrUtil.each(ticks, function (tickVal, index) {
+                if (ifIgnoreOnTick(axis, index, opt.labelInterval)) {
+                     return;
                 }
 
                 var itemTextStyleModel = textStyleModel;
-                if (categoryData && categoryData[i] && categoryData[i].textStyle) {
+                if (categoryData && categoryData[tickVal] && categoryData[tickVal].textStyle) {
                     itemTextStyleModel = new Model(
-                        categoryData[i].textStyle, textStyleModel, axisModel.ecModel
+                        categoryData[tickVal].textStyle, textStyleModel, axisModel.ecModel
                     );
                 }
                 var textColor = itemTextStyleModel.getTextColor()
                     || axisModel.get('axisLine.lineStyle.color');
 
-                var tickCoord = axis.dataToCoord(ticks[i]);
+                var tickCoord = axis.dataToCoord(tickVal);
                 var pos = [
                     tickCoord,
                     opt.labelOffset + opt.labelDirection * labelMargin
                 ];
-                var labelBeforeFormat = axis.scale.getLabel(ticks[i]);
+                var labelBeforeFormat = axis.scale.getLabel(tickVal);
 
                 var textEl = new graphic.Text({
 
                     // Id for animation
-                    anid: 'label_' + ticks[i],
+                    anid: 'label_' + tickVal,
 
                     style: {
-                        text: labels[i],
+                        text: labels[index],
                         textAlign: itemTextStyleModel.get('align', true) || labelLayout.textAlign,
                         textVerticalAlign: itemTextStyleModel.get('baseline', true) || labelLayout.verticalAlign,
                         textFont: itemTextStyleModel.getFont(),
@@ -311,7 +311,6 @@ define(function (require) {
                     textEl.eventData.value = labelBeforeFormat;
                 }
 
-
                 // FIXME
                 this._dumbGroup.add(textEl);
                 textEl.updateTransform();
@@ -320,7 +319,8 @@ define(function (require) {
                 this.group.add(textEl);
 
                 textEl.decomposeTransform();
-            }
+
+            }, this);
 
             function isTwoLabelOverlapped(current, next) {
                 var firstRect = current && current.getBoundingRect().clone();
@@ -331,23 +331,22 @@ define(function (require) {
                     return firstRect.intersect(nextRect);
                 }
             }
-            if (axis.type !== 'category') {
-                // If min or max are user set, we need to check
-                // If the tick on min(max) are overlap on their neighbour tick
-                // If they are overlapped, we need to hide the min(max) tick label
-                if (axisModel.getMin ? axisModel.getMin() : axisModel.get('min')) {
-                    var firstLabel = textEls[0];
-                    var nextLabel = textEls[1];
-                    if (isTwoLabelOverlapped(firstLabel, nextLabel)) {
-                        firstLabel.ignore = true;
-                    }
+
+            // If min or max are user set, we need to check
+            // If the tick on min(max) are overlap on their neighbour tick
+            // If they are overlapped, we need to hide the min(max) tick label
+            if (axisModel.getMin() != null) {
+                var firstLabel = textEls[0];
+                var nextLabel = textEls[1];
+                if (isTwoLabelOverlapped(firstLabel, nextLabel)) {
+                    firstLabel.ignore = true;
                 }
-                if (axisModel.getMax ? axisModel.getMax() : axisModel.get('max')) {
-                    var lastLabel = textEls[textEls.length - 1];
-                    var prevLabel = textEls[textEls.length - 2];
-                    if (isTwoLabelOverlapped(prevLabel, lastLabel)) {
-                        lastLabel.ignore = true;
-                    }
+            }
+            if (axisModel.getMax() != null) {
+                var lastLabel = textEls[textEls.length - 1];
+                var prevLabel = textEls[textEls.length - 2];
+                if (isTwoLabelOverlapped(prevLabel, lastLabel)) {
+                    lastLabel.ignore = true;
                 }
             }
         },

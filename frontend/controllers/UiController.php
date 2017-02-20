@@ -19,6 +19,10 @@ class UiController extends Controller{
 	       
 	    ];
 	}
+	public function actionUeditor()
+	{
+		return $this->render('ueditor');
+	}
 	public function actionLogin()
 	{
 	    return $this->render('login'); 

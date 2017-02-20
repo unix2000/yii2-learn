@@ -28,7 +28,7 @@
 		<input type="button" @keyup.enter="submit" class="btn btn-primary" value="submit2">
 		<!-- 单字符貌似无效 -->
 		<!-- <input type="button" class="btn btn-primary" v-on:keyup.v="say('That is the first letter in Vue')" value="v快捷键"> -->
-		<img src="/001.jpg" class="img-responsive img-circle">
+		<img src="/002.jpg" class="img-responsive img-circle">
 	</div>
 	<div class="col-md-7">
 	<ul>  

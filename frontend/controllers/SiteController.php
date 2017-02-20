@@ -91,6 +91,7 @@ class SiteController extends Controller
     public function actionIndex($name='bootstrap')
     {
         return $this->render('index',array('name'=>$name));
+        // return $this->renderContent('<h1>这是renderContent</h1>');
     }
 
     /**

@@ -4,9 +4,35 @@ namespace frontend\controllers;
 use yii\web\Controller;
 use frontend\models\Items;
 use yii\helpers\Json;
+use frontend\models\Dept;
+
 
 class BuiController extends Controller 
 {
+    public function actionIndex()
+    {
+        return $this->render('index');
+    }
+    public function actionForm()
+    {
+        return $this->render('form');
+    }
+    public function actionTreeSelect()
+    {
+        $arr = childs();
+        $json = Json::encode($arr);
+        return $this->render('tree-select',[
+            'json' => $json,
+        ]);
+    }
+    public function actionTreeSelect2()
+    {
+        return $this->render('tree-select2');
+    }
+	public function actionTreeSelect3()
+    {
+        return $this->render('tree-select3');
+    }
     public function actionEditor()
     {
 //         $header = ['报销内容', '报销日期', '报销金额', '报销备注'];

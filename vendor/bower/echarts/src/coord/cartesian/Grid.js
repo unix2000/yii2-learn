@@ -25,12 +25,13 @@ define(function(require, factory) {
      * @inner
      */
     function isAxisUsedInTheGrid(axisModel, gridModel, ecModel) {
-        return axisModel.findGridModel() === gridModel;
+        return axisModel.getCoordSysModel() === gridModel;
     }
 
     function getLabelUnionRect(axis) {
         var axisModel = axis.model;
         var labels = axisModel.getFormattedLabels();
+        var textStyleModel = axisModel.getModel('axisLabel.textStyle');
         var rect;
         var step = 1;
         var labelCount = labels.length;
@@ -40,7 +41,7 @@ define(function(require, factory) {
         }
         for (var i = 0; i < labelCount; i += step) {
             if (!axis.isLabelIgnored(i)) {
-                var singleRect = axisModel.getTextRect(labels[i]);
+                var singleRect = textStyleModel.getTextRect(labels[i]);
                 // FIXME consider label rotate
                 rect ? rect.union(singleRect) : (rect = singleRect);
             }
@@ -446,9 +447,7 @@ define(function(require, factory) {
 
         function unionExtent(data, axis, seriesModel) {
             each(seriesModel.coordDimToDataDim(axis.dim), function (dim) {
-                axis.scale.unionExtent(data.getDataExtent(
-                    dim, axis.scale.type !== 'ordinal'
-                ));
+                axis.scale.unionExtentFromData(data, dim);
             });
         }
     };
@@ -527,7 +526,7 @@ define(function(require, factory) {
             var xAxisModel = axesModels[0];
             var yAxisModel = axesModels[1];
 
-            var gridModel = xAxisModel.findGridModel();
+            var gridModel = xAxisModel.getCoordSysModel();
 
             if (__DEV__) {
                 if (!gridModel) {
@@ -539,7 +538,7 @@ define(function(require, factory) {
                         ) + '" not found'
                     );
                 }
-                if (xAxisModel.findGridModel() !== yAxisModel.findGridModel()) {
+                if (xAxisModel.getCoordSysModel() !== yAxisModel.getCoordSysModel()) {
                     throw new Error('xAxis and yAxis must use the same grid');
                 }
             }

@@ -77,6 +77,18 @@ define(function (require) {
         return [x, y];
     }
 
+    function confineTooltipPosition(x, y, el, viewWidth, viewHeight) {
+        var width = el.clientWidth;
+        var height = el.clientHeight;
+
+        x = Math.min(x + width, viewWidth) - width;
+        y = Math.min(y + height, viewHeight) - height;
+        x = Math.max(x, 0);
+        y = Math.max(y, 0);
+
+        return [x, y];
+    }
+
     function calcTooltipPosition(position, rect, dom) {
         var domWidth = dom.clientWidth;
         var domHeight = dom.clientHeight;
@@ -113,13 +125,14 @@ define(function (require) {
      * @param  {string|Function|Array.<number>} positionExpr
      * @param  {number} x Mouse x
      * @param  {number} y Mouse y
+     * @param  {boolean} confine Whether confine tooltip content in view rect.
      * @param  {module:echarts/component/tooltip/TooltipContent} content
      * @param  {Object|<Array.<Object>} params
      * @param  {module:zrender/Element} el target element
      * @param  {module:echarts/ExtensionAPI} api
      * @return {Array.<number>}
      */
-    function updatePosition(positionExpr, x, y, content, params, el, api) {
+    function updatePosition(positionExpr, x, y, confine, content, params, el, api) {
         var viewWidth = api.getWidth();
         var viewHeight = api.getHeight();
 
@@ -150,6 +163,14 @@ define(function (require) {
             y = pos[1];
         }
 
+        if (confine) {
+            var pos = confineTooltipPosition(
+                x, y, content.el, viewWidth, viewHeight
+            );
+            x = pos[0];
+            y = pos[1];
+        }
+
         content.moveTo(x, y);
     }
 
@@ -174,9 +195,6 @@ define(function (require) {
             }
             var tooltipContent = new TooltipContent(api.getDom(), api);
             this._tooltipContent = tooltipContent;
-
-            api.on('showTip', this._manuallyShowTip, this);
-            api.on('hideTip', this._manuallyHideTip, this);
         },
 
         render: function (tooltipModel, ecModel, api) {
@@ -243,7 +261,7 @@ define(function (require) {
             if (this._lastX != null
                 && this._lastY != null
                 // When user is willing to control tooltip totally using API,
-                // self._manuallyShowTip({x, y}) might cause tooltip hide,
+                // self.manuallyShowTip({x, y}) might cause tooltip hide,
                 // which is not expected.
                 && triggerOn !== 'none'
             ) {
@@ -253,7 +271,7 @@ define(function (require) {
                     // Show tip next tick after other charts are rendered
                     // In case highlight action has wrong result
                     // FIXME
-                    self._manuallyShowTip({
+                    self.manuallyShowTip(tooltipModel, ecModel, api, {
                         x: self._lastX,
                         y: self._lastY
                     });
@@ -308,29 +326,53 @@ define(function (require) {
          *
          *  TODO Batch
          */
-        _manuallyShowTip: function (event) {
+        manuallyShowTip: function (tooltipModel, ecModel, api, payload) {
             // From self
-            if (event.from === this.uid) {
+            if (payload.from === this.uid) {
                 return;
             }
 
             var ecModel = this._ecModel;
-            var seriesIndex = event.seriesIndex;
+            var seriesIndex = payload.seriesIndex;
             var seriesModel = ecModel.getSeriesByIndex(seriesIndex);
             var api = this._api;
 
-            if (event.x == null || event.y == null) {
-                if (!seriesModel) {
-                    // Find the first series can use axis trigger
-                    ecModel.eachSeries(function (_series) {
-                        if (ifSeriesSupportAxisTrigger(_series) && !seriesModel) {
-                            seriesModel = _series;
-                        }
-                    });
+            var isTriggerAxis = this._tooltipModel.get('trigger') === 'axis';
+            function seriesHaveDataOnIndex(_series) {
+                var data = _series.getData();
+                var dataIndex = modelUtil.queryDataIndex(data, payload);
+                // Have single dataIndex
+                if (dataIndex != null && !zrUtil.isArray(dataIndex)
+                    && data.hasValue(dataIndex)
+                ) {
+                    return true;
+                }
+            }
+
+            if (payload.x == null || payload.y == null) {
+                if (isTriggerAxis) {
+                    // Find another series.
+                    if (seriesModel && !seriesHaveDataOnIndex(seriesModel)) {
+                        seriesModel = null;
+                    }
+                    if (!seriesModel) {
+                        // Find the first series can use axis trigger And data is not null
+                        ecModel.eachSeries(function (_series) {
+                            if (ifSeriesSupportAxisTrigger(_series) && !seriesModel) {
+                                if (seriesHaveDataOnIndex(_series)) {
+                                    seriesModel = _series;
+                                }
+                            }
+                        });
+                    }
+                }
+                else {
+                    // Use the first series by default.
+                    seriesModel = seriesModel || ecModel.getSeriesByIndex(0);
                 }
                 if (seriesModel) {
                     var data = seriesModel.getData();
-                    var dataIndex = modelUtil.queryDataIndex(data, event);
+                    var dataIndex = modelUtil.queryDataIndex(data, payload);
 
                     if (dataIndex == null || zrUtil.isArray(dataIndex)) {
                         return;
@@ -369,7 +411,7 @@ define(function (require) {
                         this._tryShow({
                             offsetX: cx,
                             offsetY: cy,
-                            position: event.position,
+                            position: payload.position,
                             target: el,
                             event: {}
                         });
@@ -377,19 +419,19 @@ define(function (require) {
                 }
             }
             else {
-                var el = api.getZr().handler.findHover(event.x, event.y);
+                var el = api.getZr().handler.findHover(payload.x, payload.y);
                 this._tryShow({
-                    offsetX: event.x,
-                    offsetY: event.y,
-                    position: event.position,
+                    offsetX: payload.x,
+                    offsetY: payload.y,
+                    position: payload.position,
                     target: el,
                     event: {}
                 });
             }
         },
 
-        _manuallyHideTip: function (e) {
-            if (e.from === this.uid) {
+        manuallyHideTip: function (tooltipModel, ecModel, api, payload) {
+            if (payload.from === this.uid) {
                 return;
             }
 
@@ -459,7 +501,8 @@ define(function (require) {
                 // In which case, the data is not main data in series.
                 var dataModel = el.dataModel || ecModel.getSeriesByIndex(el.seriesIndex);
                 var dataIndex = el.dataIndex;
-                var itemModel = dataModel.getData().getItemModel(dataIndex);
+                var data = dataModel.getData();
+                var itemModel = data.getItemModel(dataIndex);
                 // Series or single data may use item trigger when global is axis trigger
                 if ((itemModel.get('tooltip.trigger') || globalTrigger) === 'axis') {
                     this._showAxisTooltip(tooltipModel, ecModel, e);
@@ -478,7 +521,8 @@ define(function (require) {
                 api.dispatchAction({
                     type: 'showTip',
                     from: this.uid,
-                    dataIndexInside: el.dataIndex,
+                    dataIndexInside: dataIndex,
+                    dataIndex: data.getRawIndex(dataIndex), // expose to user.
                     seriesIndex: el.seriesIndex
                 });
             }
@@ -565,10 +609,16 @@ define(function (require) {
                 var dimensions = coordSys.dimensions;
                 var value = coordSys.pointToData(point, true);
                 point = coordSys.dataToPoint(value);
+
                 var baseAxis = coordSys.getBaseAxis();
                 var axisType = axisPointerModel.get('axis');
                 if (axisType === 'auto') {
                     axisType = baseAxis.dim;
+                }
+
+                if (baseAxis.isBlank() || zrUtil.eqNaN(point[0]) || zrUtil.eqNaN(point[1])) {
+                    this._hideAxisPointer(coordSys.name);
+                    return;
                 }
 
                 var contentNotChange = false;
@@ -591,19 +641,21 @@ define(function (require) {
                     lastHover.data = value[valIndex];
                 }
 
+                var enableAnimation = tooltipModel.get('animation');
+
                 if (coordSys.type === 'cartesian2d' && !contentNotChange) {
                     this._showCartesianPointer(
-                        axisPointerModel, coordSys, axisType, point
+                        axisPointerModel, coordSys, axisType, point, enableAnimation
                     );
                 }
                 else if (coordSys.type === 'polar' && !contentNotChange) {
                     this._showPolarPointer(
-                        axisPointerModel, coordSys, axisType, point
+                        axisPointerModel, coordSys, axisType, point, enableAnimation
                     );
                 }
                 else if (coordSys.type === 'singleAxis' && !contentNotChange) {
                     this._showSinglePointer(
-                        axisPointerModel, coordSys, axisType, point
+                        axisPointerModel, coordSys, axisType, point, enableAnimation
                     );
                 }
 
@@ -631,12 +683,13 @@ define(function (require) {
          * @param {Array.<number>} point
          * @private
          */
-        _showCartesianPointer: function (axisPointerModel, cartesian, axisType, point) {
+        _showCartesianPointer: function (axisPointerModel, cartesian, axisType, point, enableAnimation) {
             var self = this;
 
             var axisPointerType = axisPointerModel.get('type');
             var baseAxis = cartesian.getBaseAxis();
-            var moveAnimation = axisPointerType !== 'cross'
+            var moveAnimation = enableAnimation
+                && axisPointerType !== 'cross'
                 && baseAxis.type === 'category'
                 && baseAxis.getBandWidth() > 20;
 
@@ -706,10 +759,13 @@ define(function (require) {
             }
         },
 
-        _showSinglePointer: function (axisPointerModel, single, axisType, point) {
+        _showSinglePointer: function (axisPointerModel, single, axisType, point, enableAnimation) {
             var self = this;
             var axisPointerType = axisPointerModel.get('type');
-            var moveAnimation = axisPointerType !== 'cross' && single.getBaseAxis().type === 'category';
+            var moveAnimation =
+                enableAnimation
+                && axisPointerType !== 'cross'
+                && single.getBaseAxis().type === 'category';
             var rect = single.getRect();
             var otherExtent = [rect.y, rect.y + rect.height];
 
@@ -747,7 +803,7 @@ define(function (require) {
          * @param {string} axisType
          * @param {Array.<number>} point
          */
-        _showPolarPointer: function (axisPointerModel, polar, axisType, point) {
+        _showPolarPointer: function (axisPointerModel, polar, axisType, point, enableAnimation) {
             var self = this;
 
             var axisPointerType = axisPointerModel.get('type');
@@ -755,7 +811,8 @@ define(function (require) {
             var angleAxis = polar.getAngleAxis();
             var radiusAxis = polar.getRadiusAxis();
 
-            var moveAnimation = axisPointerType !== 'cross'
+            var moveAnimation = enableAnimation
+                && axisPointerType !== 'cross'
                 && polar.getBaseAxis().type === 'category';
 
             if (axisPointerType === 'cross') {
@@ -944,7 +1001,11 @@ define(function (require) {
             var rootTooltipModel = this._tooltipModel;
 
             var baseAxis = coordSys.getBaseAxis();
-            var baseDimIndex = baseAxis.dim === 'x' || baseAxis.dim === 'radius' ? 0 : 1;
+            var baseDimIndex = ({x: 1, radius: 1, single: 1})[baseAxis.dim] ? 0 : 1;
+
+            if (!seriesList.length) {
+                return;
+            }
 
             var payloadBatch = zrUtil.map(seriesList, function (series) {
                 return {
@@ -959,6 +1020,14 @@ define(function (require) {
                         )
                 };
             });
+            var sampleSeriesIndex;
+            zrUtil.each(payloadBatch, function (payload, idx) {
+                if (seriesList[idx].getData().hasValue(payload.dataIndexInside)) {
+                    sampleSeriesIndex = idx;
+                }
+            });
+            // Fallback to 0.
+            sampleSeriesIndex = sampleSeriesIndex || 0;
 
             var lastHover = this._lastHover;
             var api = this._api;
@@ -978,10 +1047,13 @@ define(function (require) {
                 lastHover.payloadBatch = payloadBatch;
             }
             // Dispatch showTip action
+            var dataIndex = payloadBatch[sampleSeriesIndex].dataIndexInside;
             api.dispatchAction({
                 type: 'showTip',
-                dataIndexInside: payloadBatch[0].dataIndexInside,
-                seriesIndex: payloadBatch[0].seriesIndex,
+                dataIndexInside: dataIndex,
+                // expose to user.
+                dataIndex: seriesList[sampleSeriesIndex].getData().getRawIndex(dataIndex),
+                seriesIndex: payloadBatch[sampleSeriesIndex].seriesIndex,
                 from: this.uid
             });
 
@@ -992,7 +1064,7 @@ define(function (require) {
 
                 if (!contentNotChange) {
                     // Update html content
-                    var firstDataIndex = payloadBatch[0].dataIndexInside;
+                    var firstDataIndex = payloadBatch[sampleSeriesIndex].dataIndexInside;
 
                     // Default tooltip content
                     // FIXME
@@ -1000,8 +1072,8 @@ define(function (require) {
                     // (2) themeRiver, firstDataIndex is array, and first line is unnecessary.
                     var firstLine = baseAxis.type === 'time'
                         ? baseAxis.scale.getLabel(value[baseDimIndex])
-                        : seriesList[0].getData().getName(firstDataIndex);
-                    var defaultHtml = (firstLine ? firstLine + '<br />' : '')
+                        : seriesList[sampleSeriesIndex].getData().getName(firstDataIndex);
+                    var defaultHtml = (firstLine ? formatUtil.encodeHTML(firstLine) + '<br />' : '')
                         + zrUtil.map(seriesList, function (series, index) {
                             return series.formatTooltip(payloadBatch[index].dataIndexInside, true);
                         }).join('<br />');
@@ -1015,7 +1087,9 @@ define(function (require) {
                 }
                 else {
                     updatePosition(
-                        positionExpr || rootTooltipModel.get('position'), point[0], point[1],
+                        positionExpr || rootTooltipModel.get('position'),
+                        point[0], point[1],
+                        rootTooltipModel.get('confine'),
                         this._tooltipContent, paramsList, null, api
                     );
                 }
@@ -1072,6 +1146,7 @@ define(function (require) {
 
             if (tooltipModel.get('showContent') && tooltipModel.get('show')) {
                 var tooltipContent = this._tooltipContent;
+                var confine = tooltipModel.get('confine');
 
                 var formatter = tooltipModel.get('formatter');
                 positionExpr = positionExpr || tooltipModel.get('position');
@@ -1079,7 +1154,7 @@ define(function (require) {
 
                 if (formatter) {
                     if (typeof formatter === 'string') {
-                        html = formatUtil.formatTpl(formatter, params);
+                        html = formatUtil.formatTpl(formatter, params, true);
                     }
                     else if (typeof formatter === 'function') {
                         var self = this;
@@ -1089,7 +1164,7 @@ define(function (require) {
                                 tooltipContent.setContent(html);
 
                                 updatePosition(
-                                    positionExpr, x, y,
+                                    positionExpr, x, y, confine,
                                     tooltipContent, params, target, api
                                 );
                             }
@@ -1103,7 +1178,7 @@ define(function (require) {
                 tooltipContent.setContent(html);
 
                 updatePosition(
-                    positionExpr, x, y,
+                    positionExpr, x, y, confine,
                     tooltipContent, params, target, api
                 );
             }
@@ -1185,9 +1260,6 @@ define(function (require) {
             zr.off('mousemove', this._mousemove);
             zr.off('mouseout', this._hide);
             zr.off('globalout', this._hide);
-
-            api.off('showTip', this._manuallyShowTip);
-            api.off('hideTip', this._manuallyHideTip);
         }
     });
 });

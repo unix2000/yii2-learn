@@ -2,8 +2,8 @@
 /**
  * @package   yii2-editable
  * @author    Kartik Visweswaran <kartikv2@gmail.com>
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2015
- * @version   1.7.4
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2015 - 2017
+ * @version   1.7.5
  */
 
 namespace kartik\editable;
@@ -12,11 +12,9 @@ use Yii;
 use kartik\base\AssetBundle;
 
 /**
- * Asset bundle for Editable widget. Includes assets from
- * bootstrap-popover-x plugin by Krajee.
+ * Asset bundle for Editable widget.
  *
- * @see http://plugins.krajee.com/popover-x
- * @see http://github.com/kartik-v/bootstrap-popover-x
+ * @see http://github.com/kartik-v/yii2-editable
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */

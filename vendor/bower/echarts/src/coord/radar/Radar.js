@@ -131,7 +131,7 @@ define(function (require) {
             }
             var data = radarSeries.getData();
             zrUtil.each(indicatorAxes, function (indicatorAxis) {
-                indicatorAxis.scale.unionExtent(data.getDataExtent(indicatorAxis.dim));
+                indicatorAxis.scale.unionExtentFromData(data, indicatorAxis.dim);
             });
         }, this);
 
@@ -156,8 +156,8 @@ define(function (require) {
 
             var axisModel = indicatorAxis.model;
             var scale = indicatorAxis.scale;
-            var fixedMin = axisModel.get('min');
-            var fixedMax = axisModel.get('max');
+            var fixedMin = axisModel.getMin();
+            var fixedMax = axisModel.getMax();
             var interval = scale.getInterval();
 
             if (fixedMin != null && fixedMax != null) {
